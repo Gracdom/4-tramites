@@ -33,9 +33,7 @@ export const metadata: Metadata = {
 export default function ChequeBebePage() {
   return (
     <div className="flex min-h-screen flex-col">
-      {/* Hero Section con imagen de fondo */}
       <section className="relative min-h-[700px] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-32 pb-20 md:min-h-[800px] md:pb-32">
-        {/* Background con overlay */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&h=1080&fit=crop"
@@ -48,19 +46,16 @@ export default function ChequeBebePage() {
 
         <div className="container relative z-10 px-4">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Columna Izquierda - Contenido */}
             <div className="flex flex-col justify-center">
-              {/* Badge */}
               <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
                 <Baby className="h-4 w-4" />
                 Ayuda para tu bebé
               </div>
 
-              {/* Título Principal */}
               <h1 className="mb-6 text-4xl font-bold leading-tight text-navy md:text-5xl lg:text-6xl">
-                Vibrant Smile For
+                Cheque Bebé
                 <br />
-                <span className="text-primary">Healthy Lifestyle!</span>
+                <span className="text-primary">Hasta 100€ al mes</span>
               </h1>
 
               <p className="mb-4 text-xl font-semibold text-navy">
@@ -71,7 +66,6 @@ export default function ChequeBebePage() {
                 Gestiona trámites, ayudas al alquiler, cheque bebé y más. Sin complicaciones y 100% online.
               </p>
 
-              {/* Rating con estrellas */}
               <div className="mb-8 flex items-center gap-4">
                 <div className="flex gap-1">
                   {[1, 2, 3, 4, 5].map((star) => (
@@ -83,7 +77,6 @@ export default function ChequeBebePage() {
                 </span>
               </div>
 
-              {/* Botones CTA */}
               <div className="flex flex-wrap gap-4">
                 <Button
                   size="lg"
@@ -102,7 +95,6 @@ export default function ChequeBebePage() {
                 </Button>
               </div>
 
-              {/* Features Grid */}
               <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <div className="rounded-2xl bg-white p-4 text-center shadow-card">
                   <FileCheck className="mx-auto mb-2 h-8 w-8 text-primary" />
@@ -123,7 +115,6 @@ export default function ChequeBebePage() {
               </div>
             </div>
 
-            {/* Columna Derecha - Formulario */}
             <div className="flex items-center">
               <HeroForm />
             </div>
@@ -131,386 +122,240 @@ export default function ChequeBebePage() {
         </div>
       </section>
 
-      {/* Cards flotantes con info de contacto - Overlap negativo */}
       <section className="relative z-20 -mt-32">
         <div className="container px-4">
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
-            {/* Card 1 */}
-            <div className="group rounded-2xl bg-white p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-xl">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                <Phone className="h-7 w-7 text-primary" />
+            <div className="group rounded-3xl bg-white p-6 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                <Phone className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">Teléfono de Contacto</h3>
-              <p className="mb-1 text-sm text-slate-600">Llámanos sin compromiso</p>
-              <p className="font-semibold text-primary">+34 900 123 456</p>
-            </div>
-
-            {/* Card 2 */}
-            <div className="group rounded-2xl bg-white p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-xl">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                <Mail className="h-7 w-7 text-primary" />
-              </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">Correo Electrónico</h3>
-              <p className="mb-1 text-sm text-slate-600">Escríbenos tus dudas</p>
-              <p className="font-semibold text-primary">info@gestiones.es</p>
-            </div>
-
-            {/* Card 3 */}
-            <div className="group rounded-2xl bg-white p-6 shadow-card transition-all hover:-translate-y-1 hover:shadow-xl">
-              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                <Clock className="h-7 w-7 text-primary" />
-              </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">Horario de Atención</h3>
-              <p className="mb-1 text-sm text-slate-600">Lun - Vie: 9:00 - 18:00</p>
-              <p className="font-semibold text-primary">Sábados: 10:00 - 14:00</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Sección de texto con imagen - Diseño Medcity */}
-      <section className="bg-white py-20 md:py-32">
-        <div className="container px-4">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Texto izquierda */}
-            <div>
-              <div className="mb-4 inline-block rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
-                Tu Plataforma de Gestiones
-              </div>
-              <h2 className="mb-6 text-3xl font-bold leading-tight text-navy md:text-4xl">
-                Improving The Quality Of
-                <br />
-                Your Life Through Better{" "}
-                <span className="text-primary">Health</span>
-              </h2>
-              <p className="mb-6 text-lg text-slate-600">
-                Recupera tu tiempo mientras nosotros nos ocupamos de tus derechos. En Gestiones España, nuestro compromiso es que recibas lo que te corresponde sin complicaciones.
+              <h3 className="mb-2 text-lg font-bold text-navy">Atención telefónica</h3>
+              <p className="mb-4 text-sm text-slate-600">
+                Estamos disponibles para resolver tus dudas
               </p>
-
-              <ul className="mb-8 space-y-4">
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-navy">Sin complicaciones</p>
-                    <p className="text-sm text-slate-600">Trámite 100% online y sin papeleo</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-navy">Asesoramiento personalizado</p>
-                    <p className="text-sm text-slate-600">Expertos disponibles para ayudarte</p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-navy">Seguridad garantizada</p>
-                    <p className="text-sm text-slate-600">Tus datos están protegidos</p>
-                  </div>
-                </li>
-              </ul>
-
-              <Button
-                size="lg"
-                className="h-12 rounded-xl bg-primary px-8 font-semibold shadow-lg transition-all hover:bg-[#0F7494] hover:shadow-xl"
-                asChild
+              <a
+                href="tel:+34900000000"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#0F7494]"
               >
-                <Link href="#formulario">
-                  Solicitar ayuda ahora
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
+                +34 900 000 000
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
 
-            {/* Imagen derecha */}
-            <div className="relative">
-              <div className="overflow-hidden rounded-3xl shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=600&fit=crop"
-                  alt="Profesional ayudando"
-                  width={800}
-                  height={600}
-                  className="h-full w-full object-cover"
-                />
+            <div className="group rounded-3xl bg-white p-6 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                <Mail className="h-6 w-6 text-primary" />
               </div>
-              {/* Badge flotante */}
-              <div className="absolute -bottom-6 -right-6 rounded-2xl bg-white p-6 shadow-xl">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10">
-                    <Award className="h-7 w-7 text-primary" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-navy">+600</p>
-                    <p className="text-sm text-slate-600">Familias ayudadas</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Grid de servicios con iconos dobles */}
-      <section className="bg-slate-50 py-20 md:py-32">
-        <div className="container px-4">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
-              Nuestros Servicios
-            </h2>
-            <p className="text-lg text-slate-600">
-              Todo lo que necesitas para acceder a tus ayudas sociales
-            </p>
-          </div>
-
-          <div className="mx-auto grid max-w-6xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {[
-              { icon: Baby, title: "Cheque Bebé", desc: "100€/mes por hijo menor de 3 años" },
-              { icon: MapPin, title: "Ayuda Alquiler", desc: "Soporte económico para tu vivienda" },
-              { icon: Euro, title: "IMV", desc: "Ingreso Mínimo Vital garantizado" },
-              { icon: Heart, title: "Otras Ayudas", desc: "Descubre más ayudas disponibles" },
-            ].map((servicio, i) => {
-              const Icon = servicio.icon;
-              return (
-                <div
-                  key={i}
-                  className="group relative overflow-hidden rounded-2xl bg-white p-8 shadow-card transition-all hover:-translate-y-2 hover:shadow-xl"
-                >
-                  {/* Icono grande de fondo */}
-                  <div className="absolute right-4 top-4 opacity-5">
-                    <Icon className="h-24 w-24" />
-                  </div>
-                  {/* Icono principal */}
-                  <div className="relative mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 transition-all group-hover:bg-primary">
-                    <Icon className="h-7 w-7 text-primary transition-all group-hover:text-white" />
-                  </div>
-                  <h3 className="mb-2 text-lg font-bold text-navy">{servicio.title}</h3>
-                  <p className="mb-4 text-sm text-slate-600">{servicio.desc}</p>
-                  <Link
-                    href="#"
-                    className="inline-flex items-center text-sm font-semibold text-primary transition-all hover:gap-2"
-                  >
-                    Ver más
-                    <ArrowRight className="ml-1 h-4 w-4" />
-                  </Link>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Sección de proceso - Fondo navy con ondas */}
-      <section className="wave-top relative bg-navy py-20 text-white md:py-32">
-        <div className="container relative z-10 px-4">
-          <div className="mx-auto mb-16 max-w-3xl text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              We Provide All Aspects Of
-              <br />
-              Medical Practice For Your{" "}
-              <span className="text-primary">Family</span>
-            </h2>
-            <p className="text-lg text-slate-300">
-              Descubre lo fácil y ágil que es conseguir tus 100€ al mes por tu bebé
-            </p>
-          </div>
-
-          <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-2 lg:grid-cols-4">
-            {[
-              { num: "01", title: "Rellenas el formulario", desc: "Solo tus datos básicos" },
-              { num: "02", title: "Validamos tu ayuda", desc: "En segundos sabemos si cumples" },
-              { num: "03", title: "Aceptas la tramitación", desc: "Nos encargamos del papeleo" },
-              { num: "04", title: "Recibes tu ayuda", desc: "El dinero llega a tu cuenta" },
-            ].map((paso, i) => (
-              <div key={i} className="group text-center">
-                <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-2xl bg-white/10 text-3xl font-bold transition-all group-hover:bg-primary">
-                  {paso.num}
-                </div>
-                <h3 className="mb-2 text-xl font-bold">{paso.title}</h3>
-                <p className="text-slate-300">{paso.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Sección de confianza - Fondo teal con gradiente */}
-      <section className="wave-bottom relative bg-gradient-to-br from-primary to-[#0F7494] py-20 text-white md:py-32">
-        <div className="container relative z-10 px-4">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-              Más de 2.500 familias confían en nosotros
-            </h2>
-            <p className="text-lg text-white/90">
-              Democratizar el acceso a las ayudas sociales es nuestra misión
-            </p>
-          </div>
-
-          <div className="mx-auto grid max-w-4xl gap-8 md:grid-cols-3">
-            <div className="rounded-2xl bg-white/10 p-8 text-center backdrop-blur-sm">
-              <Euro className="mx-auto mb-4 h-12 w-12" />
-              <p className="mb-2 text-4xl font-bold">2.5M€</p>
-              <p className="text-white/90">Conseguidos para clientes</p>
-            </div>
-            <div className="rounded-2xl bg-white/10 p-8 text-center backdrop-blur-sm">
-              <Users className="mx-auto mb-4 h-12 w-12" />
-              <p className="mb-2 text-4xl font-bold">+600</p>
-              <p className="text-white/90">Familias confían en nosotros</p>
-            </div>
-            <div className="rounded-2xl bg-white/10 p-8 text-center backdrop-blur-sm">
-              <Calendar className="mx-auto mb-4 h-12 w-12" />
-              <p className="mb-2 text-4xl font-bold">+1.729</p>
-              <p className="text-white/90">Días ahorrados</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonios con fotos */}
-      <section className="bg-white py-20 md:py-32">
-        <div className="container px-4">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
-              Meet Our Experts
-            </h2>
-            <p className="text-lg text-slate-600">
-              Más de 500 familias ya disfrutan de su ayuda gracias a nosotros
-            </p>
-          </div>
-
-          <div className="mx-auto grid max-w-6xl gap-8 md:grid-cols-3">
-            {[
-              { nombre: "Lucía Fernández", rol: "Madre beneficiaria", texto: "Pensaba que sería complicado pero me ayudaron con todo el proceso." },
-              { nombre: "Marta López", rol: "Cliente satisfecha", texto: "El trato fue muy cercano y profesional. Lo recomiendo 100%." },
-              { nombre: "Ana Sánchez", rol: "Usuaria del servicio", texto: "Todo online y sin desplazamientos. Perfecto para madres ocupadas." },
-            ].map((testimonio, i) => (
-              <div key={i} className="group rounded-2xl bg-slate-50 p-8 text-center transition-all hover:shadow-xl">
-                <div className="mx-auto mb-4 h-24 w-24 overflow-hidden rounded-full bg-gradient-to-br from-primary to-[#0F7494]">
-                  <Image
-                    src={`https://images.unsplash.com/photo-${1560250097-0b93528c311a + i}?w=200&h=200&fit=crop&crop=faces`}
-                    alt={testimonio.nombre}
-                    width={96}
-                    height={96}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <h3 className="mb-1 text-lg font-bold text-navy">{testimonio.nombre}</h3>
-                <p className="mb-4 text-sm font-medium text-primary">{testimonio.rol}</p>
-                <p className="text-sm italic text-slate-600">"{testimonio.texto}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Formulario final - Fondo navy */}
-      <section id="formulario" className="relative bg-navy py-20 text-white md:py-32">
-        <div className="container px-4">
-          <div className="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Texto izquierda */}
-            <div>
-              <h2 className="mb-4 text-3xl font-bold md:text-4xl">
-                Committed To Deliver
-                <br />
-                High Quality Services
-              </h2>
-              <p className="mb-8 text-lg text-slate-300">
-                Nuestros asesores están siempre disponibles para ayudarte con cualquier duda sobre el cheque bebé.
+              <h3 className="mb-2 text-lg font-bold text-navy">Email directo</h3>
+              <p className="mb-4 text-sm text-slate-600">
+                Escríbenos y te respondemos en 24 horas
               </p>
-
-              <div className="mb-8 space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>Sin compromiso inicial</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>100% gratis hasta que recibas la ayuda</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary">
-                    <Check className="h-5 w-5" />
-                  </div>
-                  <span>Asesoramiento personalizado</span>
-                </div>
-              </div>
+              <a
+                href="mailto:info@gestionesespana.com"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#0F7494]"
+              >
+                info@gestionesespana.com
+                <ArrowRight className="h-4 w-4" />
+              </a>
             </div>
 
-            {/* Formulario derecha */}
-            <div className="rounded-3xl bg-white p-8 shadow-2xl md:p-10">
-              <h3 className="mb-6 text-2xl font-bold text-navy">
-                Solicitar servicio
-              </h3>
+            <div className="group rounded-3xl bg-white p-6 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
+                <Clock className="h-6 w-6 text-primary" />
+              </div>
+              <h3 className="mb-2 text-lg font-bold text-navy">Horario</h3>
+              <p className="mb-4 text-sm text-slate-600">
+                Lunes a Viernes
+              </p>
+              <p className="inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                9:00 - 18:00
+                <ArrowRight className="h-4 w-4" />
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <form className="space-y-5">
-                <div className="grid gap-2">
-                  <Label htmlFor="nombre-final" className="text-sm font-semibold text-slate-700">
-                    Nombre y apellidos *
-                  </Label>
-                  <Input
-                    id="nombre-final"
-                    required
-                    className="h-12 rounded-xl border-2 border-slate-200 px-4 focus:border-primary"
-                  />
+      <section id="como-funciona" className="bg-white py-20 md:py-32">
+        <div className="container px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+              ¿Cómo funciona el Cheque Bebé?
+            </h2>
+            <p className="mb-12 text-lg text-slate-600">
+              Te ayudamos a solicitar tu ayuda en 3 sencillos pasos
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-5xl">
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="relative text-center">
+                <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-2xl font-bold text-primary">
+                  1
                 </div>
-
-                <div className="grid gap-2">
-                  <Label htmlFor="email-final" className="text-sm font-semibold text-slate-700">
-                    Correo electrónico *
-                  </Label>
-                  <Input
-                    id="email-final"
-                    type="email"
-                    required
-                    className="h-12 rounded-xl border-2 border-slate-200 px-4 focus:border-primary"
-                  />
-                </div>
-
-                <div className="grid gap-2">
-                  <Label htmlFor="telefono-final" className="text-sm font-semibold text-slate-700">
-                    Teléfono *
-                  </Label>
-                  <Input
-                    id="telefono-final"
-                    type="tel"
-                    required
-                    className="h-12 rounded-xl border-2 border-slate-200 px-4 focus:border-primary"
-                  />
-                </div>
-
-                <div className="grid gap-2">
-                  <Label htmlFor="mensaje" className="text-sm font-semibold text-slate-700">
-                    ¿En qué te podemos ayudar?
-                  </Label>
-                  <Textarea
-                    id="mensaje"
-                    rows={4}
-                    placeholder="Escribe tu duda sobre el cheque bebé..."
-                    className="rounded-xl border-2 border-slate-200 px-4 py-3 focus:border-primary"
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  className="h-12 w-full rounded-xl bg-primary text-base font-semibold shadow-lg transition-all hover:bg-[#0F7494] hover:shadow-xl"
-                >
-                  Enviar solicitud
-                </Button>
-
-                <p className="text-center text-xs text-slate-500">
-                  Al enviar aceptas nuestra política de privacidad
+                <h3 className="mb-3 text-xl font-bold text-navy">Regístrate</h3>
+                <p className="text-slate-600">
+                  Completa el formulario con tus datos básicos en menos de 1 minuto
                 </p>
-              </form>
+              </div>
+
+              <div className="relative text-center">
+                <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-2xl font-bold text-primary">
+                  2
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-navy">Verificamos</h3>
+                <p className="text-slate-600">
+                  Nuestro equipo revisa tu caso y verifica si cumples los requisitos
+                </p>
+              </div>
+
+              <div className="relative text-center">
+                <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-2xl font-bold text-primary">
+                  3
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-navy">Te ayudamos</h3>
+                <p className="text-slate-600">
+                  Gestionamos todo el trámite y te acompañamos hasta la aprobación
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="beneficios" className="bg-gradient-to-br from-navy to-[#0A2540] py-20 text-white md:py-32">
+        <div className="container px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+              Beneficios del Cheque Bebé
+            </h2>
+            <p className="mb-12 text-lg text-blue-100">
+              Apoyo económico para familias con hijos menores de 3 años
+            </p>
+          </div>
+
+          <div className="mx-auto max-w-5xl">
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                <Euro className="mb-4 h-10 w-10 text-primary" />
+                <h3 className="mb-2 text-lg font-bold">Hasta 100€/mes</h3>
+                <p className="text-sm text-blue-100">
+                  Por cada hijo menor de 3 años
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                <Calendar className="mb-4 h-10 w-10 text-primary" />
+                <h3 className="mb-2 text-lg font-bold">Hasta 3 años</h3>
+                <p className="text-sm text-blue-100">
+                  Mientras tu hijo cumpla los requisitos
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                <Zap className="mb-4 h-10 w-10 text-primary" />
+                <h3 className="mb-2 text-lg font-bold">Trámite rápido</h3>
+                <p className="text-sm text-blue-100">
+                  Proceso simplificado y sin complicaciones
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                <Shield className="mb-4 h-10 w-10 text-primary" />
+                <h3 className="mb-2 text-lg font-bold">100% seguro</h3>
+                <p className="text-sm text-blue-100">
+                  Tus datos están protegidos
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                <Award className="mb-4 h-10 w-10 text-primary" />
+                <h3 className="mb-2 text-lg font-bold">Asesoramiento</h3>
+                <p className="text-sm text-blue-100">
+                  Te acompañamos en todo el proceso
+                </p>
+              </div>
+
+              <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                <Heart className="mb-4 h-10 w-10 text-primary" />
+                <h3 className="mb-2 text-lg font-bold">Sin coste</h3>
+                <p className="text-sm text-blue-100">
+                  Servicio gratuito para ti
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="formulario" className="bg-slate-50 py-20 md:py-32">
+        <div className="container px-4">
+          <div className="mx-auto max-w-2xl">
+            <div className="mb-8 text-center">
+              <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+                Solicita tu Cheque Bebé
+              </h2>
+              <p className="text-lg text-slate-600">
+                Completa el formulario y nos pondremos en contacto contigo
+              </p>
+            </div>
+
+            <HeroForm />
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16">
+        <div className="container px-4">
+          <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-r from-primary to-[#0F7494] p-8 text-white md:p-12">
+            <div className="grid gap-8 md:grid-cols-2 md:items-center">
+              <div>
+                <h2 className="mb-4 text-3xl font-bold">
+                  ¿Tienes dudas?
+                </h2>
+                <p className="mb-6 text-blue-100">
+                  Nuestro equipo está disponible para ayudarte con cualquier consulta sobre el Cheque Bebé
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-white text-white hover:bg-white hover:text-primary"
+                    asChild
+                  >
+                    <Link href="tel:+34900000000">
+                      <Phone className="mr-2 h-5 w-5" />
+                      Llamar ahora
+                    </Link>
+                  </Button>
+                  <Button
+                    size="lg"
+                    className="bg-white text-primary hover:bg-blue-50"
+                    asChild
+                  >
+                    <Link href="mailto:info@gestionesespana.com">
+                      <Mail className="mr-2 h-5 w-5" />
+                      Enviar email
+                    </Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="flex justify-center">
+                <div className="rounded-2xl bg-white/10 p-6 backdrop-blur-sm">
+                  <div className="mb-4 flex items-center gap-3">
+                    <MapPin className="h-6 w-6" />
+                    <span className="font-semibold">Oficinas en toda España</span>
+                  </div>
+                  <div className="mb-4 flex items-center gap-3">
+                    <Clock className="h-6 w-6" />
+                    <span className="font-semibold">Lun-Vie: 9:00-18:00</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <CheckCircle2 className="h-6 w-6" />
+                    <span className="font-semibold">+2.500 familias ayudadas</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

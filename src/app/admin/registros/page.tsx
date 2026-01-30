@@ -45,6 +45,7 @@ export default function RegistrosPage() {
 
   useEffect(() => {
     fetchRegistros()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeTab])
 
   const fetchRegistros = async () => {

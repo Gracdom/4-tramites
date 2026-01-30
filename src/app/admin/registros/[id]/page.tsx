@@ -54,6 +54,7 @@ export default function RegistroDetallePage() {
     if (params.id) {
       fetchRegistro()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id])
 
   const fetchRegistro = async () => {

@@ -249,7 +249,7 @@ export default function AyudaAlquilerPage() {
             {testimonios.map((t, i) => (
               <Card key={i}>
                 <CardContent className="pt-6">
-                  <p className="text-muted-foreground">"{t.texto}"</p>
+                  <p className="text-muted-foreground">&ldquo;{t.texto}&rdquo;</p>
                   <p className="mt-4 font-medium">— {t.autor}</p>
                 </CardContent>
               </Card>
