@@ -5,7 +5,6 @@ import {
   Check,
   FileCheck,
   ShieldCheck,
-  Send,
   Baby,
   Clock,
   Zap,
@@ -23,9 +22,7 @@ import {
   Shield,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
+import { HeroForm } from "@/components/landing/cheque-bebe/hero-form";
 
 export const metadata: Metadata = {
   title: "Cheque Bebé 100€/mes | ¿Te corresponde? | Gestiones España",
@@ -128,56 +125,7 @@ export default function ChequeBebePage() {
 
             {/* Columna Derecha - Formulario */}
             <div className="flex items-center">
-              <div className="w-full rounded-3xl bg-white p-8 shadow-2xl md:p-10">
-                <h3 className="mb-2 text-2xl font-bold text-navy">Registrarse ahora</h3>
-                <p className="mb-6 text-sm text-slate-500">
-                  No requiere tarjeta de crédito • 100% gratis
-                </p>
-
-                <form className="space-y-5">
-                  <div className="grid gap-2">
-                    <Label htmlFor="nombre" className="text-sm font-semibold text-slate-700">
-                      Nombre completo
-                    </Label>
-                    <Input
-                      id="nombre"
-                      placeholder="Tu nombre"
-                      className="h-12 rounded-xl border-2 border-slate-200 px-4 focus:border-primary"
-                    />
-                  </div>
-
-                  <div className="grid gap-2">
-                    <Label htmlFor="email" className="text-sm font-semibold text-slate-700">
-                      Correo electrónico
-                    </Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="tu@email.com"
-                      className="h-12 rounded-xl border-2 border-slate-200 px-4 focus:border-primary"
-                    />
-                  </div>
-
-                  <div className="grid gap-2">
-                    <Label htmlFor="telefono" className="text-sm font-semibold text-slate-700">
-                      Teléfono
-                    </Label>
-                    <Input
-                      id="telefono"
-                      type="tel"
-                      placeholder="+34 600 000 000"
-                      className="h-12 rounded-xl border-2 border-slate-200 px-4 focus:border-primary"
-                    />
-                  </div>
-
-                  <Button
-                    type="submit"
-                    className="h-12 w-full rounded-xl bg-primary text-base font-semibold text-white shadow-lg transition-all hover:bg-[#0F7494] hover:shadow-xl"
-                  >
-                    Crear cuenta gratis
-                  </Button>
-                </form>
-              </div>
+              <HeroForm />
             </div>
           </div>
         </div>

@@ -23,6 +23,16 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Gestiones España | Trámites y administración",
   description: "Plataforma para la gestión de trámites administrativos en España",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.ico', sizes: '16x16', type: 'image/x-icon' },
+      { url: '/favicon.ico', sizes: '32x32', type: 'image/x-icon' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: '/apple-touch-icon.png',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({

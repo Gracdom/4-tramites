@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { Shield, Lock, Facebook, Instagram, Linkedin, Youtube, Mail, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import Image from "next/image";
+import { Shield, Lock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import { NewsletterForm } from "@/components/forms/newsletter-form";
 
 const footerNav = {
   ayuda: [
@@ -36,23 +36,7 @@ export function Footer() {
                   Recibe las últimas noticias sobre ayudas, trámites y consejos directamente en tu correo.
                 </p>
               </div>
-              <form className="flex flex-col gap-3 sm:flex-row">
-                <div className="relative flex-1">
-                  <Mail className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-slate-400" />
-                  <Input
-                    type="email"
-                    placeholder="Tu correo electrónico"
-                    className="h-14 rounded-2xl border-2 border-slate-200 pl-12 pr-4 text-base focus:border-primary"
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  className="h-14 rounded-2xl bg-primary px-8 font-semibold text-white shadow-lg transition-all hover:scale-105 hover:bg-[#0F7494] hover:shadow-xl"
-                >
-                  <Send className="mr-2 h-5 w-5" />
-                  Suscribir
-                </Button>
-              </form>
+              <NewsletterForm />
             </div>
           </div>
         </div>
@@ -63,10 +47,15 @@ export function Footer() {
         {/* Logo y descripción */}
         <div className="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link href="/" className="mb-4 inline-flex items-center gap-2.5 font-bold text-white">
-              <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary text-2xl shadow-md">
-                🇪🇸
-              </span>
+            <Link href="/" className="mb-4 inline-flex items-center gap-3 font-bold text-white">
+              <div className="relative h-12 w-12 shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Gestiones España"
+                  fill
+                  className="object-contain"
+                />
+              </div>
               <div className="flex flex-col">
                 <span className="text-lg leading-tight">Gestiones</span>
                 <span className="text-lg leading-tight text-primary">España</span>

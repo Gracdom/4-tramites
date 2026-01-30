@@ -29,6 +29,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { HeroRegisterForm } from "@/components/forms/hero-register-form";
 
 const UNSPLASH = "https://images.unsplash.com";
 
@@ -180,54 +181,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Formulario flotante estilo Medcity */}
+            {/* Formulario minimalista */}
             <div className="relative lg:pl-8">
-              <div className="rounded-3xl bg-white p-8 shadow-card md:p-10">
-                <h3 className="mb-6 text-2xl font-bold text-navy">Registrarse ahora</h3>
-                <form className="space-y-5">
-                  <div className="grid gap-2">
-                    <Label htmlFor="hero-name" className="text-sm font-semibold text-slate-700">
-                      Nombre completo
-                    </Label>
-                    <Input
-                      id="hero-name"
-                      placeholder="Tu nombre"
-                      className="h-12 rounded-xl border-2 border-slate-200 focus:border-primary"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="hero-email" className="text-sm font-semibold text-slate-700">
-                      Correo electrónico
-                    </Label>
-                    <Input
-                      id="hero-email"
-                      type="email"
-                      placeholder="tu@email.com"
-                      className="h-12 rounded-xl border-2 border-slate-200 focus:border-primary"
-                    />
-                  </div>
-                  <div className="grid gap-2">
-                    <Label htmlFor="hero-phone" className="text-sm font-semibold text-slate-700">
-                      Teléfono
-                    </Label>
-                    <Input
-                      id="hero-phone"
-                      type="tel"
-                      placeholder="+34 600 000 000"
-                      className="h-12 rounded-xl border-2 border-slate-200 focus:border-primary"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="h-12 w-full rounded-xl bg-primary text-base font-semibold text-white shadow-lg transition-all hover:bg-[#0F7494] hover:shadow-xl"
-                  >
-                    Crear cuenta gratis
-                  </Button>
-                  <p className="text-center text-xs text-slate-500">
-                    No requiere tarjeta de crédito • 100% gratis
-                  </p>
-                </form>
-              </div>
+              <HeroRegisterForm />
             </div>
           </div>
         </div>

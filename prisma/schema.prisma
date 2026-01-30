@@ -1,0 +1,167 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Modelo para los registros de formularios
+model Registro {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Datos del cliente
+  nombre    String
+  email     String
+  telefono  String?
+  mensaje   String?   @db.Text
+
+  // Metadata del formulario
+  formulario String  // "Cheque Bebé - Hero Form"
+  fuente     String  // "Landing Cheque Bebé"
+  url        String  @db.Text
+  referrer   String? @db.Text
+
+  // Estado y gestión
+  estado      Estado     @default(NUEVO)
+  prioridad   Prioridad  @default(MEDIA)
+  destacado   Boolean    @default(false)
+
+  // Información técnica
+  ip          String?
+  navegador   String?   @db.Text
+  dispositivo String?
+  so          String?
+  resolucion  String?
+  idioma      String?
+
+  // Parámetros UTM
+  utmSource   String?
+  utmMedium   String?
+  utmCampaign String?
+  utmTerm     String?
+  utmContent  String?
+
+  // Relaciones
+  notas       Nota[]
+
+  @@index([email])
+  @@index([estado])
+  @@index([prioridad])
+  @@index([createdAt])
+  @@index([destacado])
+  @@map("registros")
+}
+
+// Modelo para notas internas
+model Nota {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  contenido   String   @db.Text
+  usuario     String   // Nombre del admin que escribió la nota
+  
+  registroId  String
+  registro    Registro @relation(fields: [registroId], references: [id], onDelete: Cascade)
+
+  @@index([registroId])
+  @@index([createdAt])
+  @@map("notas")
+}
+
+// Modelo para usuarios (clientes)
+model Usuario {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  nombre        String
+  email         String   @unique
+  telefono      String?
+  password      String?  // Para login futuro
+  
+  estado        EstadoUsuario @default(ACTIVO)
+  
+  // Relaciones
+  solicitudes   Solicitud[]
+
+  @@index([email])
+  @@index([estado])
+  @@map("usuarios")
+}
+
+// Modelo para solicitudes de ayudas
+model Solicitud {
+  id            String   @id @default(cuid())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  // Relación con usuario
+  usuarioId     String
+  usuario       Usuario  @relation(fields: [usuarioId], references: [id], onDelete: Cascade)
+
+  // Tipo de ayuda
+  tipoAyuda     TipoAyuda
+  
+  // Estado de la solicitud
+  estado        EstadoSolicitud @default(PENDIENTE)
+  prioridad     Prioridad       @default(MEDIA)
+  
+  // Datos de la solicitud
+  monto         String?
+  descripcion   String?  @db.Text
+  documentos    Int      @default(0) // Número de documentos adjuntos
+  
+  // Fechas importantes
+  fechaEnvio    DateTime @default(now())
+  fechaRespuesta DateTime?
+
+  @@index([usuarioId])
+  @@index([estado])
+  @@index([tipoAyuda])
+  @@index([prioridad])
+  @@index([createdAt])
+  @@map("solicitudes")
+}
+
+// Enums
+enum Estado {
+  NUEVO
+  CONTACTADO
+  PROCESADO
+  DESCARTADO
+}
+
+enum Prioridad {
+  ALTA
+  MEDIA
+  BAJA
+}
+
+enum EstadoUsuario {
+  ACTIVO
+  PENDIENTE
+  INACTIVO
+}
+
+enum EstadoSolicitud {
+  PENDIENTE
+  EN_REVISION
+  APROBADA
+  RECHAZADA
+}
+
+enum TipoAyuda {
+  CHEQUE_BEBE
+  AYUDA_ALQUILER
+  INGRESO_MINIMO_VITAL
+  BONO_CULTURAL
+  DNI
+  EMPADRONAMIENTO
+  OTROS
+}

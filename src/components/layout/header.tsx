@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, ChevronDown, User, Ticket, Baby, Key, Wallet } from "lucide-react";
@@ -54,10 +55,16 @@ export function Header() {
             
             <Link
               href="/"
-              className="flex shrink-0 items-center gap-2 transition-opacity hover:opacity-90"
+              className="flex shrink-0 items-center gap-3 transition-opacity hover:opacity-90"
             >
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-xl backdrop-blur-sm">
-                🇪🇸
+              <div className="relative h-10 w-10 shrink-0">
+                <Image
+                  src="/logo.png"
+                  alt="Gestiones España"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
               <span className="hidden font-bold tracking-tight text-white sm:block">
                 GESTIONES ESPAÑA
