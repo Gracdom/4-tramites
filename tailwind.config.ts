@@ -48,6 +48,17 @@ const config: Config = {
         sans: ["var(--font-inter)", "Inter", "system-ui", "-apple-system", "sans-serif"],
         display: ["var(--font-poppins)", "Poppins", "system-ui", "sans-serif"],
       },
+      animation: {
+        shimmer: "shimmer 3s ease-in-out infinite",
+        "pulse-delay-500": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.5s",
+        "pulse-delay-1000": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s",
+      },
+      keyframes: {
+        shimmer: {
+          "0%": { transform: "translateX(-100%) rotate(12deg)" },
+          "100%": { transform: "translateX(100%) rotate(12deg)" },
+        },
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

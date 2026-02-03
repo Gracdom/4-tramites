@@ -119,75 +119,141 @@ const faqs = [
 export default function AyudaAlquilerPage() {
   return (
     <div className="flex flex-col">
-      {/* Banner Hero Mejorado */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
-        <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:20px_20px]" />
-        <div className="container relative px-4 py-12 md:py-20">
-          {/* Badge superior */}
-          <div className="mb-6 flex justify-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+      {/* Banner Hero Mejorado - Diseño Premium */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/80">
+        {/* Efectos de fondo animados */}
+        <div className="absolute inset-0">
+          {/* Patrón de puntos decorativo */}
+          <div 
+            className="absolute inset-0 opacity-[0.05]" 
+            style={{
+              backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
+              backgroundSize: '30px 30px'
+            }}
+          />
+          
+          {/* Círculos decorativos animados */}
+          <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse" />
+          <div className="absolute -right-20 top-1/2 h-80 w-80 rounded-full bg-white/10 blur-3xl animate-pulse-delay-1000" />
+          <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-pulse-delay-500" />
+          
+          {/* Rayos de luz */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rotate-12 animate-shimmer" />
+        </div>
+
+        <div className="container relative px-4 py-16 md:py-24 lg:py-32">
+          {/* Badge superior mejorado */}
+          <div className="mb-8 flex justify-center">
+            <span className="group inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-5 py-2.5 text-sm font-semibold text-white shadow-lg ring-2 ring-white/30 transition-all hover:bg-white/30 hover:scale-105">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-90"></span>
+                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
               </span>
-              Trámite 100% online • Sin desplazamientos
+              <span className="flex items-center gap-2">
+                <Globe className="h-4 w-4" />
+                Trámite 100% online
+              </span>
+              <span className="mx-1">•</span>
+              <span>Sin desplazamientos</span>
             </span>
           </div>
 
-          <h1 className="mx-auto max-w-4xl text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
-            ¿Te pertenece una{" "}
-            <span className="relative">
-              <span className="relative z-10 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
-                ayuda al alquiler
-              </span>
-              <span className="absolute -bottom-2 left-0 right-0 h-3 bg-primary/20 blur-sm"></span>
-            </span>{" "}
-            en 2025?
-          </h1>
+          {/* Título principal mejorado */}
+          <div className="mb-8 text-center">
+            <h1 className="mx-auto max-w-5xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
+              ¿Te pertenece una{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10 bg-gradient-to-r from-white via-white/95 to-white bg-clip-text text-transparent drop-shadow-2xl">
+                  ayuda al alquiler
+                </span>
+                <span className="absolute -bottom-3 left-0 right-0 h-4 bg-white/30 blur-xl"></span>
+                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-white/50"></span>
+              </span>{" "}
+              en 2025?
+            </h1>
+          </div>
           
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-muted-foreground md:text-xl">
-            Rellena el formulario en <strong className="text-foreground">1 minuto</strong> y 
-            descubre si puedes acceder a cientos o miles de euros en ayudas para tu alquiler.
+          {/* Subtítulo mejorado */}
+          <p className="mx-auto mb-10 max-w-3xl text-center text-xl font-medium text-white/95 md:text-2xl lg:text-3xl">
+            Rellena el formulario en{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10 rounded-lg bg-white/20 px-3 py-1 font-bold text-white backdrop-blur-sm ring-2 ring-white/30">
+                1 minuto
+              </span>
+            </span>{" "}
+            y descubre si puedes acceder a{" "}
+            <span className="font-bold text-white underline decoration-2 decoration-white/50 underline-offset-4">
+              cientos o miles de euros
+            </span>{" "}
+            en ayudas para tu alquiler.
           </p>
 
-          {/* Claves destacadas */}
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          {/* Claves destacadas mejoradas */}
+          <div className="mb-10 flex flex-wrap justify-center gap-4">
             {claves.map((item) => {
               const Icon = item.icon;
               return (
                 <div
                   key={item.text}
-                  className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2.5 text-sm font-medium shadow-sm backdrop-blur-sm transition-all hover:border-primary/50 hover:shadow-md"
+                  className="group inline-flex items-center gap-2.5 rounded-full border-2 border-white/30 bg-white/15 backdrop-blur-md px-5 py-3 text-sm font-semibold text-white shadow-xl transition-all hover:border-white/50 hover:bg-white/25 hover:scale-105 hover:shadow-2xl"
                 >
-                  <Icon className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
-                  {item.text}
+                  <Icon className="h-5 w-5 transition-transform group-hover:scale-125 group-hover:rotate-12" />
+                  <span>{item.text}</span>
                 </div>
               );
             })}
           </div>
 
-          {/* Estadística destacada */}
-          <div className="mt-8 flex justify-center">
-            <div className="rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10 px-8 py-4 shadow-lg backdrop-blur-sm">
-              <p className="text-center text-sm font-medium text-muted-foreground">
-                Ya hemos conseguido
-              </p>
-              <p className="text-center text-3xl font-bold text-primary md:text-4xl">
-                +2.500.000 €
-              </p>
-              <p className="text-center text-sm text-muted-foreground">
-                en ayudas para personas como tú
-              </p>
+          {/* Estadística destacada mejorada */}
+          <div className="mb-12 flex justify-center">
+            <div className="group relative overflow-hidden rounded-3xl border-2 border-white/40 bg-white/20 backdrop-blur-xl px-10 py-6 shadow-2xl ring-2 ring-white/20 transition-all hover:scale-105 hover:bg-white/25">
+              {/* Efecto de brillo animado */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              
+              <div className="relative">
+                <p className="text-center text-sm font-semibold text-white/90 uppercase tracking-wider">
+                  Ya hemos conseguido
+                </p>
+                <p className="mt-2 text-center text-4xl font-black text-white drop-shadow-lg md:text-5xl lg:text-6xl">
+                  +2.500.000 €
+                </p>
+                <p className="mt-2 text-center text-base font-medium text-white/90">
+                  en ayudas para personas como tú
+                </p>
+                
+                {/* Icono decorativo */}
+                <div className="absolute -right-4 -top-4 opacity-20">
+                  <Euro className="h-16 w-16 text-white" />
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Formulario Hero */}
-          <div id="hero-form" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
-            <div className="rounded-2xl bg-white p-1 shadow-2xl ring-1 ring-black/5 dark:bg-slate-900 dark:ring-white/10">
-              <HeroFormAlquiler />
+          {/* Formulario Hero mejorado */}
+          <div id="hero-form" className="mx-auto max-w-2xl scroll-mt-24">
+            <div className="relative">
+              {/* Sombra y efecto de elevación */}
+              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-white/50 via-white/30 to-white/50 blur-2xl opacity-75 animate-pulse" />
+              
+              <div className="relative rounded-3xl bg-white p-2 shadow-2xl ring-4 ring-white/50 dark:bg-slate-900 dark:ring-white/20">
+                <div className="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-1 dark:from-slate-900 dark:to-slate-800">
+                  <HeroFormAlquiler />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Indicador de scroll (opcional) */}
+          <div className="mt-12 flex justify-center">
+            <div className="flex flex-col items-center gap-2 text-white/70">
+              <span className="text-xs font-medium uppercase tracking-wider">Desplázate para más información</span>
+              <div className="h-8 w-0.5 bg-white/30 rounded-full animate-bounce" />
             </div>
           </div>
         </div>
+
+        {/* Onda decorativa inferior */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-white/10 to-white" />
       </section>
 
       {/* Propuesta de valor mejorada */}
