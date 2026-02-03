@@ -65,17 +65,19 @@ export function HeroFormAlquiler() {
 
   if (success) {
     return (
-      <div className="rounded-xl border border-border bg-card p-6 text-center shadow-sm">
-        <CheckCircle2 className="mx-auto mb-4 h-12 w-12 text-green-500" />
-        <p className="font-semibold text-foreground">
+      <div className="rounded-xl bg-gradient-to-br from-green-50 to-green-100 p-8 text-center dark:from-green-950/20 dark:to-green-900/20">
+        <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
+          <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-400" />
+        </div>
+        <h3 className="text-xl font-bold text-foreground">
           ¡Solicitud enviada con éxito!
-        </p>
-        <p className="mt-1 text-sm text-muted-foreground">
+        </h3>
+        <p className="mt-2 text-muted-foreground">
           Te contactaremos en breve para confirmar si puedes acceder a la ayuda al alquiler.
         </p>
         <Button
           onClick={() => setSuccess(false)}
-          className="mt-4"
+          className="mt-6"
           variant="outline"
         >
           Enviar otra solicitud
@@ -87,91 +89,105 @@ export function HeroFormAlquiler() {
   return (
     <form
       onSubmit={onSubmit}
-      className="rounded-xl border border-border bg-card p-6 shadow-sm sm:p-8"
+      className="rounded-xl bg-gradient-to-br from-background to-muted/30 p-6 sm:p-8"
     >
-      <p className="mb-4 text-sm font-medium text-muted-foreground">
-        Rellena en 1 minuto y descubre si puedes acceder a una ayuda para tu alquiler en 2025.
-      </p>
+      <div className="mb-6 text-center">
+        <h3 className="text-xl font-bold">Comprueba tu ayuda en 1 minuto</h3>
+        <p className="mt-2 text-sm text-muted-foreground">
+          Rellena el formulario y descubre si puedes acceder a una ayuda para tu alquiler en 2025
+        </p>
+      </div>
+
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="grid gap-2">
-          <Label htmlFor="hero-alquiler-nombre" className="sr-only">
+          <Label htmlFor="hero-alquiler-nombre" className="text-sm font-medium">
             Nombre
           </Label>
           <Input
             id="hero-alquiler-nombre"
             name="nombre"
-            placeholder="Nombre"
+            placeholder="Tu nombre"
             value={formData.nombre}
             onChange={handleChange}
             disabled={loading}
+            className="h-11"
             required
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="hero-alquiler-apellidos" className="sr-only">
+          <Label htmlFor="hero-alquiler-apellidos" className="text-sm font-medium">
             Apellidos
           </Label>
           <Input
             id="hero-alquiler-apellidos"
             name="apellidos"
-            placeholder="Apellidos"
+            placeholder="Tus apellidos"
             value={formData.apellidos}
             onChange={handleChange}
             disabled={loading}
+            className="h-11"
             required
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="hero-alquiler-email" className="sr-only">
+          <Label htmlFor="hero-alquiler-email" className="text-sm font-medium">
             Email
           </Label>
           <Input
             id="hero-alquiler-email"
             name="email"
             type="email"
-            placeholder="Email"
+            placeholder="tu@email.com"
             value={formData.email}
             onChange={handleChange}
             disabled={loading}
+            className="h-11"
             required
           />
         </div>
         <div className="grid gap-2">
-          <Label htmlFor="hero-alquiler-telefono" className="sr-only">
+          <Label htmlFor="hero-alquiler-telefono" className="text-sm font-medium">
             Teléfono
           </Label>
           <Input
             id="hero-alquiler-telefono"
             name="telefono"
             type="tel"
-            placeholder="Teléfono"
+            placeholder="600 000 000"
             value={formData.telefono}
             onChange={handleChange}
             disabled={loading}
+            className="h-11"
             required
           />
         </div>
       </div>
 
       {error && (
-        <p className="mt-3 text-sm text-red-600">{error}</p>
+        <div className="mt-4 rounded-lg bg-red-50 p-3 text-sm text-red-600 dark:bg-red-950/20 dark:text-red-400">
+          {error}
+        </div>
       )}
 
       <Button
         type="submit"
         size="lg"
-        className="mt-4 w-full sm:w-auto"
+        className="mt-6 h-12 w-full text-base font-semibold shadow-lg transition-all hover:shadow-xl"
         disabled={loading}
       >
         {loading ? (
           <>
-            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
             Enviando...
           </>
         ) : (
-          "Regístrate y descubre tu ayuda"
+          "Descubre tu ayuda ahora →"
         )}
       </Button>
+
+      <p className="mt-4 text-center text-xs text-muted-foreground">
+        🔒 Tus datos están protegidos y son confidenciales
+      </p>
     </form>
   );
 }

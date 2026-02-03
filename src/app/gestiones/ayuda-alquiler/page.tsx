@@ -119,213 +119,510 @@ const faqs = [
 export default function AyudaAlquilerPage() {
   return (
     <div className="flex flex-col">
-      {/* Bandera + Hero */}
-      <section className="border-b border-border/40 bg-muted/20">
-        <div className="container px-4 py-8 md:py-12">
-          <p className="mb-4 text-center text-sm font-medium text-muted-foreground">
-            Rellena el formulario en 1 minuto y descubre si puedes acceder a una
-            ayuda para tu alquiler en 2025.
-          </p>
-          <h1 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            ¿Te pertenece una ayuda al alquiler en 2025 y aún no la estás cobrando?
+      {/* Banner Hero Mejorado */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary/5 via-primary/10 to-primary/5">
+        <div className="absolute inset-0 bg-grid-slate-900/[0.04] bg-[size:20px_20px]" />
+        <div className="container relative px-4 py-12 md:py-20">
+          {/* Badge superior */}
+          <div className="mb-6 flex justify-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary ring-1 ring-inset ring-primary/20">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary"></span>
+              </span>
+              Trámite 100% online • Sin desplazamientos
+            </span>
+          </div>
+
+          <h1 className="mx-auto max-w-4xl text-center text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl">
+            ¿Te pertenece una{" "}
+            <span className="relative">
+              <span className="relative z-10 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+                ayuda al alquiler
+              </span>
+              <span className="absolute -bottom-2 left-0 right-0 h-3 bg-primary/20 blur-sm"></span>
+            </span>{" "}
+            en 2025?
           </h1>
-          <div className="mt-6 flex flex-wrap justify-center gap-4">
+          
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg text-muted-foreground md:text-xl">
+            Rellena el formulario en <strong className="text-foreground">1 minuto</strong> y 
+            descubre si puedes acceder a cientos o miles de euros en ayudas para tu alquiler.
+          </p>
+
+          {/* Claves destacadas */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
             {claves.map((item) => {
               const Icon = item.icon;
               return (
-                <span
+                <div
                   key={item.text}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm"
+                  className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 px-4 py-2.5 text-sm font-medium shadow-sm backdrop-blur-sm transition-all hover:border-primary/50 hover:shadow-md"
                 >
-                  <Icon className="h-4 w-4 text-primary" />
+                  <Icon className="h-4 w-4 text-primary transition-transform group-hover:scale-110" />
                   {item.text}
-                </span>
+                </div>
               );
             })}
           </div>
-          <p className="mt-6 text-center text-sm text-muted-foreground">
-            <strong className="text-foreground">+2.500.000 €</strong> conseguidos
-            en ayudas sociales para personas como tú.
-          </p>
-          <div id="hero-form" className="mx-auto mt-10 max-w-2xl scroll-mt-24">
-            <HeroFormAlquiler />
+
+          {/* Estadística destacada */}
+          <div className="mt-8 flex justify-center">
+            <div className="rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-primary/10 px-8 py-4 shadow-lg backdrop-blur-sm">
+              <p className="text-center text-sm font-medium text-muted-foreground">
+                Ya hemos conseguido
+              </p>
+              <p className="text-center text-3xl font-bold text-primary md:text-4xl">
+                +2.500.000 €
+              </p>
+              <p className="text-center text-sm text-muted-foreground">
+                en ayudas para personas como tú
+              </p>
+            </div>
+          </div>
+
+          {/* Formulario Hero */}
+          <div id="hero-form" className="mx-auto mt-12 max-w-2xl scroll-mt-24">
+            <div className="rounded-2xl bg-white p-1 shadow-2xl ring-1 ring-black/5 dark:bg-slate-900 dark:ring-white/10">
+              <HeroFormAlquiler />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Propuesta de valor */}
-      <section className="container px-4 py-16 md:py-24">
-        <div className="mx-auto max-w-2xl text-center">
-          <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-            Recupera tu tranquilidad mientras nosotros nos ocupamos de tu ayuda al alquiler.
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            En Tu Trámite Fácil, creemos que acceder a una ayuda social no debería
-            ser complicado. Te asesoramos, comprobamos tu caso y gestionamos tu
-            ayuda de principio a fin, sin desplazamientos ni papeleos innecesarios.
-          </p>
-          <Button size="lg" className="mt-8" asChild>
-            <Link href="#hero-form">Regístrate y descubre tu ayuda</Link>
-          </Button>
-        </div>
-      </section>
-
-      {/* Beneficio y requisitos */}
-      <section className="border-t border-border/40 bg-muted/20">
-        <div className="container px-4 py-16 md:py-24">
-          <div className="mx-auto max-w-3xl">
-            <h2 className="text-center text-2xl font-bold tracking-tight sm:text-3xl">
-              Mereces un apoyo económico para tu alquiler. Nosotros te ayudamos a conseguirlo.
-            </h2>
-            <div className="mt-8 flex justify-center">
-              <div className="flex items-center gap-2 rounded-xl border-2 border-primary/30 bg-primary/5 px-6 py-4">
-                <Home className="h-8 w-8 text-primary" />
-                <span className="text-center text-lg font-semibold sm:text-xl">
-                  Las ayudas al alquiler pueden suponer cientos o incluso miles de
-                  euros al año, dependiendo de tu comunidad autónoma y tu situación personal.
-                </span>
-              </div>
+      {/* Propuesta de valor mejorada */}
+      <section className="container px-4 py-20 md:py-28">
+        <div className="mx-auto max-w-3xl">
+          <div className="text-center">
+            <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+              ✨ Tu tranquilidad es nuestra prioridad
             </div>
-            <Card className="mt-10">
-              <CardHeader>
-                <CardTitle>Requisitos (orientativos)</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-3">
-                  {requisitos.map((r, i) => (
-                    <li key={i} className="flex gap-3">
-                      <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
-                      <span>{r}</span>
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-            <p className="mt-8 text-center text-muted-foreground">
-              En solo 2 clics sabrás si puedes acceder a una ayuda para tu alquiler.
-              Nuestro objetivo es claro: que no pierdas una ayuda que te pertenece.
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Recupera tu tranquilidad mientras{" "}
+              <span className="text-primary">nosotros nos ocupamos</span> de tu ayuda al alquiler
+            </h2>
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground">
+              En Tu Trámite Fácil, creemos que acceder a una ayuda social no debería
+              ser complicado. Te asesoramos, comprobamos tu caso y gestionamos tu
+              ayuda de principio a fin, sin desplazamientos ni papeleos innecesarios.
             </p>
           </div>
+
+          {/* Cards de valor */}
+          <div className="mt-12 grid gap-6 sm:grid-cols-3">
+            <div className="group rounded-xl border border-border bg-gradient-to-br from-background to-muted/20 p-6 shadow-sm transition-all hover:shadow-lg">
+              <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                <ShieldCheck className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold">100% Seguro</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Tus datos están protegidos y seguros
+              </p>
+            </div>
+            <div className="group rounded-xl border border-border bg-gradient-to-br from-background to-muted/20 p-6 shadow-sm transition-all hover:shadow-lg">
+              <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                <Clock className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold">Rápido</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Respuesta en menos de 48 horas
+              </p>
+            </div>
+            <div className="group rounded-xl border border-border bg-gradient-to-br from-background to-muted/20 p-6 shadow-sm transition-all hover:shadow-lg">
+              <div className="mb-3 inline-flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                <UserCheck className="h-6 w-6" />
+              </div>
+              <h3 className="font-semibold">Personal</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Asesoramiento personalizado
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <Button size="lg" className="h-12 px-8 text-base shadow-lg" asChild>
+              <Link href="#hero-form">Regístrate y descubre tu ayuda →</Link>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Proceso paso a paso */}
-      <section className="container px-4 py-16 md:py-24">
-        <h2 className="mx-auto max-w-2xl text-center text-2xl font-bold tracking-tight sm:text-3xl">
-          Descubre lo fácil y ágil que es tramitar tu ayuda al alquiler con nosotros.
-        </h2>
-        <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Beneficio y requisitos mejorado */}
+      <section className="border-y border-border/40 bg-gradient-to-b from-muted/30 to-muted/10">
+        <div className="container px-4 py-20 md:py-28">
+          <div className="mx-auto max-w-4xl">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+                Mereces un apoyo económico para tu alquiler.{" "}
+                <span className="text-primary">Nosotros te ayudamos a conseguirlo.</span>
+              </h2>
+            </div>
+
+            {/* Destacado de beneficio */}
+            <div className="mt-12 overflow-hidden rounded-2xl bg-gradient-to-br from-primary/10 via-primary/5 to-background shadow-xl ring-1 ring-primary/10">
+              <div className="flex flex-col items-center gap-6 p-8 sm:flex-row sm:p-10">
+                <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-2xl bg-primary/10 shadow-lg ring-1 ring-primary/20">
+                  <Home className="h-10 w-10 text-primary" />
+                </div>
+                <div className="text-center sm:text-left">
+                  <p className="text-xl font-semibold sm:text-2xl">
+                    Hasta <span className="text-primary">3.000€ al año</span>
+                  </p>
+                  <p className="mt-2 text-muted-foreground">
+                    Las ayudas al alquiler pueden suponer cientos o incluso miles de
+                    euros al año, dependiendo de tu comunidad autónoma y tu situación personal.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Requisitos mejorados */}
+            <div className="mt-12">
+              <Card className="overflow-hidden shadow-lg">
+                <CardHeader className="bg-gradient-to-r from-muted/50 to-muted/30">
+                  <CardTitle className="flex items-center gap-2 text-xl">
+                    <ClipboardList className="h-5 w-5 text-primary" />
+                    Requisitos básicos (orientativos)
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <ul className="divide-y divide-border">
+                    {requisitos.map((r, i) => (
+                      <li key={i} className="flex gap-4 px-6 py-4 transition-colors hover:bg-muted/30">
+                        <div className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10">
+                          <Check className="h-4 w-4 text-primary" />
+                        </div>
+                        <span className="text-sm leading-relaxed sm:text-base">{r}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* Call to action */}
+            <div className="mt-10 rounded-xl bg-gradient-to-r from-primary/5 to-primary/10 p-6 text-center ring-1 ring-primary/10">
+              <p className="text-lg font-medium">
+                En solo <strong className="text-primary">2 clics</strong> sabrás si puedes acceder a una ayuda para tu alquiler
+              </p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                Nuestro objetivo es claro: que no pierdas una ayuda que te pertenece
+              </p>
+              <Button size="lg" className="mt-4" asChild>
+                <Link href="#hero-form">Comprobar mi ayuda ahora →</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Proceso paso a paso mejorado */}
+      <section className="container px-4 py-20 md:py-28">
+        <div className="text-center">
+          <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+            🚀 Proceso simple en 4 pasos
+          </div>
+          <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            Descubre lo fácil y ágil que es tramitar tu{" "}
+            <span className="text-primary">ayuda al alquiler</span> con nosotros
+          </h2>
+        </div>
+
+        <div className="mx-auto mt-16 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {pasos.map((paso, i) => {
             const Icon = paso.icon;
             return (
-              <Card key={i}>
-                <CardHeader>
-                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
-                    <Icon className="h-5 w-5 text-primary" />
-                  </div>
-                  <CardTitle className="text-base">
-                    {i + 1}. {paso.titulo}
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-sm text-muted-foreground">
-                    {paso.descripcion}
-                  </p>
-                </CardContent>
-              </Card>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Testimonios */}
-      <section className="border-t border-border/40 bg-muted/20">
-        <div className="container px-4 py-16 md:py-24">
-          <h2 className="mx-auto max-w-2xl text-center text-2xl font-bold tracking-tight sm:text-3xl">
-            Gracias por confiar en Tu Trámite Fácil. Miles de personas ya han
-            tramitado su ayuda al alquiler con nosotros.
-          </h2>
-          <div className="mx-auto mt-12 grid max-w-5xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonios.map((t, i) => (
-              <Card key={i}>
-                <CardContent className="pt-6">
-                  <p className="text-muted-foreground">&ldquo;{t.texto}&rdquo;</p>
-                  <p className="mt-4 font-medium">— {t.autor}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Garantía y autoridad */}
-      <section className="container px-4 py-16 md:py-24">
-        <h2 className="mx-auto max-w-2xl text-center text-2xl font-bold tracking-tight sm:text-3xl">
-          Democratizar el acceso a las ayudas sociales es nuestra misión.
-        </h2>
-        <div className="mx-auto mt-12 flex max-w-3xl flex-wrap justify-center gap-8">
-          {contadores.map((c, i) => {
-            const Icon = c.icon;
-            return (
-              <div
-                key={i}
-                className="flex flex-col items-center gap-1 text-center"
-              >
-                <Icon className="h-8 w-8 text-primary" />
-                <span className="text-2xl font-bold">{c.valor}</span>
-                <span className="text-sm text-muted-foreground">{c.label}</span>
+              <div key={i} className="relative">
+                {/* Línea conectora (solo visible en desktop) */}
+                {i < pasos.length - 1 && (
+                  <div className="absolute left-1/2 top-12 hidden h-0.5 w-full bg-gradient-to-r from-primary/50 to-primary/20 lg:block" />
+                )}
+                
+                <Card className="group relative h-full overflow-hidden border-2 transition-all hover:border-primary/50 hover:shadow-xl">
+                  <div className="absolute right-0 top-0 h-20 w-20 bg-gradient-to-br from-primary/10 to-transparent" />
+                  <CardHeader>
+                    {/* Número del paso */}
+                    <div className="mb-3 flex items-center justify-between">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80 shadow-lg">
+                        <Icon className="h-6 w-6 text-white" />
+                      </div>
+                      <span className="text-5xl font-bold text-primary/10">
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <CardTitle className="text-lg leading-tight">
+                      {paso.titulo}
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                      {paso.descripcion}
+                    </p>
+                  </CardContent>
+                </Card>
               </div>
             );
           })}
         </div>
-        <div className="mt-10 flex justify-center">
-          <Button size="lg" asChild>
-            <Link href="#hero-form">Regístrate gratis y revisa tus ayudas</Link>
+
+        <div className="mt-12 flex justify-center">
+          <Button size="lg" variant="outline" className="h-12 gap-2 px-8" asChild>
+            <Link href="#hero-form">
+              <Clock className="h-4 w-4" />
+              Empezar ahora - Solo 1 minuto
+            </Link>
           </Button>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="border-t border-border/40 bg-muted/20" id="faq">
-        <div className="container px-4 py-16 md:py-24">
-          <h2 className="mb-12 text-center text-2xl font-bold tracking-tight sm:text-3xl">
-            Preguntas frecuentes
-          </h2>
-          <div className="mx-auto max-w-2xl space-y-4">
-            {faqs.map((faq, i) => (
-              <details
-                key={i}
-                className="group rounded-lg border border-border bg-card"
-              >
-                <summary className="cursor-pointer px-4 py-4 font-medium">
-                  {faq.q}
-                </summary>
-                <p className="border-t border-border px-4 py-3 text-sm text-muted-foreground">
-                  {faq.a}
-                </p>
-              </details>
+      {/* Testimonios mejorados */}
+      <section className="border-t border-border/40 bg-gradient-to-b from-muted/20 to-background">
+        <div className="container px-4 py-20 md:py-28">
+          <div className="text-center">
+            <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+              ⭐ Más de 600 personas satisfechas
+            </div>
+            <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+              Gracias por confiar en{" "}
+              <span className="text-primary">Tu Trámite Fácil</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Miles de personas ya han tramitado su ayuda al alquiler con nosotros
+            </p>
+          </div>
+
+          <div className="mx-auto mt-16 grid max-w-7xl gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {testimonios.map((t, i) => (
+              <Card key={i} className="group relative overflow-hidden transition-all hover:shadow-xl">
+                <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br from-primary/10 to-transparent blur-2xl" />
+                <CardContent className="relative pt-6">
+                  {/* Icono de comillas */}
+                  <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                    <MessageSquare className="h-5 w-5 text-primary" />
+                  </div>
+                  
+                  {/* Estrellas */}
+                  <div className="mb-3 flex gap-1">
+                    {[...Array(5)].map((_, idx) => (
+                      <svg
+                        key={idx}
+                        className="h-4 w-4 fill-yellow-400 text-yellow-400"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                      </svg>
+                    ))}
+                  </div>
+
+                  <p className="leading-relaxed text-muted-foreground">
+                    &ldquo;{t.texto}&rdquo;
+                  </p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
+                      {t.autor.charAt(0)}
+                    </div>
+                    <p className="font-semibold">{t.autor}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Formulario de contacto */}
+      {/* Garantía y autoridad mejorado */}
+      <section className="container px-4 py-20 md:py-28">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              Democratizar el acceso a las ayudas sociales{" "}
+              <span className="text-primary">es nuestra misión</span>
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
+              Trabajamos cada día para que nadie pierda una ayuda que le corresponde
+            </p>
+          </div>
+
+          {/* Contadores mejorados */}
+          <div className="mx-auto mt-16 grid max-w-4xl gap-6 sm:grid-cols-3">
+            {contadores.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <Card
+                  key={i}
+                  className="group overflow-hidden border-2 transition-all hover:border-primary/50 hover:shadow-xl"
+                >
+                  <CardContent className="p-8 text-center">
+                    <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary/80 shadow-lg transition-transform group-hover:scale-110">
+                      <Icon className="h-8 w-8 text-white" />
+                    </div>
+                    <div className="mb-1 bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-4xl font-bold text-transparent">
+                      {c.valor}
+                    </div>
+                    <p className="text-sm leading-snug text-muted-foreground">
+                      {c.label}
+                    </p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+
+          {/* CTA destacado */}
+          <div className="mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-primary/90 p-8 shadow-2xl sm:p-12">
+            <div className="relative z-10 text-center">
+              <h3 className="text-2xl font-bold text-white sm:text-3xl">
+                ¿Listo para comprobar tu ayuda?
+              </h3>
+              <p className="mt-3 text-primary-foreground/90">
+                Regístrate gratis y descubre en minutos si puedes acceder a tu ayuda al alquiler
+              </p>
+              <Button
+                size="lg"
+                variant="secondary"
+                className="mt-6 h-12 px-8 text-base shadow-lg"
+                asChild
+              >
+                <Link href="#hero-form">
+                  Regístrate gratis y revisa tus ayudas →
+                </Link>
+              </Button>
+            </div>
+            <div className="absolute right-0 top-0 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+            <div className="absolute bottom-0 left-0 h-40 w-40 rounded-full bg-white/10 blur-3xl" />
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ mejorado */}
+      <section className="border-t border-border/40 bg-gradient-to-b from-muted/20 to-muted/10" id="faq">
+        <div className="container px-4 py-20 md:py-28">
+          <div className="text-center">
+            <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+              💬 Resolvemos tus dudas
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+              Preguntas frecuentes
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
+              Todo lo que necesitas saber sobre la ayuda al alquiler
+            </p>
+          </div>
+
+          <div className="mx-auto mt-12 max-w-3xl space-y-3">
+            {faqs.map((faq, i) => (
+              <details
+                key={i}
+                className="group overflow-hidden rounded-xl border-2 border-border bg-card shadow-sm transition-all hover:border-primary/30 hover:shadow-md"
+              >
+                <summary className="flex cursor-pointer items-start gap-4 px-6 py-5 font-medium transition-colors hover:bg-muted/50">
+                  <div className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <span className="text-sm font-bold">?</span>
+                  </div>
+                  <span className="flex-1">{faq.q}</span>
+                  <svg
+                    className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                </summary>
+                <div className="border-t border-border/50 bg-muted/30 px-6 py-4">
+                  <p className="pl-10 text-sm leading-relaxed text-muted-foreground">
+                    {faq.a}
+                  </p>
+                </div>
+              </details>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <p className="text-muted-foreground">
+              ¿Tienes más preguntas?{" "}
+              <Link
+                href="#contacto"
+                className="font-medium text-primary underline-offset-4 hover:underline"
+              >
+                Contáctanos sin compromiso
+              </Link>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Formulario de contacto mejorado */}
       <section
-        className="scroll-mt-24 border-t border-border/40 bg-muted/20 pb-24 pt-16 md:pb-32 md:pt-24"
+        className="scroll-mt-24 border-t border-border/40 bg-gradient-to-b from-background to-muted/20 pb-24 pt-20 md:pb-32 md:pt-28"
         id="contacto"
       >
         <div className="container px-4">
-          <div className="mx-auto max-w-2xl text-center">
-            <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Nuestros asesores están aquí para ayudarte.
-            </h2>
-            <p className="mt-4 text-muted-foreground">
-              Si tienes dudas o prefieres hablar con un asesor antes de
-              registrarte, escríbenos sin compromiso.
-            </p>
-          </div>
-          <div className="mx-auto mt-12 flex justify-center">
-            <ContactFormAlquiler />
+          <div className="mx-auto max-w-5xl">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              {/* Columna izquierda - Información */}
+              <div>
+                <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
+                  📞 Estamos aquí para ayudarte
+                </div>
+                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                  Nuestros asesores están aquí para ayudarte
+                </h2>
+                <p className="mt-4 text-lg text-muted-foreground">
+                  Si tienes dudas o prefieres hablar con un asesor antes de
+                  registrarte, escríbenos sin compromiso.
+                </p>
+
+                {/* Beneficios de contactar */}
+                <div className="mt-8 space-y-4">
+                  <div className="flex gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <UserCheck className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Atención personalizada</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Un asesor experto revisará tu caso de forma individual
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <Clock className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Respuesta rápida</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Te contactamos en menos de 48 horas hábiles
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex gap-4">
+                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+                      <ShieldCheck className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold">Sin compromiso</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Consulta sin coste y decide con tranquilidad
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Columna derecha - Formulario */}
+              <div className="rounded-2xl border-2 border-border bg-card p-6 shadow-xl sm:p-8">
+                <ContactFormAlquiler />
+              </div>
+            </div>
           </div>
         </div>
       </section>
