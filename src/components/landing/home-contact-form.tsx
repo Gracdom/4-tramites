@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-const WHATSAPP_NUMBER = "34600000000";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, tengo una consulta.")}`;
+import { CONTACT } from "@/lib/contact";
 
 export function HomeContactForm() {
   const [formData, setFormData] = useState({
@@ -50,10 +49,10 @@ export function HomeContactForm() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseJsonResponse<{ error?: string }>(response);
 
       if (!response.ok) {
-        throw new Error(data.error || "Error al enviar el mensaje");
+        throw new Error(data?.error || "Error al enviar el mensaje");
       }
 
       setSuccess(true);
@@ -183,7 +182,7 @@ export function HomeContactForm() {
           className="border-white/40 text-primary-foreground hover:bg-white/10 hover:text-primary-foreground"
         >
           <a
-            href={WHATSAPP_URL}
+            href={CONTACT.whatsappUrl("Hola, tengo una consulta.")}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2"

@@ -15,7 +15,7 @@ export default function GestionSlugPage({
           Volver al inicio
         </Link>
       </Button>
-      <h1 className="text-3xl font-bold tracking-tight">Detalle de gestión</h1>
+      <h1 className="text-xl font-semibold tracking-tight">Detalle de gestión</h1>
       <p className="mt-4 text-muted-foreground">
         Contenido específico para esta gestión. Próximamente.
       </p>

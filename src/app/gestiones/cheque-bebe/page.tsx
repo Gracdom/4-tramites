@@ -14,8 +14,8 @@ import {
   Euro,
   Calendar,
   Star,
-  Phone,
   Mail,
+  MessageCircle,
   CheckCircle2,
   Award,
   Heart,
@@ -23,9 +23,10 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroForm } from "@/components/landing/cheque-bebe/hero-form";
+import { CONTACT } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: "Cheque Bebé 100€/mes | ¿Te corresponde? | Gestiones España",
+  title: "Cheque Bebé 100€/mes | ¿Te corresponde? | Burocracia CERO",
   description:
     "Hasta 100€ al mes por hijo menor de 3 años. Comprueba en 1 minuto si te pertenece la ayuda. Sin complicaciones, trámite rápido y sin desplazamientos.",
 };
@@ -36,7 +37,7 @@ export default function ChequeBebePage() {
       <section className="relative min-h-[700px] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-32 pb-20 md:min-h-[800px] md:pb-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=1920&h=1080&fit=crop"
+            src="/cheque-bebe-banner.png"
             alt="Madre con bebé"
             fill
             className="object-cover opacity-10"
@@ -52,7 +53,7 @@ export default function ChequeBebePage() {
                 Ayuda para tu bebé
               </div>
 
-              <h1 className="mb-6 text-4xl font-bold leading-tight text-navy md:text-5xl lg:text-6xl">
+              <h1 className="mb-6 text-2xl font-semibold leading-tight text-navy md:text-3xl lg:text-4xl">
                 Cheque Bebé
                 <br />
                 <span className="text-primary">Hasta 100€ al mes</span>
@@ -126,18 +127,20 @@ export default function ChequeBebePage() {
         <div className="container px-4">
           <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
             <div className="group rounded-3xl bg-white p-6 shadow-xl transition-all hover:-translate-y-1 hover:shadow-2xl">
-              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
-                <Phone className="h-6 w-6 text-primary" />
+              <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-green-100">
+                <MessageCircle className="h-6 w-6 text-green-600" />
               </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">Atención telefónica</h3>
+              <h3 className="mb-2 text-base font-bold text-navy">WhatsApp</h3>
               <p className="mb-4 text-sm text-slate-600">
-                Estamos disponibles para resolver tus dudas
+                Escríbenos por WhatsApp para resolver tus dudas
               </p>
               <a
-                href="tel:+34900000000"
+                href={CONTACT.whatsappUrl("Hola, consulta sobre Cheque Bebé.")}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#0F7494]"
               >
-                +34 900 000 000
+                {CONTACT.phoneDisplay} (WhatsApp)
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -146,15 +149,15 @@ export default function ChequeBebePage() {
               <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
                 <Mail className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">Email directo</h3>
+              <h3 className="mb-2 text-base font-bold text-navy">Email directo</h3>
               <p className="mb-4 text-sm text-slate-600">
                 Escríbenos y te respondemos en 24 horas
               </p>
               <a
-                href="mailto:info@gestionesespana.com"
+                href={`mailto:${CONTACT.email}`}
                 className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-[#0F7494]"
               >
-                info@gestionesespana.com
+                {CONTACT.email}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -163,7 +166,7 @@ export default function ChequeBebePage() {
               <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10">
                 <Clock className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="mb-2 text-lg font-bold text-navy">Horario</h3>
+              <h3 className="mb-2 text-base font-bold text-navy">Horario</h3>
               <p className="mb-4 text-sm text-slate-600">
                 Lunes a Viernes
               </p>
@@ -179,7 +182,7 @@ export default function ChequeBebePage() {
       <section id="como-funciona" className="bg-white py-20 md:py-32">
         <div className="container px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+            <h2 className="mb-4 text-xl font-semibold text-navy md:text-2xl">
               ¿Cómo funciona el Cheque Bebé?
             </h2>
             <p className="mb-12 text-lg text-slate-600">
@@ -193,7 +196,7 @@ export default function ChequeBebePage() {
                 <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-2xl font-bold text-primary">
                   1
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-navy">Regístrate</h3>
+                <h3 className="mb-3 text-lg font-semibold text-navy">Regístrate</h3>
                 <p className="text-slate-600">
                   Completa el formulario con tus datos básicos en menos de 1 minuto
                 </p>
@@ -203,7 +206,7 @@ export default function ChequeBebePage() {
                 <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-2xl font-bold text-primary">
                   2
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-navy">Verificamos</h3>
+                <h3 className="mb-3 text-lg font-semibold text-navy">Verificamos</h3>
                 <p className="text-slate-600">
                   Nuestro equipo revisa tu caso y verifica si cumples los requisitos
                 </p>
@@ -213,7 +216,7 @@ export default function ChequeBebePage() {
                 <div className="mb-6 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-primary/10 text-2xl font-bold text-primary">
                   3
                 </div>
-                <h3 className="mb-3 text-xl font-bold text-navy">Te ayudamos</h3>
+                <h3 className="mb-3 text-lg font-semibold text-navy">Te ayudamos</h3>
                 <p className="text-slate-600">
                   Gestionamos todo el trámite y te acompañamos hasta la aprobación
                 </p>
@@ -226,7 +229,7 @@ export default function ChequeBebePage() {
       <section id="beneficios" className="bg-gradient-to-br from-navy to-[#0A2540] py-20 text-white md:py-32">
         <div className="container px-4">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            <h2 className="mb-4 text-xl font-semibold md:text-2xl">
               Beneficios del Cheque Bebé
             </h2>
             <p className="mb-12 text-lg text-blue-100">
@@ -292,7 +295,7 @@ export default function ChequeBebePage() {
         <div className="container px-4">
           <div className="mx-auto max-w-2xl">
             <div className="mb-8 text-center">
-              <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+              <h2 className="mb-4 text-xl font-semibold text-navy md:text-2xl">
                 Solicita tu Cheque Bebé
               </h2>
               <p className="text-lg text-slate-600">
@@ -310,7 +313,7 @@ export default function ChequeBebePage() {
           <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-r from-primary to-[#0F7494] p-8 text-white md:p-12">
             <div className="grid gap-8 md:grid-cols-2 md:items-center">
               <div>
-                <h2 className="mb-4 text-3xl font-bold">
+                <h2 className="mb-4 text-2xl font-semibold">
                   ¿Tienes dudas?
                 </h2>
                 <p className="mb-6 text-blue-100">
@@ -323,17 +326,17 @@ export default function ChequeBebePage() {
                     className="border-2 border-white text-white hover:bg-white hover:text-primary"
                     asChild
                   >
-                    <Link href="tel:+34900000000">
-                      <Phone className="mr-2 h-5 w-5" />
-                      Llamar ahora
-                    </Link>
+                    <a href={CONTACT.whatsappUrl("Hola, consulta sobre Cheque Bebé.")} target="_blank" rel="noopener noreferrer">
+                      <MessageCircle className="mr-2 h-5 w-5" />
+                      WhatsApp
+                    </a>
                   </Button>
                   <Button
                     size="lg"
                     className="bg-white text-primary hover:bg-blue-50"
                     asChild
                   >
-                    <Link href="mailto:info@gestionesespana.com">
+                    <Link href={`mailto:${CONTACT.email}`}>
                       <Mail className="mr-2 h-5 w-5" />
                       Enviar email
                     </Link>

@@ -147,7 +147,7 @@ export default function SolicitudesPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-navy">Solicitudes</h1>
+          <h1 className="text-2xl font-bold text-navy">Solicitudes</h1>
           <p className="text-slate-600">
             Gestiona todas las solicitudes de ayudas
           </p>

@@ -118,7 +118,7 @@ export default function UsuariosPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-navy">Usuarios</h1>
+          <h1 className="text-2xl font-bold text-navy">Usuarios</h1>
           <p className="text-slate-600">Gestiona todos los usuarios del sistema</p>
         </div>
         <Button className="h-10 gap-2 rounded-lg bg-primary font-medium hover:bg-[#0F7494]">

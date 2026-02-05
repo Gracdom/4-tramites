@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+const SUPABASE_ERROR = { error: 'Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.' } as const
+
 // POST - Crear una nueva nota
 export async function POST(request: NextRequest) {
   try {
+    if (!supabase) return NextResponse.json(SUPABASE_ERROR, { status: 500 })
     const body = await request.json()
 
     // Validar campos requeridos
@@ -71,6 +74,7 @@ export async function POST(request: NextRequest) {
 // GET - Obtener notas de un registro específico
 export async function GET(request: NextRequest) {
   try {
+    if (!supabase) return NextResponse.json(SUPABASE_ERROR, { status: 500 })
     const searchParams = request.nextUrl.searchParams
     const tabla_referencia = searchParams.get('tabla_referencia')
     const registro_id = searchParams.get('registro_id')

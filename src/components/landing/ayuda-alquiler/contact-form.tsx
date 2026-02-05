@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-const WHATSAPP_NUMBER = "34600000000"; // Sustituir por número real
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, tengo dudas sobre la ayuda al alquiler.")}`;
+import { CONTACT } from "@/lib/contact";
 
 export function ContactFormAlquiler() {
   const [loading, setLoading] = useState(false);
@@ -40,7 +39,7 @@ export function ContactFormAlquiler() {
             />
           </svg>
         </div>
-        <h3 className="text-xl font-bold text-foreground">
+        <h3 className="text-lg font-bold text-foreground">
           Solicitud enviada correctamente
         </h3>
         <p className="mt-2 text-muted-foreground">
@@ -132,7 +131,7 @@ export function ContactFormAlquiler() {
         asChild
       >
         <a
-          href={WHATSAPP_URL}
+          href={CONTACT.whatsappUrl("Hola, tengo dudas sobre la ayuda al alquiler.")}
           target="_blank"
           rel="noopener noreferrer"
         >

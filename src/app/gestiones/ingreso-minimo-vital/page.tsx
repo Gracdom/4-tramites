@@ -15,6 +15,7 @@ import {
   MessageSquare,
   Home,
   Star,
+  Wallet,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -115,112 +116,92 @@ const faqs = [
 export default function IngresoMinimoVitalPage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section - Fondo degradado blanco a aguamarina */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-white via-teal-50 to-teal-200 pb-20 pt-16 md:pb-32 md:pt-24">
-        {/* Onda decorativa inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-white" style={{
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 80%)"
-        }} />
-        
-        <div className="container relative px-4">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-            {/* Columna izquierda - Contenido */}
-            <div className="space-y-8">
-              <div className="space-y-6">
-                <h1 className="text-4xl font-bold leading-tight tracking-tight text-navy sm:text-5xl lg:text-6xl">
-                  ¿Necesitas ayuda con el{" "}
-                  <span className="text-primary">Ingreso Mínimo Vital</span> de 2024?
-                </h1>
-                
-                <div className="flex flex-wrap gap-3">
-                  {claves.map((item) => {
-                    const Icon = item.icon;
-                    return (
-                      <span
-                        key={item.text}
-                        className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-white/80 px-4 py-2 text-sm font-medium text-navy backdrop-blur-sm"
-                      >
-                        <Icon className="h-4 w-4 text-primary" />
-                        {item.text}
-                      </span>
-                    );
-                  })}
-                </div>
+      {/* Hero Section - Estilo Cheque Bebé */}
+      <section className="relative min-h-[700px] bg-gradient-to-br from-teal-50 via-white to-teal-50 pt-32 pb-20 md:min-h-[800px] md:pb-32">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/ayuda-banner.png"
+            alt="Apoyo familiar"
+            fill
+            className="object-cover opacity-10"
+            priority
+          />
+        </div>
 
-                <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                  <Button size="lg" className="h-12 bg-navy px-8 text-base font-semibold hover:bg-navy/90" asChild>
-                    <Link href="#hero-form">Solicita tu ayuda</Link>
-                  </Button>
-                  <Link href="#proceso" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
-                    Más información
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Columna derecha - Composición visual */}
-            <div className="relative">
-              {/* Imagen circular grande de fondo */}
-              <div className="relative mx-auto aspect-square w-full max-w-md overflow-hidden rounded-full shadow-2xl">
-                <Image
-                  src={`${UNSPLASH}/photo-1573496359142-b8d87734a5a2?w=800&q=85`}
-                  alt="Persona mayor"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+        <div className="container relative z-10 px-4">
+          <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col justify-center">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <Wallet className="h-4 w-4" />
+                Ingreso Mínimo Vital
               </div>
 
-              {/* Mockup de teléfono superpuesto */}
-              <div className="absolute -right-8 top-1/2 hidden -translate-y-1/2 transform lg:block">
-                <div className="relative h-96 w-48 rounded-3xl border-8 border-white bg-white p-4 shadow-2xl">
-                  <div className="h-full w-full rounded-2xl bg-gradient-to-br from-primary/10 to-primary/5 p-6">
-                    <div className="space-y-3">
-                      <div className="h-3 w-20 rounded bg-primary/20" />
-                      <div className="h-2 w-32 rounded bg-primary/10" />
-                      <div className="h-2 w-28 rounded bg-primary/10" />
-                      <div className="mt-4 space-y-2">
-                        <div className="h-8 w-full rounded bg-primary/20" />
-                        <div className="h-8 w-full rounded bg-primary/10" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <h1 className="mb-6 text-2xl font-semibold leading-tight text-navy md:text-3xl lg:text-4xl">
+                Ingreso Mínimo Vital
+                <br />
+                <span className="text-primary">Apoyo económico estable</span>
+              </h1>
 
-              {/* Avatares circulares pequeños alrededor */}
-              <div className="absolute -left-4 top-8 hidden lg:block">
-                <div className="flex -space-x-2">
-                  {["photo-1494790108377-be9c29b29330", "photo-1507003211169-0a1dd7228f2d", "photo-1438761681033-6461ffad8d80"].map((id, i) => (
-                    <div key={i} className="relative h-12 w-12 overflow-hidden rounded-full border-2 border-white shadow-lg">
-                      <Image
-                        src={`${UNSPLASH}/${id}?w=96&h=96&fit=crop&q=80`}
-                        alt={`Usuario ${i + 1}`}
-                        fill
-                        className="object-cover"
-                        sizes="48px"
-                      />
-                    </div>
+              <p className="mb-4 text-xl font-semibold text-navy">
+                ¿Necesitas ayuda con el Ingreso Mínimo Vital?
+              </p>
+
+              <p className="mb-8 text-lg text-slate-600">
+                El IMV garantiza unos ingresos mínimos a personas y familias en situación de vulnerabilidad. Te ayudamos a comprobar si cumples requisitos y a tramitarlo.
+              </p>
+
+              <div className="mb-8 flex items-center gap-4">
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-5 w-5 fill-amber-400 text-amber-400" />
                   ))}
                 </div>
+                <span className="text-sm font-medium text-slate-600">
+                  +500 familias ayudadas
+                </span>
               </div>
 
-              {/* Bloque de estadística destacada */}
-              <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 transform lg:left-auto lg:right-0 lg:translate-x-0">
-                <div className="rounded-2xl bg-white p-6 shadow-xl ring-1 ring-gray-200">
-                  <p className="text-2xl font-bold text-primary">+2.500.000€</p>
-                  <p className="text-sm text-muted-foreground">conseguidos en ayudas</p>
-                  <Button size="sm" className="mt-3 w-full bg-green-500 hover:bg-green-600" asChild>
-                    <Link href="#hero-form">Regístrate ahora</Link>
-                  </Button>
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  size="lg"
+                  className="h-14 rounded-full bg-primary px-8 text-base font-semibold shadow-lg transition-all hover:bg-[#0F7494] hover:shadow-xl"
+                  asChild
+                >
+                  <Link href="#hero-form">Comenzar gratis</Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-14 rounded-full border-2 border-navy px-8 text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+                  asChild
+                >
+                  <Link href="#proceso">Ver más información</Link>
+                </Button>
+              </div>
+
+              <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <ClipboardList className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Tramitación</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <Users className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Asesoría</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <ShieldCheck className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Verificación</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <Check className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Aprobación</p>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Formulario Hero */}
-          <div id="hero-form" className="mx-auto mt-16 max-w-2xl scroll-mt-24">
-            <HeroFormIMV />
+            <div id="hero-form" className="flex items-center">
+              <HeroFormIMV />
+            </div>
           </div>
         </div>
       </section>
@@ -231,7 +212,7 @@ export default function IngresoMinimoVitalPage() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
             {/* Columna izquierda - Texto */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold leading-tight tracking-tight text-navy sm:text-4xl">
+              <h2 className="text-xl font-semibold leading-tight tracking-tight text-navy sm:text-2xl">
                 Recibe el apoyo económico que tu familia necesita, sin trámites complicados.
               </h2>
               <p className="text-lg leading-relaxed text-muted-foreground">
@@ -247,7 +228,7 @@ export default function IngresoMinimoVitalPage() {
             <div className="relative">
               <div className="relative aspect-square w-full overflow-hidden rounded-full shadow-2xl">
                 <Image
-                  src={`${UNSPLASH}/photo-1573496359142-b8d87734a5a2?w=800&q=85`}
+                  src="/ayuda-banner.png"
                   alt="Apoyo y ayuda"
                   fill
                   className="object-cover"
@@ -272,7 +253,7 @@ export default function IngresoMinimoVitalPage() {
       <section className="border-t border-primary/20 bg-gradient-to-b from-primary/5 to-white py-20 md:py-28">
         <div className="container px-4">
           <div className="mx-auto max-w-3xl">
-            <h2 className="text-center text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+            <h2 className="text-center text-xl font-semibold tracking-tight text-navy sm:text-2xl">
               Mereces un apoyo económico estable para tu hogar.
             </h2>
             <p className="mt-4 text-center text-lg text-muted-foreground">
@@ -334,7 +315,7 @@ export default function IngresoMinimoVitalPage() {
           <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
             {/* Columna izquierda - Título */}
             <div className="space-y-4">
-              <h2 className="text-3xl font-bold leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl">
+              <h2 className="text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl lg:text-3xl">
                 ¿Cómo consigo mi ayuda del Ingreso Mínimo Vital en 2024?
               </h2>
               <p className="text-lg text-white/90">
@@ -389,7 +370,7 @@ export default function IngresoMinimoVitalPage() {
       {/* Sección de Testimonios */}
       <section className="border-t border-primary/20 bg-white py-20 md:py-28">
         <div className="container px-4">
-          <h2 className="mx-auto max-w-2xl text-center text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="mx-auto max-w-2xl text-center text-xl font-semibold tracking-tight text-navy sm:text-2xl">
             Más de 500 personas ya disfrutan de su Ingreso Mínimo Vital en 2025 gracias a Tu Trámite Fácil.
           </h2>
           <div className="mx-auto mt-12 grid max-w-5xl gap-8 sm:grid-cols-3">
@@ -426,7 +407,7 @@ export default function IngresoMinimoVitalPage() {
       {/* Sección de Estadísticas */}
       <section className="border-t border-primary/20 bg-white py-20 md:py-28">
         <div className="container px-4">
-          <h2 className="mx-auto max-w-3xl text-center text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+          <h2 className="mx-auto max-w-3xl text-center text-xl font-semibold tracking-tight text-navy sm:text-2xl">
             Democratizar el acceso a las ayudas sociales es nuestra misión.
           </h2>
           <div className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-3">
@@ -457,7 +438,7 @@ export default function IngresoMinimoVitalPage() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             {/* Columna izquierda - Formulario de Contacto */}
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+              <h2 className="text-xl font-semibold tracking-tight text-navy sm:text-2xl">
                 Nuestros asesores están siempre disponibles para ayudarte.
               </h2>
               <p className="mt-4 text-lg text-muted-foreground">
@@ -470,7 +451,7 @@ export default function IngresoMinimoVitalPage() {
 
             {/* Columna derecha - FAQ */}
             <div>
-              <h2 className="text-3xl font-bold tracking-tight text-navy sm:text-4xl">
+              <h2 className="text-xl font-semibold tracking-tight text-navy sm:text-2xl">
                 Preguntas frecuentes
               </h2>
               <div className="mt-8 space-y-4">

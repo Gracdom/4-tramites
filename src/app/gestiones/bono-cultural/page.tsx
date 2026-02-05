@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Check, ArrowRight, Users, Award, Clock, ChevronDown } from "lucide-react";
+import { Check, ArrowRight, Users, Award, Clock, ChevronDown, Ticket, Star, ShieldCheck, ClipboardCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { HeroFormBonoCultural } from "@/components/landing/bono-cultural/hero-form";
 import { ContactFormBonoCultural } from "@/components/landing/bono-cultural/contact-form";
 
 export const metadata: Metadata = {
-  title: "Bono Cultural Joven 2025 - Hasta 400€ | Gestiones España",
+  title: "Bono Cultural Joven 2025 - Hasta 400€ | Burocracia CERO",
   description: "Consigue tu Bono Cultural Joven de 400€. Te ayudamos con todos los trámites de forma rápida y segura. Solo pagas si recibes la ayuda.",
 };
 
@@ -86,57 +86,90 @@ const faqs = [
 export default function BonoCulturalPage() {
   return (
     <div className="flex flex-col">
-      {/* Hero Section */}
-      <section className="relative min-h-[700px] bg-gradient-to-br from-blue-50 via-white to-purple-50 py-20 md:min-h-[800px] md:py-32">
+      {/* Hero Section - Estilo Cheque Bebé */}
+      <section className="relative min-h-[700px] bg-gradient-to-br from-purple-50 via-white to-blue-50 pt-32 pb-20 md:min-h-[800px] md:pb-32">
         <div className="absolute inset-0 z-0">
           <Image
-            src={`${UNSPLASH}/photo-1524178232363-1fb2b075b655?w=1920&q=85`}
+            src="/joven-banner.png"
             alt="Jóvenes disfrutando cultura"
             fill
             className="object-cover opacity-10"
-            sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-purple-500/20" />
         </div>
 
         <div className="container relative z-10 px-4">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
-            <div className="max-w-2xl space-y-8">
-              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 shadow-lg">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-primary" />
-                <span className="text-sm font-medium text-slate-700">
-                  Rellena el formulario en 1 minuto y descubre si te pertenecen hasta 400 € para disfrutar de cultura en 2025
+          <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col justify-center">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-600">
+                <Ticket className="h-4 w-4" />
+                Bono Cultural Joven
+              </div>
+
+              <h1 className="mb-6 text-2xl font-semibold leading-tight text-navy md:text-3xl lg:text-4xl">
+                Bono Cultural Joven
+                <br />
+                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Hasta 400€ para cultura</span>
+              </h1>
+
+              <p className="mb-4 text-xl font-semibold text-navy">
+                ¿Te pertenecen los 400€ del Bono Cultural en 2025?
+              </p>
+
+              <p className="mb-8 text-lg text-slate-600">
+                Si tienes 18 años, puedes acceder a 400€ para disfrutar de cultura: libros, cine, teatro, música y más. Te ayudamos a tramitarlo sin complicaciones.
+              </p>
+
+              <div className="mb-8 flex items-center gap-4">
+                <div className="flex gap-1">
+                  {[1, 2, 3, 4, 5].map((star) => (
+                    <Star key={star} className="h-5 w-5 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+                <span className="text-sm font-medium text-slate-600">
+                  +200 jóvenes ayudados
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold leading-tight tracking-tight text-navy sm:text-5xl lg:text-6xl">
-                ¿Te pertenecen los{" "}
-                <span className="text-primary">400 € del Bono Cultural Joven</span> en 2025?
-              </h1>
-
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-                {["Sin complicaciones", "Sin burocracia", "Sin perder el tiempo", "100% online"].map((clave) => (
-                  <div key={clave} className="flex items-center gap-2 rounded-xl bg-white p-3 shadow-md">
-                    <Check className="h-5 w-5 shrink-0 text-primary" />
-                    <span className="text-xs font-medium text-slate-700">{clave}</span>
-                  </div>
-                ))}
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  size="lg"
+                  className="h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-8 text-base font-semibold shadow-lg transition-all hover:from-purple-600 hover:to-pink-600 hover:shadow-xl"
+                  asChild
+                >
+                  <Link href="#formulario">Comenzar gratis</Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-14 rounded-full border-2 border-purple-500 px-8 text-base font-semibold text-purple-600 transition-all hover:bg-purple-500 hover:text-white"
+                  asChild
+                >
+                  <Link href="#proceso">Ver más información</Link>
+                </Button>
               </div>
 
-              <p className="text-lg text-slate-600">
-                <strong className="text-navy">Más de 2.500.000 €</strong> conseguidos en ayudas sociales para jóvenes en España.
-              </p>
-
-              <Button className="h-14 rounded-full bg-primary px-10 text-base font-semibold shadow-xl hover:bg-[#0F7494]" asChild>
-                <Link href="#formulario">
-                  Solicitar trámite
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
+              <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <ClipboardCheck className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <p className="text-xs font-semibold text-navy">Tramitación</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <Users className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <p className="text-xs font-semibold text-navy">Asesoría</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <ShieldCheck className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <p className="text-xs font-semibold text-navy">Verificación</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <Check className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <p className="text-xs font-semibold text-navy">Aprobación</p>
+                </div>
+              </div>
             </div>
 
-            <div className="relative lg:pl-8">
+            <div className="flex items-center">
               <HeroFormBonoCultural />
             </div>
           </div>
@@ -149,7 +182,7 @@ export default function BonoCulturalPage() {
           <div className="relative">
             <div className="relative h-[400px] overflow-hidden rounded-3xl shadow-card md:h-[500px]">
               <Image
-                src={`${UNSPLASH}/photo-1523240795612-9a054b0db644?w=800&q=85`}
+                src="/joven-banner.png"
                 alt="Joven con libros"
                 fill
                 className="object-cover"
@@ -162,7 +195,7 @@ export default function BonoCulturalPage() {
             <div className="inline-flex rounded-full bg-primary/10 px-4 py-2 text-sm font-semibold text-primary">
               Cultura Accesible
             </div>
-            <h2 className="text-3xl font-bold leading-tight text-navy md:text-4xl">
+            <h2 className="text-xl font-semibold leading-tight text-navy md:text-2xl">
               Recupera tu tiempo mientras nosotros nos ocupamos de tu Bono Cultural
             </h2>
             <p className="text-lg leading-relaxed text-slate-600">
@@ -182,7 +215,7 @@ export default function BonoCulturalPage() {
       <section className="bg-gradient-to-br from-slate-50 to-white py-20 md:py-28">
         <div className="container px-4">
           <div className="mx-auto max-w-4xl text-center">
-            <h2 className="mb-6 text-3xl font-bold text-navy md:text-4xl">
+            <h2 className="mb-6 text-xl font-semibold text-navy md:text-2xl">
               Hasta 400 € para que disfrutes de la cultura este 2025
             </h2>
             <div className="mb-8 inline-flex items-center gap-4 rounded-2xl bg-primary p-8 text-white shadow-card">
@@ -195,7 +228,7 @@ export default function BonoCulturalPage() {
           </div>
 
           <div className="mx-auto mt-12 max-w-3xl rounded-3xl border-2 border-slate-200 bg-white p-8 shadow-card md:p-12">
-            <h3 className="mb-6 text-center text-2xl font-bold text-navy">Requisitos</h3>
+            <h3 className="mb-6 text-center text-xl font-bold text-navy">Requisitos</h3>
             <ul className="space-y-4">
               {requisitos.map((req) => (
                 <li key={req} className="flex items-start gap-3">
@@ -219,7 +252,7 @@ export default function BonoCulturalPage() {
 
         <div className="container relative z-10 px-4">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            <h2 className="mb-4 text-xl font-semibold md:text-2xl">
               Descubre lo fácil y rápido que es conseguir tu Bono Cultural Joven
             </h2>
           </div>
@@ -245,7 +278,7 @@ export default function BonoCulturalPage() {
       {/* Testimonios */}
       <section className="bg-white py-20 md:py-28">
         <div className="container px-4">
-          <h2 className="mb-12 text-center text-3xl font-bold text-navy md:text-4xl">
+          <h2 className="mb-12 text-center text-xl font-semibold text-navy md:text-2xl">
             Más de 200 jóvenes ya disfrutan de sus 400 € gracias a Tu Trámite Fácil
           </h2>
           <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-3">
@@ -265,7 +298,7 @@ export default function BonoCulturalPage() {
 
         <div className="container relative z-10 px-4">
           <div className="mb-12 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">
+            <h2 className="mb-4 text-xl font-semibold md:text-2xl">
               Democratizar el acceso a las ayudas sociales es nuestra misión
             </h2>
           </div>
@@ -305,7 +338,7 @@ export default function BonoCulturalPage() {
       {/* FAQ */}
       <section className="bg-white py-20 md:py-28">
         <div className="container px-4">
-          <h2 className="mb-12 text-center text-3xl font-bold text-navy md:text-4xl">
+          <h2 className="mb-12 text-center text-xl font-semibold text-navy md:text-2xl">
             Preguntas frecuentes
           </h2>
           <div className="mx-auto max-w-3xl space-y-4">
@@ -329,7 +362,7 @@ export default function BonoCulturalPage() {
       <section id="formulario" className="scroll-mt-24 bg-gradient-to-br from-slate-50 to-white py-20 md:py-28">
         <div className="container px-4">
           <div className="mx-auto max-w-2xl text-center">
-            <h2 className="mb-4 text-3xl font-bold text-navy md:text-4xl">
+            <h2 className="mb-4 text-xl font-semibold text-navy md:text-2xl">
               Nuestros asesores, siempre disponibles para ti
             </h2>
             <p className="mb-12 text-lg text-slate-600">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import {
   Check,
   ClipboardList,
@@ -14,11 +15,17 @@ import {
   Euro,
   Calendar,
   MessageSquare,
+  Zap,
+  Shield,
+  ArrowRight,
+  Key,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HeroFormAlquiler } from "@/components/landing/ayuda-alquiler/hero-form";
 import { ContactFormAlquiler } from "@/components/landing/ayuda-alquiler/contact-form";
+
+const UNSPLASH = "https://images.unsplash.com";
 
 export const metadata: Metadata = {
   title: "Ayuda al Alquiler 2025 | ¿Te corresponde? | Tu Trámite Fácil",
@@ -119,141 +126,128 @@ const faqs = [
 export default function AyudaAlquilerPage() {
   return (
     <div className="flex flex-col">
-      {/* Banner Hero Mejorado - Diseño Premium */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/80">
-        {/* Efectos de fondo animados */}
-        <div className="absolute inset-0">
-          {/* Patrón de puntos decorativo */}
-          <div 
-            className="absolute inset-0 opacity-[0.05]" 
-            style={{
-              backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-              backgroundSize: '30px 30px'
-            }}
-          />
-          
-          {/* Círculos decorativos animados */}
-          <div className="absolute -left-20 -top-20 h-96 w-96 rounded-full bg-white/10 blur-3xl animate-pulse" />
-          <div className="absolute -right-20 top-1/2 h-80 w-80 rounded-full bg-white/10 blur-3xl animate-pulse-delay-1000" />
-          <div className="absolute bottom-0 left-1/3 h-72 w-72 rounded-full bg-white/10 blur-3xl animate-pulse-delay-500" />
-          
-          {/* Rayos de luz */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent rotate-12 animate-shimmer" />
-        </div>
-
-        <div className="container relative px-4 py-16 md:py-24 lg:py-32">
-          {/* Badge superior mejorado */}
-          <div className="mb-8 flex justify-center">
-            <span className="group inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-md px-5 py-2.5 text-sm font-semibold text-white shadow-lg ring-2 ring-white/30 transition-all hover:bg-white/30 hover:scale-105">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-90"></span>
-                <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-white"></span>
-              </span>
-              <span className="flex items-center gap-2">
-                <Globe className="h-4 w-4" />
-                Trámite 100% online
-              </span>
-              <span className="mx-1">•</span>
-              <span>Sin desplazamientos</span>
+      {/* Banner tipo referencia: barra superior + hero con imagen */}
+      {/* Barra superior informativa */}
+      <div className="bg-primary text-white">
+        <div className="container flex flex-col items-center justify-between gap-3 px-4 py-3 sm:flex-row sm:gap-4 md:px-6">
+          <p className="flex flex-wrap items-center justify-center gap-1.5 text-center text-xs font-medium sm:justify-start sm:text-sm">
+            <span className="hidden sm:inline" aria-hidden>👈</span>
+            <span className="font-semibold">Mereces tu ayuda social</span>
+            <span className="hidden text-white/70 sm:inline">|</span>
+            <span className="inline-flex items-center gap-1">
+              <Zap className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Ágil
             </span>
-          </div>
-
-          {/* Título principal mejorado */}
-          <div className="mb-8 text-center">
-            <h1 className="mx-auto max-w-5xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-              ¿Te pertenece una{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 bg-gradient-to-r from-white via-white/95 to-white bg-clip-text text-transparent drop-shadow-2xl">
-                  ayuda al alquiler
-                </span>
-                <span className="absolute -bottom-3 left-0 right-0 h-4 bg-white/30 blur-xl"></span>
-                <span className="absolute -bottom-1 left-0 right-0 h-1 bg-white/50"></span>
-              </span>{" "}
-              en 2025?
-            </h1>
-          </div>
-          
-          {/* Subtítulo mejorado */}
-          <p className="mx-auto mb-10 max-w-3xl text-center text-xl font-medium text-white/95 md:text-2xl lg:text-3xl">
-            Rellena el formulario en{" "}
-            <span className="relative inline-block">
-              <span className="relative z-10 rounded-lg bg-white/20 px-3 py-1 font-bold text-white backdrop-blur-sm ring-2 ring-white/30">
-                1 minuto
-              </span>
-            </span>{" "}
-            y descubre si puedes acceder a{" "}
-            <span className="font-bold text-white underline decoration-2 decoration-white/50 underline-offset-4">
-              cientos o miles de euros
-            </span>{" "}
-            en ayudas para tu alquiler.
+            <span className="text-white/70">|</span>
+            <span className="inline-flex items-center gap-1">
+              <Shield className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Seguro
+            </span>
+            <span className="text-white/70">|</span>
+            <span className="inline-flex items-center gap-1">
+              <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              Rápido
+            </span>
+            <span className="hidden text-white/70 md:inline">|</span>
+            <span className="hidden text-white/90 md:inline">Crea tu perfil gratis para descubrirla</span>
           </p>
+          <Button
+            asChild
+            className="h-10 shrink-0 rounded-full bg-white px-5 text-sm font-semibold text-navy shadow-lg transition-all active:scale-95 hover:bg-white/95 md:h-11 md:px-6"
+          >
+            <Link href="#hero-form">
+              Crear mi perfil
+              <ArrowRight className="ml-1.5 h-4 w-4" />
+            </Link>
+          </Button>
+        </div>
+      </div>
 
-          {/* Claves destacadas mejoradas */}
-          <div className="mb-10 flex flex-wrap justify-center gap-4">
-            {claves.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div
-                  key={item.text}
-                  className="group inline-flex items-center gap-2.5 rounded-full border-2 border-white/30 bg-white/15 backdrop-blur-md px-5 py-3 text-sm font-semibold text-white shadow-xl transition-all hover:border-white/50 hover:bg-white/25 hover:scale-105 hover:shadow-2xl"
+      {/* Hero Section - Estilo Cheque Bebé */}
+      <section className="relative min-h-[700px] bg-gradient-to-br from-teal-50 via-white to-teal-50 pt-32 pb-20 md:min-h-[800px] md:pb-32">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/alquiler-banner.png"
+            alt="Vivienda y bienestar"
+            fill
+            className="object-cover opacity-10"
+            priority
+          />
+        </div>
+
+        <div className="container relative z-10 px-4">
+          <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="flex flex-col justify-center">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-primary/10 px-4 py-2 text-sm font-medium text-primary">
+                <Key className="h-4 w-4" />
+                Ayuda al Alquiler
+              </div>
+
+              <h1 className="mb-6 text-2xl font-semibold leading-tight text-navy md:text-3xl lg:text-4xl">
+                Ayuda al Alquiler
+                <br />
+                <span className="text-primary">Hasta 3.000€ al año</span>
+              </h1>
+
+              <p className="mb-4 text-xl font-semibold text-navy">
+                ¿Te corresponde una ayuda para tu alquiler?
+              </p>
+
+              <p className="mb-8 text-lg text-slate-600">
+                Las ayudas al alquiler pueden suponer cientos o miles de euros al año. Te ayudamos a comprobar si cumples requisitos y a tramitarlo sin complicaciones.
+              </p>
+
+              <div className="flex flex-wrap gap-4">
+                <Button
+                  size="lg"
+                  className="h-14 rounded-full bg-primary px-8 text-base font-semibold shadow-lg transition-all hover:bg-[#0F7494] hover:shadow-xl"
+                  asChild
                 >
-                  <Icon className="h-5 w-5 transition-transform group-hover:scale-125 group-hover:rotate-12" />
-                  <span>{item.text}</span>
-                </div>
-              );
-            })}
-          </div>
+                  <Link href="#hero-form">Comenzar gratis</Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="h-14 rounded-full border-2 border-navy px-8 text-base font-semibold text-navy transition-all hover:bg-navy hover:text-white"
+                  asChild
+                >
+                  <Link href="#proceso">Ver más información</Link>
+                </Button>
+              </div>
 
-          {/* Estadística destacada mejorada */}
-          <div className="mb-12 flex justify-center">
-            <div className="group relative overflow-hidden rounded-3xl border-2 border-white/40 bg-white/20 backdrop-blur-xl px-10 py-6 shadow-2xl ring-2 ring-white/20 transition-all hover:scale-105 hover:bg-white/25">
-              {/* Efecto de brillo animado */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              
-              <div className="relative">
-                <p className="text-center text-sm font-semibold text-white/90 uppercase tracking-wider">
-                  Ya hemos conseguido
-                </p>
-                <p className="mt-2 text-center text-4xl font-black text-white drop-shadow-lg md:text-5xl lg:text-6xl">
-                  +2.500.000 €
-                </p>
-                <p className="mt-2 text-center text-base font-medium text-white/90">
-                  en ayudas para personas como tú
-                </p>
-                
-                {/* Icono decorativo */}
-                <div className="absolute -right-4 -top-4 opacity-20">
-                  <Euro className="h-16 w-16 text-white" />
+              <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <ClipboardList className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Tramitación</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <Users className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Asesoría</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <ShieldCheck className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Verificación</p>
+                </div>
+                <div className="rounded-2xl bg-white p-4 text-center shadow-card">
+                  <Check className="mx-auto mb-2 h-8 w-8 text-primary" />
+                  <p className="text-xs font-semibold text-navy">Aprobación</p>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Formulario Hero mejorado */}
-          <div id="hero-form" className="mx-auto max-w-2xl scroll-mt-24">
-            <div className="relative">
-              {/* Sombra y efecto de elevación */}
-              <div className="absolute -inset-1 rounded-3xl bg-gradient-to-r from-white/50 via-white/30 to-white/50 blur-2xl opacity-75 animate-pulse" />
-              
-              <div className="relative rounded-3xl bg-white p-2 shadow-2xl ring-4 ring-white/50 dark:bg-slate-900 dark:ring-white/20">
-                <div className="rounded-2xl bg-gradient-to-br from-white to-slate-50 p-1 dark:from-slate-900 dark:to-slate-800">
-                  <HeroFormAlquiler />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Indicador de scroll (opcional) */}
-          <div className="mt-12 flex justify-center">
-            <div className="flex flex-col items-center gap-2 text-white/70">
-              <span className="text-xs font-medium uppercase tracking-wider">Desplázate para más información</span>
-              <div className="h-8 w-0.5 bg-white/30 rounded-full animate-bounce" />
+            <div className="flex items-center">
+              <HeroFormAlquiler />
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Onda decorativa inferior */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-b from-transparent via-white/10 to-white" />
+      <section id="hero-form" className="relative z-20 -mt-32">
+        <div className="container px-4">
+          <div className="mx-auto grid max-w-6xl gap-6 md:grid-cols-3">
+            {/* Cards de contacto aquí si es necesario */}
+          </div>
+        </div>
       </section>
 
       {/* Propuesta de valor mejorada */}
@@ -263,7 +257,7 @@ export default function AyudaAlquilerPage() {
             <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               ✨ Tu tranquilidad es nuestra prioridad
             </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
               Recupera tu tranquilidad mientras{" "}
               <span className="text-primary">nosotros nos ocupamos</span> de tu ayuda al alquiler
             </h2>
@@ -318,7 +312,7 @@ export default function AyudaAlquilerPage() {
         <div className="container px-4 py-20 md:py-28">
           <div className="mx-auto max-w-4xl">
             <div className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+              <h2 className="text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
                 Mereces un apoyo económico para tu alquiler.{" "}
                 <span className="text-primary">Nosotros te ayudamos a conseguirlo.</span>
               </h2>
@@ -388,7 +382,7 @@ export default function AyudaAlquilerPage() {
           <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             🚀 Proceso simple en 4 pasos
           </div>
-          <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="mx-auto max-w-3xl text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
             Descubre lo fácil y ágil que es tramitar tu{" "}
             <span className="text-primary">ayuda al alquiler</span> con nosotros
           </h2>
@@ -448,7 +442,7 @@ export default function AyudaAlquilerPage() {
             <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               ⭐ Más de 600 personas satisfechas
             </div>
-            <h2 className="mx-auto max-w-3xl text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="mx-auto max-w-3xl text-xl font-semibold tracking-tight sm:text-2xl">
               Gracias por confiar en{" "}
               <span className="text-primary">Tu Trámite Fácil</span>
             </h2>
@@ -502,7 +496,7 @@ export default function AyudaAlquilerPage() {
       <section className="container px-4 py-20 md:py-28">
         <div className="mx-auto max-w-4xl">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl md:text-3xl">
               Democratizar el acceso a las ayudas sociales{" "}
               <span className="text-primary">es nuestra misión</span>
             </h2>
@@ -539,7 +533,7 @@ export default function AyudaAlquilerPage() {
           {/* CTA destacado */}
           <div className="mt-16 overflow-hidden rounded-2xl bg-gradient-to-r from-primary to-primary/90 p-8 shadow-2xl sm:p-12">
             <div className="relative z-10 text-center">
-              <h3 className="text-2xl font-bold text-white sm:text-3xl">
+              <h3 className="text-xl font-bold text-white sm:text-2xl">
                 ¿Listo para comprobar tu ayuda?
               </h3>
               <p className="mt-3 text-primary-foreground/90">
@@ -569,7 +563,7 @@ export default function AyudaAlquilerPage() {
             <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
               💬 Resolvemos tus dudas
             </div>
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+            <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
               Preguntas frecuentes
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-muted-foreground">
@@ -638,7 +632,7 @@ export default function AyudaAlquilerPage() {
                 <div className="mb-4 inline-flex rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
                   📞 Estamos aquí para ayudarte
                 </div>
-                <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                <h2 className="text-xl font-semibold tracking-tight sm:text-2xl">
                   Nuestros asesores están aquí para ayudarte
                 </h2>
                 <p className="mt-4 text-lg text-muted-foreground">

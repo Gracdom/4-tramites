@@ -102,7 +102,7 @@ export default function NotificacionesPage() {
       {/* Header */}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-navy">Notificaciones</h1>
+          <h1 className="text-2xl font-bold text-navy">Notificaciones</h1>
           <p className="text-slate-600">
             Tienes {unreadCount} notificación{unreadCount !== 1 ? "es" : ""} sin
             leer

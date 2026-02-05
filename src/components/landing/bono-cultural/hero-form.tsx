@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { parseJsonResponse } from "@/lib/utils";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 export function HeroFormBonoCultural() {
@@ -50,10 +51,10 @@ export function HeroFormBonoCultural() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseJsonResponse<{ error?: string }>(response);
 
       if (!response.ok) {
-        throw new Error(data.error || "Error al enviar el formulario");
+        throw new Error(data?.error || "Error al enviar el formulario");
       }
 
       setSuccess(true);
@@ -70,7 +71,7 @@ export function HeroFormBonoCultural() {
       <div className="rounded-3xl bg-white p-8 shadow-card md:p-10">
         <div className="text-center">
           <CheckCircle2 className="mx-auto mb-4 h-16 w-16 text-green-500" />
-          <h3 className="mb-2 text-2xl font-bold text-navy">¡Solicitud enviada!</h3>
+          <h3 className="mb-2 text-xl font-bold text-navy">¡Solicitud enviada!</h3>
           <p className="text-slate-600">
             Te contactaremos pronto para ayudarte con el trámite del Bono Cultural Joven.
           </p>
@@ -88,7 +89,7 @@ export function HeroFormBonoCultural() {
 
   return (
     <div className="rounded-3xl bg-white p-8 shadow-card md:p-10">
-      <h3 className="mb-6 text-2xl font-bold text-navy">Solicitar trámite</h3>
+      <h3 className="mb-6 text-xl font-bold text-navy">Solicitar trámite</h3>
       <form onSubmit={onSubmit} className="space-y-5">
         <div className="grid gap-2">
           <Label htmlFor="hero-nombre" className="text-sm font-semibold text-slate-700">

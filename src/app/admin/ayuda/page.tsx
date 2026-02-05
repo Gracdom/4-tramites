@@ -83,7 +83,7 @@ export default function AyudaPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-navy">Centro de Ayuda</h1>
+        <h1 className="text-2xl font-bold text-navy">Centro de Ayuda</h1>
         <p className="text-slate-600">
           Encuentra respuestas y aprende a usar el panel de administración
         </p>

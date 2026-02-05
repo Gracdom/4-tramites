@@ -1,7 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Shield, Lock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
-import { NewsletterForm } from "@/components/forms/newsletter-form";
 
 const footerNav = {
   ayuda: [
@@ -23,55 +22,32 @@ const footerNav = {
 export function Footer() {
   return (
     <footer className="relative bg-navy text-white">
-      {/* Tarjeta flotante estilo Medcity */}
-      <div className="relative">
-        <div className="container px-4">
-          <div className="relative -top-20 mx-auto max-w-5xl rounded-3xl bg-white p-8 shadow-card md:p-12">
-            <div className="grid gap-8 md:grid-cols-2 md:items-center">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-bold text-navy md:text-3xl">
-                  Suscríbete a nuestro boletín
-                </h3>
-                <p className="text-slate-600">
-                  Recibe las últimas noticias sobre ayudas, trámites y consejos directamente en tu correo.
-                </p>
-              </div>
-              <NewsletterForm />
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Contenido del footer */}
-      <div className="container px-4 pb-12 pt-8">
+      {/* Contenido del footer - Optimizado móvil */}
+      <div className="container px-4 py-12 md:py-16">
         {/* Logo y descripción */}
-        <div className="mb-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mb-8 grid gap-6 md:mb-12 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link href="/" className="mb-4 inline-flex items-center gap-3 font-bold text-white">
-              <div className="relative h-12 w-12 shrink-0">
+            <Link href="/" className="mb-3 inline-block md:mb-4">
+              <div className="relative h-12 w-16 shrink-0 md:h-14 md:w-20">
                 <Image
                   src="/logo.png"
-                  alt="Gestiones España"
+                  alt="Burocracia CERO"
                   fill
-                  className="object-contain"
+                  className="object-contain mix-blend-lighten"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="text-lg leading-tight">Gestiones</span>
-                <span className="text-lg leading-tight text-primary">España</span>
-              </div>
             </Link>
-            <p className="mt-4 max-w-md text-sm leading-relaxed text-white/70">
+            <p className="mt-3 max-w-md text-xs leading-relaxed text-white/70 md:mt-4 md:text-sm">
               Tu plataforma de confianza para gestionar trámites administrativos, ayudas sociales y más. 
               Sin complicaciones, 100% online.
             </p>
-            <div className="mt-6 flex items-center gap-6">
-              <span className="flex items-center gap-2 text-sm text-white/80">
-                <Shield className="h-5 w-5 text-primary" />
+            <div className="mt-4 flex flex-wrap items-center gap-4 md:mt-6 md:gap-6">
+              <span className="flex items-center gap-2 text-xs text-white/80 md:text-sm">
+                <Shield className="h-4 w-4 text-primary md:h-5 md:w-5" />
                 Safe & Secure
               </span>
-              <span className="flex items-center gap-2 text-sm text-white/80">
-                <Lock className="h-5 w-5 text-primary" />
+              <span className="flex items-center gap-2 text-xs text-white/80 md:text-sm">
+                <Lock className="h-4 w-4 text-primary md:h-5 md:w-5" />
                 256-bit SSL
               </span>
             </div>
@@ -79,13 +55,13 @@ export function Footer() {
 
           {/* Columnas de navegación */}
           <div>
-            <h3 className="mb-4 font-semibold text-white">Ayuda</h3>
-            <ul className="space-y-2.5">
+            <h3 className="mb-3 text-sm font-semibold text-white md:mb-4 md:text-base">Ayuda</h3>
+            <ul className="space-y-2 md:space-y-2.5">
               {footerNav.ayuda.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/70 transition-colors hover:text-primary"
+                    className="text-xs text-white/70 transition-colors active:text-primary md:text-sm md:hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -94,13 +70,13 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 font-semibold text-white">Empresa</h3>
-            <ul className="space-y-2.5">
+            <h3 className="mb-3 text-sm font-semibold text-white md:mb-4 md:text-base">Empresa</h3>
+            <ul className="space-y-2 md:space-y-2.5">
               {footerNav.empresa.map((item) => (
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-sm text-white/70 transition-colors hover:text-primary"
+                    className="text-xs text-white/70 transition-colors active:text-primary md:text-sm md:hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -110,47 +86,47 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Redes sociales y Copyright */}
-        <div className="flex flex-col items-center justify-between gap-6 border-t border-white/10 pt-8 md:flex-row">
-          <p className="text-sm text-white/60">
-            © {new Date().getFullYear()} Gestiones España. Todos los derechos reservados.
+        {/* Redes sociales y Copyright - Optimizado móvil */}
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row md:gap-6 md:pt-8">
+          <p className="text-xs text-white/60 md:text-sm">
+            © {new Date().getFullYear()} Burocracia CERO. Todos los derechos reservados.
           </p>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-primary hover:scale-110"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
               aria-label="Facebook"
             >
-              <Facebook className="h-5 w-5" />
+              <Facebook className="h-4 w-4 md:h-5 md:w-5" />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-primary hover:scale-110"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <Instagram className="h-4 w-4 md:h-5 md:w-5" />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-primary hover:scale-110"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
             </a>
             <a
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white transition-all hover:bg-primary hover:scale-110"
+              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
               aria-label="YouTube"
             >
-              <Youtube className="h-5 w-5" />
+              <Youtube className="h-4 w-4 md:h-5 md:w-5" />
             </a>
           </div>
         </div>

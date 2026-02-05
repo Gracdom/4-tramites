@@ -3,8 +3,11 @@ import { supabase } from "@/lib/supabase"
 
 export const dynamic = 'force-dynamic'
 
+const SUPABASE_ERROR = { error: "Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY." } as const
+
 export async function GET(request: NextRequest) {
   try {
+    if (!supabase) return NextResponse.json(SUPABASE_ERROR, { status: 500 })
     const searchParams = request.nextUrl.searchParams
     const tabla = searchParams.get("tabla") || "todas"
     const formato = searchParams.get("formato") || "csv"

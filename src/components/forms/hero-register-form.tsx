@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { parseJsonResponse } from "@/lib/utils"
 import { CheckCircle2, Loader2 } from "lucide-react"
 
 export function HeroRegisterForm() {
@@ -42,10 +43,10 @@ export function HeroRegisterForm() {
         }),
       })
 
-      const data = await response.json()
+      const data = await parseJsonResponse<{ error?: string }>(response)
 
       if (!response.ok) {
-        throw new Error(data.error || "Error al enviar el formulario")
+        throw new Error(data?.error || "Error al enviar el formulario")
       }
 
       // Éxito

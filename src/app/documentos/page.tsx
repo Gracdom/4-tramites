@@ -11,7 +11,7 @@ export default function DocumentosPage() {
           Volver al inicio
         </Link>
       </Button>
-      <h1 className="text-3xl font-bold tracking-tight">Documentación</h1>
+      <h1 className="text-xl font-semibold tracking-tight">Documentación</h1>
       <p className="mt-4 text-muted-foreground">
         Guías y requisitos por tipo de documento. Próximamente.
       </p>

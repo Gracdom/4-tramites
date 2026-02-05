@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { parseJsonResponse } from "@/lib/utils"
 import { Mail, Send, CheckCircle2, Loader2 } from "lucide-react"
 
 export function NewsletterForm() {
@@ -35,10 +36,10 @@ export function NewsletterForm() {
         }),
       })
 
-      const data = await response.json()
+      const data = await parseJsonResponse<{ error?: string }>(response)
 
       if (!response.ok) {
-        throw new Error(data.error || "Error al suscribirse")
+        throw new Error(data?.error || "Error al suscribirse")
       }
 
       setSuccess(true)

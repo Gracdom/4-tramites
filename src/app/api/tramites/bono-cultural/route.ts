@@ -1,8 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 
+const SUPABASE_ERROR = { error: 'Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.' } as const
+
 export async function POST(request: NextRequest) {
   try {
+    if (!supabase) return NextResponse.json(SUPABASE_ERROR, { status: 500 })
     const body = await request.json()
 
     if (!body.nombre || !body.apellidos || !body.email || !body.telefono) {
@@ -64,6 +67,7 @@ export async function POST(request: NextRequest) {
 
 export async function GET(request: NextRequest) {
   try {
+    if (!supabase) return NextResponse.json(SUPABASE_ERROR, { status: 500 })
     const searchParams = request.nextUrl.searchParams
     const estado = searchParams.get('estado')
     const limit = parseInt(searchParams.get('limit') || '50')

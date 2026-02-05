@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 export function ContactFormBonoCultural() {
   return (
     <div className="rounded-3xl border-2 border-slate-100 bg-white p-8 shadow-card md:p-10">
-      <h3 className="mb-6 text-2xl font-bold text-navy">Solicitar servicio</h3>
+      <h3 className="mb-6 text-xl font-bold text-navy">Solicitar servicio</h3>
       <form className="space-y-5">
         {/* Campos obligatorios */}
         <div className="grid gap-2">

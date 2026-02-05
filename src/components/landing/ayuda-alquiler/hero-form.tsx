@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { parseJsonResponse } from "@/lib/utils";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 export function HeroFormAlquiler() {
@@ -48,10 +49,10 @@ export function HeroFormAlquiler() {
         }),
       });
 
-      const data = await response.json();
+      const data = await parseJsonResponse<{ error?: string }>(response);
 
       if (!response.ok) {
-        throw new Error(data.error || "Error al enviar el formulario");
+        throw new Error(data?.error || "Error al enviar el formulario");
       }
 
       setSuccess(true);
@@ -69,7 +70,7 @@ export function HeroFormAlquiler() {
         <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-green-100 dark:bg-green-900/30">
           <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-400" />
         </div>
-        <h3 className="text-xl font-bold text-foreground">
+        <h3 className="text-lg font-bold text-foreground">
           ¡Solicitud enviada con éxito!
         </h3>
         <p className="mt-2 text-muted-foreground">
@@ -92,7 +93,7 @@ export function HeroFormAlquiler() {
       className="rounded-xl bg-gradient-to-br from-background to-muted/30 p-6 sm:p-8"
     >
       <div className="mb-6 text-center">
-        <h3 className="text-xl font-bold">Comprueba tu ayuda en 1 minuto</h3>
+        <h3 className="text-lg font-bold">Comprueba tu ayuda en 1 minuto</h3>
         <p className="mt-2 text-sm text-muted-foreground">
           Rellena el formulario y descubre si puedes acceder a una ayuda para tu alquiler en 2025
         </p>

@@ -95,13 +95,13 @@ export function AdminSidebar() {
             <div className="relative h-10 w-10 shrink-0">
               <Image
                 src="/logo.png"
-                alt="Gestiones España"
+                alt="Burocracia CERO"
                 fill
                 className="object-contain"
               />
             </div>
             <div>
-              <h2 className="text-sm font-bold text-white">Gestiones España</h2>
+              <h2 className="text-sm font-bold text-white">Burocracia CERO</h2>
               <p className="text-xs text-white/60">Admin Panel</p>
             </div>
           </div>

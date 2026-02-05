@@ -167,7 +167,7 @@ export default function RegistrosPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-navy">Registros de Clientes</h1>
+        <h1 className="text-2xl font-bold text-navy">Registros de Clientes</h1>
         <p className="mt-2 text-slate-600">
           Gestiona todos los formularios enviados por los clientes
         </p>

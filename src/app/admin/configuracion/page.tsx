@@ -19,7 +19,7 @@ export default function ConfiguracionPage() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-bold text-navy">Configuración</h1>
+        <h1 className="text-2xl font-bold text-navy">Configuración</h1>
         <p className="text-slate-600">
           Administra la configuración general del sistema
         </p>
@@ -46,7 +46,7 @@ export default function ConfiguracionPage() {
             </Label>
             <Input
               id="site-name"
-              defaultValue="Gestiones España"
+              defaultValue="Burocracia CERO"
               className="h-10 rounded-lg border-2"
             />
           </div>
