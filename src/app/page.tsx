@@ -88,7 +88,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* Hero con imagen de fondo y gradiente - Optimizado móvil */}
-      <section className="relative min-h-[calc(100vh-65px)] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-20 pb-12 md:min-h-screen md:pt-28 md:pb-20 lg:pt-32 lg:pb-32">
+      <section className="relative min-h-[calc(100vh-60px)] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-16 pb-12 md:min-h-screen md:pt-24 md:pb-20 lg:pt-28 lg:pb-32">
         {/* Imagen de fondo con overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -116,7 +116,7 @@ export default function HomePage() {
               </h1>
               
               <p className="text-base leading-relaxed text-slate-600 md:text-lg lg:text-xl">
-                Gestiona trámites, ayudas al alquiler, cheque bebé y más. Sin complicaciones y 100% online.
+                Te ayudamos a gestionar ayudas al alquiler, cheque bebé y otros trámites administrativos de forma 100% online, con procesos claros y controlados.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
@@ -238,43 +238,69 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Grid ventajas 4x2 - Optimizado móvil */}
+      {/* Características - Optimizado móvil */}
       <section className="bg-white py-12 md:py-20 lg:py-28">
         <div className="container px-4">
-          <div className="mb-10 text-center md:mb-16">
-            <h2 className="mb-3 text-lg font-semibold text-navy md:mb-4 md:text-xl lg:text-2xl">
-              ¿Por qué elegirnos?
+          <div className="mx-auto max-w-6xl">
+            {/* Título principal */}
+            <h2 className="mb-12 text-center text-xl font-semibold text-navy md:mb-16 md:text-2xl lg:text-3xl">
+              Gestión administrativa sin desplazamientos
             </h2>
-            <p className="mx-auto max-w-2xl text-sm text-slate-600 md:text-base lg:text-lg">
-              Ofrecemos un servicio completo y seguro para todas tus gestiones administrativas
-            </p>
-          </div>
-          <div className="mx-auto grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
-            {ventajas.map((v) => {
-              const Icon = v.icon;
-              return (
-                <div
-                  key={v.title}
-                  className="group relative cursor-pointer overflow-hidden rounded-xl border-2 border-slate-100 bg-white p-5 shadow-md transition-all duration-300 active:scale-[0.98] md:rounded-2xl md:p-8 md:hover:-translate-y-2 md:hover:border-primary md:hover:shadow-card-hover"
-                >
-                  {/* Doble icono estilo Medcity */}
-                  <div className="relative mb-4 md:mb-5">
-                    {/* Icono de fondo (grande y transparente) */}
-                    <Icon className="absolute -left-1 -top-1 h-16 w-16 text-slate-100 transition-all duration-300 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
-                    {/* Icono principal */}
-                    <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
-                      <Icon className="h-6 w-6 md:h-8 md:w-8" />
-                    </div>
-                  </div>
-                  <h3 className="mb-2 text-sm font-bold text-navy md:mb-3 md:text-base">{v.title}</h3>
-                  <p className="text-xs leading-relaxed text-slate-600 md:text-sm">{v.desc}</p>
-                  <div className="mt-3 flex items-center gap-2 text-xs font-medium text-primary opacity-0 transition-opacity md:mt-4 md:text-sm md:group-hover:opacity-100">
-                    <span>Leer más</span>
-                    <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
+
+            {/* Grid de características */}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-6 shadow-md transition-all hover:border-primary hover:shadow-card md:rounded-2xl md:p-8">
+                <div className="relative mb-4 md:mb-5">
+                  <Clock className="absolute -left-1 -top-1 h-16 w-16 text-slate-100 transition-all duration-300 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
+                    <Clock className="h-6 w-6 md:h-8 md:w-8" />
                   </div>
                 </div>
-              );
-            })}
+                <h3 className="mb-3 text-base font-bold text-navy md:text-lg">Ahorro de tiempo real</h3>
+                <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+                  Nos encargamos de todo el proceso administrativo por ti. Centralizamos la gestión para reducir plazos y evitar gestiones repetidas.
+                </p>
+              </div>
+
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-6 shadow-md transition-all hover:border-primary hover:shadow-card md:rounded-2xl md:p-8">
+                <div className="relative mb-4 md:mb-5">
+                  <Award className="absolute -left-1 -top-1 h-16 w-16 text-slate-100 transition-all duration-300 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
+                    <Award className="h-6 w-6 md:h-8 md:w-8" />
+                  </div>
+                </div>
+                <h3 className="mb-3 text-base font-bold text-navy md:text-lg">Gestión basada en resultados</h3>
+                <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+                  Solo avanzamos cuando el trámite cumple los requisitos. Nuestro modelo está orientado a resolver, no a generar trámites innecesarios.
+                </p>
+              </div>
+
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-6 shadow-md transition-all hover:border-primary hover:shadow-card md:rounded-2xl md:p-8">
+                <div className="relative mb-4 md:mb-5">
+                  <ShieldCheck className="absolute -left-1 -top-1 h-16 w-16 text-slate-100 transition-all duration-300 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
+                    <ShieldCheck className="h-6 w-6 md:h-8 md:w-8" />
+                  </div>
+                </div>
+                <h3 className="mb-3 text-base font-bold text-navy md:text-lg">Supervisión profesional</h3>
+                <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+                  Cada gestión es revisada por profesionales especializados para asegurar que la documentación sea correcta y completa.
+                </p>
+              </div>
+
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-6 shadow-md transition-all hover:border-primary hover:shadow-card md:rounded-2xl md:p-8">
+                <div className="relative mb-4 md:mb-5">
+                  <ClipboardCheck className="absolute -left-1 -top-1 h-16 w-16 text-slate-100 transition-all duration-300 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
+                  <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
+                    <ClipboardCheck className="h-6 w-6 md:h-8 md:w-8" />
+                  </div>
+                </div>
+                <h3 className="mb-3 text-base font-bold text-navy md:text-lg">Tramitación digital</h3>
+                <p className="text-sm leading-relaxed text-slate-600 md:text-base">
+                  Inicia y sigue tus trámites desde cualquier lugar. Todo el proceso se realiza online, con control y trazabilidad en cada paso.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -310,12 +336,6 @@ export default function HomePage() {
                   <p className="text-sm text-slate-600">basado en +2.500 opiniones</p>
                 </div>
               </div>
-              <Button className="h-12 rounded-full bg-primary px-8 font-semibold shadow-lg hover:bg-[#0F7494]" asChild>
-                <Link href="/contacto">
-                  <span>Crear Cuenta</span>
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
             </div>
           </div>
         </div>
@@ -795,30 +815,9 @@ export default function HomePage() {
 
             <div className="rounded-2xl bg-white p-8 shadow-md">
               <h3 className="mb-4 text-lg font-bold text-navy">Nuestro equipo</h3>
-              <p className="mb-6 text-slate-600">
+              <p className="text-slate-600">
                 Expertos en trámites administrativos listos para ayudarte
               </p>
-              <div className="flex -space-x-4">
-                {[
-                  "photo-1573496359142-b8d87734a5a2",
-                  "photo-1507003211169-0a1dd7228f2d",
-                  "photo-1438761681033-6461ffad8d80",
-                  "photo-1500648767791-00dcc994a43e"
-                ].map((id) => (
-                  <div
-                    key={id}
-                    className="relative h-16 w-16 overflow-hidden rounded-full border-4 border-white shadow-lg"
-                  >
-                    <Image
-                      src={`${UNSPLASH}/${id}?w=128&h=128&fit=crop&q=80`}
-                      alt=""
-                      fill
-                      className="object-cover"
-                      sizes="64px"
-                    />
-                  </div>
-                ))}
-              </div>
             </div>
           </div>
 

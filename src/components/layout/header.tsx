@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
-import { Menu, ChevronDown, User, Ticket, Baby, Key, Wallet } from "lucide-react";
+import { Menu, ChevronDown, User, Ticket, Baby, Key, Wallet, X } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 
 const servicios = [
@@ -18,7 +18,18 @@ export function Header() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [serviciosOpen, setServiciosOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Detectar scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
@@ -39,140 +50,191 @@ export function Header() {
   };
 
   return (
-    <header className="fixed top-0 z-[100] w-full safe-top">
-      {/* Floating Header Bar - Optimizado para móvil */}
-      <div className="mx-auto max-w-7xl px-3 py-2 md:px-4 md:pt-3">
-        <div className="rounded-2xl bg-primary/95 px-4 py-2 shadow-2xl backdrop-blur-md transition-all duration-300 md:rounded-full md:px-6 md:py-2.5 lg:px-8">
-          <div className="flex items-center justify-between gap-2 md:gap-4">
-            {/* Logo y Menu Mobile */}
-            <div className="flex items-center gap-2 md:gap-4">
-              <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-white transition-colors active:bg-white/20 md:h-10 md:w-10 lg:hidden"
-                aria-label="Toggle menu"
-              >
-                <Menu className="h-5 w-5 md:h-6 md:w-6" />
-              </button>
-              
+    <header className={cn(
+      "fixed top-0 z-[100] w-full safe-top transition-all duration-300",
+      isScrolled ? "pt-1" : "pt-1"
+    )}>
+      {/* Floating Header Bar */}
+      <div className={cn(
+        "transition-all duration-300",
+        isScrolled ? "ml-4 py-1" : "mx-auto max-w-7xl px-3 py-1.5 md:py-2"
+      )}>
+        <div className={cn(
+          "rounded-2xl bg-primary/95 px-3 py-1.5 shadow-2xl backdrop-blur-md transition-all duration-300 md:px-4 md:py-2",
+          isScrolled ? "md:rounded-full w-fit" : "md:rounded-full"
+        )}>
+          {/* Cuando NO hay scroll - Header completo */}
+          {!isScrolled && (
+            <div className="flex items-center justify-between gap-2 md:gap-4">
+              {/* Logo y Menu Mobile */}
+              <div className="flex items-center gap-2 md:gap-4">
+                <button
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-colors active:bg-white/20 md:h-9 md:w-9 lg:hidden"
+                  aria-label="Toggle menu"
+                >
+                  <Menu className="h-4 w-4 md:h-5 md:w-5" />
+                </button>
+                
+                <Link
+                  href="/"
+                  className="flex shrink-0 items-center transition-opacity active:opacity-70"
+                >
+                  <div className="relative h-7 w-20 shrink-0 md:h-8 md:w-24 rounded overflow-hidden" style={{ backgroundColor: "#1391B9" }}>
+                    <Image
+                      src="/logo-white.png"
+                      alt="Burocracia CERO"
+                      fill
+                      className="object-contain"
+                      priority
+                      style={{ mixBlendMode: "screen" }}
+                    />
+                  </div>
+                </Link>
+              </div>
+
+              {/* Desktop Navigation */}
+              <nav className="hidden lg:block">
+                <ul className="flex list-none items-center gap-2">
+                  {/* Inicio */}
+                  <li>
+                    <Link
+                      href="/"
+                      className={cn(
+                        "rounded-full px-5 py-2 text-sm font-medium transition-all",
+                        pathname === "/"
+                          ? "bg-white/20 text-white"
+                          : "text-white/90 hover:bg-white/10 hover:text-white"
+                      )}
+                    >
+                      Inicio
+                    </Link>
+                  </li>
+
+                  {/* Servicios - Dropdown */}
+                  <li className="relative">
+                    <div ref={dropdownRef}>
+                      <button
+                        type="button"
+                        onClick={toggleServicios}
+                        className={cn(
+                          "flex items-center gap-1 rounded-full px-5 py-2 text-sm font-medium transition-all",
+                          pathname.startsWith("/gestiones")
+                            ? "bg-white/20 text-white"
+                            : "text-white/90 hover:bg-white/10 hover:text-white"
+                        )}
+                      >
+                        Servicios
+                        <ChevronDown 
+                          className={cn(
+                            "h-4 w-4 transition-transform duration-200",
+                            serviciosOpen && "rotate-180"
+                          )} 
+                        />
+                      </button>
+
+                      {/* Dropdown Menu */}
+                      {serviciosOpen && (
+                        <div className="absolute left-0 top-full z-[200] mt-2 w-64 animate-in fade-in slide-in-from-top-2 rounded-2xl bg-white p-2 shadow-2xl duration-200">
+                          {servicios.map((servicio) => {
+                            const Icon = servicio.icon;
+                            return (
+                              <Link
+                                key={servicio.href}
+                                href={servicio.href}
+                                onClick={() => setServiciosOpen(false)}
+                                className="flex items-center gap-3 rounded-xl px-4 py-3 text-navy transition-all hover:bg-slate-50"
+                              >
+                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
+                                  <Icon className="h-5 w-5 text-primary" />
+                                </div>
+                                <span className="text-sm font-medium">{servicio.label}</span>
+                              </Link>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                  </li>
+
+                  {/* Contacto */}
+                  <li>
+                    <Link
+                      href="/contacto"
+                      className={cn(
+                        "rounded-full px-5 py-2 text-sm font-medium transition-all",
+                        pathname === "/contacto"
+                          ? "bg-white/20 text-white"
+                          : "text-white/90 hover:bg-white/10 hover:text-white"
+                      )}
+                    >
+                      Contacto
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+
+              {/* Right Section - User Avatar */}
+              <div className="flex items-center gap-2 md:gap-4">
+                <Link href="/perfil" className="group relative">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 transition-all active:bg-white/20 active:ring-white/40 md:h-9 md:w-9 md:group-hover:bg-white/20 md:group-hover:ring-white/40">
+                    <User className="h-4 w-4 text-white md:h-4 md:w-4" />
+                  </div>
+                </Link>
+              </div>
+            </div>
+          )}
+
+          {/* Cuando HAY scroll - Header compacto con menú hamburguesa */}
+          {isScrolled && (
+            <div className="flex items-center justify-between gap-2">
+              {/* Logo compacto */}
               <Link
                 href="/"
                 className="flex shrink-0 items-center transition-opacity active:opacity-70"
               >
-                <div className="relative h-8 w-12 shrink-0 md:h-9 md:w-14">
+                <div className="relative h-6 w-16 shrink-0 md:h-7 md:w-20 rounded overflow-hidden" style={{ backgroundColor: "#1391B9" }}>
                   <Image
-                    src="/logo.png"
+                    src="/logo-white.png"
                     alt="Burocracia CERO"
                     fill
-                    className="object-contain mix-blend-lighten"
+                    className="object-contain"
                     priority
+                    style={{ mixBlendMode: "screen" }}
                   />
                 </div>
               </Link>
+
+              {/* Botón hamburguesa */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-colors active:bg-white/20 md:h-9 md:w-9"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <X className="h-5 w-5 md:h-6 md:w-6" />
+                ) : (
+                  <Menu className="h-5 w-5 md:h-6 md:w-6" />
+                )}
+              </button>
             </div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden lg:block">
-            <ul className="flex list-none items-center gap-2">
-              {/* Inicio */}
-              <li>
-                <Link
-                  href="/"
-                  className={cn(
-                    "rounded-full px-6 py-2.5 text-sm font-medium transition-all",
-                    pathname === "/"
-                      ? "bg-white/20 text-white"
-                      : "text-white/90 hover:bg-white/10 hover:text-white"
-                  )}
-                >
-                  Inicio
-                </Link>
-              </li>
-
-              {/* Servicios - Dropdown */}
-              <li className="relative">
-                <div ref={dropdownRef}>
-                  <button
-                    type="button"
-                    onClick={toggleServicios}
-                    className={cn(
-                      "flex items-center gap-1 rounded-full px-6 py-2.5 text-sm font-medium transition-all",
-                      pathname.startsWith("/gestiones")
-                        ? "bg-white/20 text-white"
-                        : "text-white/90 hover:bg-white/10 hover:text-white"
-                    )}
-                  >
-                    Servicios
-                    <ChevronDown 
-                      className={cn(
-                        "h-4 w-4 transition-transform duration-200",
-                        serviciosOpen && "rotate-180"
-                      )} 
-                    />
-                  </button>
-
-                  {/* Dropdown Menu */}
-                  {serviciosOpen && (
-                    <div className="absolute left-0 top-full z-[200] mt-2 w-64 animate-in fade-in slide-in-from-top-2 rounded-2xl bg-white p-2 shadow-2xl duration-200">
-                      {servicios.map((servicio) => {
-                        const Icon = servicio.icon;
-                        return (
-                          <Link
-                            key={servicio.href}
-                            href={servicio.href}
-                            onClick={() => setServiciosOpen(false)}
-                            className="flex items-center gap-3 rounded-xl px-4 py-3 text-navy transition-all hover:bg-slate-50"
-                          >
-                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10">
-                              <Icon className="h-5 w-5 text-primary" />
-                            </div>
-                            <span className="text-sm font-medium">{servicio.label}</span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              </li>
-
-              {/* Contacto */}
-              <li>
-                <Link
-                  href="/contacto"
-                  className={cn(
-                    "rounded-full px-6 py-2.5 text-sm font-medium transition-all",
-                    pathname === "/contacto"
-                      ? "bg-white/20 text-white"
-                      : "text-white/90 hover:bg-white/10 hover:text-white"
-                  )}
-                >
-                  Contacto
-                </Link>
-              </li>
-            </ul>
-          </nav>
-
-          {/* Right Section - User Avatar */}
-          <div className="flex items-center gap-2 md:gap-4">
-            <Link href="/perfil" className="group relative">
-              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 transition-all active:bg-white/20 active:ring-white/40 md:h-10 md:w-10 md:group-hover:bg-white/20 md:group-hover:ring-white/40">
-                <User className="h-4 w-4 text-white md:h-5 md:w-5" />
-              </div>
-            </Link>
-          </div>
+          )}
         </div>
       </div>
-      </div>
 
-      {/* Mobile Menu Dropdown - Estilo App */}
+      {/* Mobile Menu Dropdown - Funciona en ambos estados */}
       {mobileMenuOpen && (
         <>
           {/* Overlay oscuro */}
           <div 
-            className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm"
             onClick={() => setMobileMenuOpen(false)}
           />
           {/* Menú móvil */}
-          <div className="fixed left-0 right-0 top-[65px] z-[95] mx-auto max-w-7xl animate-in slide-in-from-top-2 rounded-b-3xl bg-primary/98 p-4 shadow-2xl backdrop-blur-xl duration-200 safe-top lg:hidden">
+          <div className={cn(
+            "fixed left-0 right-0 z-[95] mx-auto max-w-7xl animate-in slide-in-from-top-2 rounded-b-3xl bg-primary/98 p-4 shadow-2xl backdrop-blur-xl duration-200 safe-top",
+            isScrolled ? "top-[60px]" : "top-[65px]"
+          )}>
             <nav>
               <ul className="space-y-1">
                 {/* Inicio */}
@@ -235,6 +297,23 @@ export function Header() {
                     )}
                   >
                     <span>Contacto</span>
+                  </Link>
+                </li>
+
+                {/* Perfil */}
+                <li>
+                  <Link
+                    href="/perfil"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={cn(
+                      "flex items-center gap-3 rounded-2xl px-4 py-4 text-base font-medium transition-all active:scale-[0.98]",
+                      pathname === "/perfil"
+                        ? "bg-white/20 text-white"
+                        : "text-white/90 active:bg-white/10"
+                    )}
+                  >
+                    <User className="h-5 w-5" />
+                    <span>Mi Perfil</span>
                   </Link>
                 </li>
               </ul>

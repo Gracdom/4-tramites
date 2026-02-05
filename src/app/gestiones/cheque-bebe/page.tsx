@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 export default function ChequeBebePage() {
   return (
     <div className="flex min-h-screen flex-col">
-      <section className="relative min-h-[700px] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-32 pb-20 md:min-h-[800px] md:pb-32">
+      <section className="relative min-h-[700px] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-24 pb-20 md:min-h-[800px] md:pb-32">
         <div className="absolute inset-0 z-0">
           <Image
             src="/cheque-bebe-banner.png"

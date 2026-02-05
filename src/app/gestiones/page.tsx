@@ -150,7 +150,7 @@ export default function GestionesPage() {
   return (
     <div className="flex min-h-screen flex-col">
       {/* Hero Section - Optimizado móvil */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/80 pt-20 pb-12 md:py-20 lg:py-32">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary via-primary/90 to-primary/80 pt-16 pb-12 md:py-20 lg:py-28">
         {/* Efectos de fondo */}
         <div className="absolute inset-0">
           <div

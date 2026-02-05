@@ -15,7 +15,7 @@ export function IPhoneMockup() {
             <div className="h-10 rounded-xl bg-primary" />
           </div>
           <p className="mt-4 text-center text-xs font-medium text-navy">
-            Tu plataforma para encontrar ayudas al instante
+          Gestión online de trámites y ayudas
           </p>
         </div>
       </div>
