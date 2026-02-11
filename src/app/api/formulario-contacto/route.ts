@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { sendConfirmationToClient, sendNotificationToAdmin } from '@/lib/email'
+import { clientConfirmacionContacto, adminNotificacionContacto } from '@/lib/email-templates'
 
 const SUPABASE_ERROR = { error: 'Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.' } as const
 
@@ -58,10 +60,25 @@ export async function POST(request: NextRequest) {
       )
     }
 
+    const nombre = (body.nombre as string).trim()
+    const email = (body.email as string).trim()
+    const mensaje = (body.mensaje as string).trim()
+    const telefono = (body.telefono as string) || '—'
+
+    sendConfirmationToClient({
+      to: email,
+      subject: 'Hemos recibido tu mensaje de contacto - Burocracia Cero',
+      html: clientConfirmacionContacto(nombre),
+    }).catch((e) => console.error('[formulario-contacto] Email cliente:', e))
+    sendNotificationToAdmin({
+      subject: `[Web] Nuevo contacto: ${nombre} (${email})`,
+      html: adminNotificacionContacto(nombre, email, telefono, mensaje),
+    }).catch((e) => console.error('[formulario-contacto] Email admin:', e))
+
     return NextResponse.json(
-      { 
+      {
         message: 'Mensaje enviado exitosamente',
-        registro 
+        registro
       },
       { status: 201 }
     )

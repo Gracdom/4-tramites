@@ -57,11 +57,11 @@ export function Header() {
       {/* Floating Header Bar */}
       <div className={cn(
         "transition-all duration-300",
-        isScrolled ? "ml-4 py-1" : "mx-auto max-w-7xl px-3 py-1.5 md:py-2"
+        isScrolled ? "ml-2 py-1 sm:ml-4" : "mx-auto max-w-7xl px-2 py-1.5 sm:px-3 md:py-2"
       )}>
         <div className={cn(
-          "rounded-2xl bg-primary/95 px-3 py-1.5 shadow-2xl backdrop-blur-md transition-all duration-300 md:px-4 md:py-2",
-          isScrolled ? "md:rounded-full w-fit" : "md:rounded-full"
+          "rounded-xl bg-primary/95 px-2 py-1.5 shadow-2xl backdrop-blur-md transition-all duration-300 sm:rounded-2xl sm:px-3 md:rounded-full md:px-4 md:py-2",
+          isScrolled ? "w-fit md:rounded-full" : "md:rounded-full"
         )}>
           {/* Cuando NO hay scroll - Header completo */}
           {!isScrolled && (
@@ -70,17 +70,18 @@ export function Header() {
               <div className="flex items-center gap-2 md:gap-4">
                 <button
                   onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white transition-colors active:bg-white/20 md:h-9 md:w-9 lg:hidden"
-                  aria-label="Toggle menu"
+                  className="flex h-10 w-10 min-h-[44px] min-w-[44px] shrink-0 items-center justify-center rounded-full text-white transition-colors active:bg-white/20 md:h-9 md:w-9 lg:hidden"
+                  aria-label="Abrir menú"
                 >
-                  <Menu className="h-4 w-4 md:h-5 md:w-5" />
+                  <Menu className="h-5 w-5 md:h-5 md:w-5" />
                 </button>
                 
                 <Link
                   href="/"
                   className="flex shrink-0 items-center transition-opacity active:opacity-70"
+                  aria-label="Ir a inicio"
                 >
-                  <div className="relative h-7 w-20 shrink-0 md:h-8 md:w-24 rounded overflow-hidden" style={{ backgroundColor: "#1391B9" }}>
+                  <div className="relative h-6 w-16 shrink-0 rounded overflow-hidden sm:h-7 sm:w-20 md:h-8 md:w-24" style={{ backgroundColor: "#1391B9" }}>
                     <Image
                       src="/logo-white.png"
                       alt="Burocracia CERO"
@@ -176,7 +177,7 @@ export function Header() {
 
               {/* Right Section - User Avatar */}
               <div className="flex items-center gap-2 md:gap-4">
-                <Link href="/perfil" className="group relative">
+                <Link href="/acceder" className="group relative" title="Acceder a mi cuenta">
                   <div className="flex h-8 w-8 items-center justify-center rounded-full bg-white/10 ring-2 ring-white/20 transition-all active:bg-white/20 active:ring-white/40 md:h-9 md:w-9 md:group-hover:bg-white/20 md:group-hover:ring-white/40">
                     <User className="h-4 w-4 text-white md:h-4 md:w-4" />
                   </div>
@@ -232,18 +233,18 @@ export function Header() {
           />
           {/* Menú móvil */}
           <div className={cn(
-            "fixed left-0 right-0 z-[95] mx-auto max-w-7xl animate-in slide-in-from-top-2 rounded-b-3xl bg-primary/98 p-4 shadow-2xl backdrop-blur-xl duration-200 safe-top",
-            isScrolled ? "top-[60px]" : "top-[65px]"
+            "fixed left-0 right-0 z-[95] mx-auto max-w-7xl animate-in slide-in-from-top-2 rounded-b-2xl bg-primary/98 p-3 shadow-2xl backdrop-blur-xl duration-200 safe-top sm:rounded-b-3xl sm:p-4",
+            isScrolled ? "top-[52px] sm:top-[60px]" : "top-[56px] sm:top-[65px]"
           )}>
             <nav>
-              <ul className="space-y-1">
+              <ul className="space-y-0.5 sm:space-y-1">
                 {/* Inicio */}
                 <li>
                   <Link
                     href="/"
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center gap-3 rounded-2xl px-4 py-4 text-base font-medium transition-all active:scale-[0.98]",
+                      "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3.5 text-base font-medium transition-all active:scale-[0.98] sm:rounded-2xl sm:py-4",
                       pathname === "/"
                         ? "bg-white/20 text-white"
                         : "text-white/90 active:bg-white/10"
@@ -267,7 +268,7 @@ export function Header() {
                             href={servicio.href}
                             onClick={() => setMobileMenuOpen(false)}
                             className={cn(
-                              "flex items-center gap-4 rounded-2xl px-4 py-4 text-base font-medium transition-all active:scale-[0.98]",
+                              "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3.5 text-base font-medium transition-all active:scale-[0.98] sm:gap-4 sm:rounded-2xl sm:py-4",
                               pathname === servicio.href
                                 ? "bg-white/20 text-white"
                                 : "text-white/90 active:bg-white/10"
@@ -290,7 +291,7 @@ export function Header() {
                     href="/contacto"
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center gap-3 rounded-2xl px-4 py-4 text-base font-medium transition-all active:scale-[0.98]",
+                      "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3.5 text-base font-medium transition-all active:scale-[0.98] sm:rounded-2xl sm:py-4",
                       pathname === "/contacto"
                         ? "bg-white/20 text-white"
                         : "text-white/90 active:bg-white/10"
@@ -300,20 +301,20 @@ export function Header() {
                   </Link>
                 </li>
 
-                {/* Perfil */}
+                {/* Acceder / Mi cuenta */}
                 <li>
                   <Link
-                    href="/perfil"
+                    href="/acceder"
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "flex items-center gap-3 rounded-2xl px-4 py-4 text-base font-medium transition-all active:scale-[0.98]",
-                      pathname === "/perfil"
+                      "flex min-h-[48px] items-center gap-3 rounded-xl px-4 py-3.5 text-base font-medium transition-all active:scale-[0.98] sm:rounded-2xl sm:py-4",
+                      (pathname === "/acceder" || pathname === "/mi-cuenta")
                         ? "bg-white/20 text-white"
                         : "text-white/90 active:bg-white/10"
                     )}
                   >
                     <User className="h-5 w-5" />
-                    <span>Mi Perfil</span>
+                    <span>Acceder</span>
                   </Link>
                 </li>
               </ul>

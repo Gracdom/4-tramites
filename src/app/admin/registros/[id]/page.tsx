@@ -21,6 +21,9 @@ import {
   FileText,
   Clock,
   Tag,
+  UserPlus,
+  Copy,
+  Check,
 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -49,6 +52,18 @@ export default function RegistroDetallePage() {
   const [nuevaNota, setNuevaNota] = useState("")
   const [guardandoNota, setGuardandoNota] = useState(false)
   const [tablaReferencia, setTablaReferencia] = useState("")
+  const [registrarLoading, setRegistrarLoading] = useState(false)
+  const [linkRegistroUsuario, setLinkRegistroUsuario] = useState<string | null>(null)
+  const [linkCopiado, setLinkCopiado] = useState(false)
+  const [yaRegistradoUsuario, setYaRegistradoUsuario] = useState<string | null>(null)
+
+  const TABLAS_CON_USUARIO = [
+    "tramite_cheque_bebe",
+    "tramite_ayuda_alquiler",
+    "tramite_ingreso_minimo_vital",
+    "tramite_bono_cultural",
+  ]
+  const puedeRegistrarUsuario = TABLAS_CON_USUARIO.includes(tablaReferencia)
 
   useEffect(() => {
     if (params.id) {
@@ -56,6 +71,18 @@ export default function RegistroDetallePage() {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id])
+
+  // Comprobar si este registro ya tiene usuario (para mostrar "Reenviar enlace")
+  useEffect(() => {
+    if (!puedeRegistrarUsuario || !params.id || !tablaReferencia) return
+    const q = new URLSearchParams({ registroId: String(params.id), tablaReferencia })
+    fetch(`/api/admin/registrar-usuario?${q}`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.tieneUsuario && data.email) setYaRegistradoUsuario(data.email)
+      })
+      .catch(() => {})
+  }, [puedeRegistrarUsuario, params.id, tablaReferencia])
 
   const fetchRegistro = async () => {
     setLoading(true)
@@ -228,6 +255,30 @@ export default function RegistroDetallePage() {
       }
     } catch (err) {
       alert("Error al actualizar destacado")
+    }
+  }
+
+  const registrarUsuario = async () => {
+    if (!params.id || !tablaReferencia) return
+    setRegistrarLoading(true)
+    try {
+      const res = await fetch("/api/admin/registrar-usuario", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ registroId: params.id, tablaReferencia }),
+      })
+      const data = await res.json()
+      if (res.ok && data.link) {
+        setLinkRegistroUsuario(data.link)
+        if (data.email) setYaRegistradoUsuario(data.email)
+        if (data.usuario?.email) setYaRegistradoUsuario(data.usuario.email)
+      } else {
+        alert(data.error || "Error al registrar usuario")
+      }
+    } catch (err) {
+      alert("Error de conexión")
+    } finally {
+      setRegistrarLoading(false)
     }
   }
 
@@ -609,6 +660,79 @@ export default function RegistroDetallePage() {
               </div>
             </div>
           </Card>
+
+          {/* Registrar usuario (solo para las 4 gestiones) */}
+          {puedeRegistrarUsuario && (
+            <Card className="p-6">
+              <h2 className="text-lg font-semibold text-navy mb-2 flex items-center gap-2">
+                <UserPlus className="h-5 w-5" />
+                Registrar usuario
+              </h2>
+              <p className="text-sm text-slate-600 mb-4">
+                Crea una cuenta para este solicitante. Podrá acceder a <strong>/mi-cuenta</strong> y ver el estado de su solicitud. La primera vez usará el enlace para establecer su contraseña.
+              </p>
+              {yaRegistradoUsuario && (
+                <p className="text-sm text-green-700 bg-green-50 rounded-lg px-3 py-2 mb-4">
+                  Usuario ya registrado: <strong>{yaRegistradoUsuario}</strong>
+                </p>
+              )}
+              {!linkRegistroUsuario ? (
+                <Button
+                  onClick={registrarUsuario}
+                  disabled={registrarLoading}
+                  className="w-full"
+                  size="sm"
+                >
+                  {registrarLoading ? (
+                    <>
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                      Generando enlace...
+                    </>
+                  ) : yaRegistradoUsuario ? (
+                    <>
+                      <Mail className="mr-2 h-4 w-4" />
+                      Reenviar enlace para establecer contraseña
+                    </>
+                  ) : (
+                    <>
+                      <UserPlus className="mr-2 h-4 w-4" />
+                      Registrar usuario en el sistema
+                    </>
+                  )}
+                </Button>
+              ) : (
+                <div className="space-y-2">
+                  <p className="text-xs font-medium text-slate-600">Enlace para el solicitante (establecer contraseña):</p>
+                  <div className="flex gap-2">
+                    <Input
+                      readOnly
+                      value={linkRegistroUsuario}
+                      className="font-mono text-xs"
+                    />
+                    <Button
+                      size="sm"
+                      variant="outline"
+                      onClick={() => {
+                        navigator.clipboard.writeText(linkRegistroUsuario)
+                        setLinkCopiado(true)
+                        setTimeout(() => setLinkCopiado(false), 2000)
+                      }}
+                    >
+                      {linkCopiado ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+                    </Button>
+                  </div>
+                  <Button
+                    variant="ghost"
+                    size="sm"
+                    className="w-full text-slate-600"
+                    onClick={() => setLinkRegistroUsuario(null)}
+                  >
+                    Ocultar enlace
+                  </Button>
+                </div>
+              )}
+            </Card>
+          )}
 
           {/* Notas */}
           <Card className="p-6">

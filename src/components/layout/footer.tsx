@@ -23,12 +23,12 @@ export function Footer() {
   return (
     <footer className="relative bg-navy text-white">
       {/* Contenido del footer - Optimizado móvil */}
-      <div className="container px-4 py-12 md:py-16">
+      <div className="container px-4 py-10 sm:py-12 md:py-16">
         {/* Logo y descripción */}
-        <div className="mb-8 grid gap-6 md:mb-12 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
+        <div className="mb-8 grid grid-cols-1 gap-6 sm:gap-8 md:mb-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-2">
-            <Link href="/" className="mb-3 inline-block md:mb-4">
-              <div className="relative h-12 w-16 shrink-0 md:h-14 md:w-20">
+            <Link href="/" className="mb-3 inline-block md:mb-4" aria-label="Inicio">
+              <div className="relative h-10 w-14 shrink-0 sm:h-12 sm:w-16 md:h-14 md:w-20">
                 <Image
                   src="/logo.png"
                   alt="Burocracia CERO"
@@ -37,7 +37,7 @@ export function Footer() {
                 />
               </div>
             </Link>
-            <p className="mt-3 max-w-md text-xs leading-relaxed text-white/70 md:mt-4 md:text-sm">
+            <p className="mt-3 max-w-md text-xs leading-relaxed text-white/70 sm:mt-4 md:text-sm">
               Tu plataforma de confianza para gestionar trámites administrativos, ayudas sociales y más. 
               Sin complicaciones, 100% online.
             </p>
@@ -61,7 +61,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-xs text-white/70 transition-colors active:text-primary md:text-sm md:hover:text-primary"
+                    className="inline-block min-h-[44px] py-2 text-xs text-white/70 transition-colors active:text-primary md:py-0 md:text-sm md:hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -76,7 +76,7 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-xs text-white/70 transition-colors active:text-primary md:text-sm md:hover:text-primary"
+                    className="inline-block min-h-[44px] py-2 text-xs text-white/70 transition-colors active:text-primary md:py-0 md:text-sm md:hover:text-primary"
                   >
                     {item.label}
                   </Link>
@@ -87,46 +87,46 @@ export function Footer() {
         </div>
 
         {/* Redes sociales y Copyright - Optimizado móvil */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 md:flex-row md:gap-6 md:pt-8">
-          <p className="text-xs text-white/60 md:text-sm">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-center sm:gap-6 md:flex-row md:pt-8">
+          <p className="text-xs text-white/60 sm:text-sm">
             © {new Date().getFullYear()} Burocracia CERO. Todos los derechos reservados.
           </p>
-          <div className="flex items-center gap-2 md:gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
+              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:min-h-0 md:min-w-0 md:hover:bg-primary md:hover:scale-110"
               aria-label="Facebook"
             >
-              <Facebook className="h-4 w-4 md:h-5 md:w-5" />
+              <Facebook className="h-5 w-5 md:h-5 md:w-5" />
             </a>
             <a
               href="https://instagram.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
+              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:min-h-0 md:min-w-0 md:hover:bg-primary md:hover:scale-110"
               aria-label="Instagram"
             >
-              <Instagram className="h-4 w-4 md:h-5 md:w-5" />
+              <Instagram className="h-5 w-5 md:h-5 md:w-5" />
             </a>
             <a
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
+              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:min-h-0 md:min-w-0 md:hover:bg-primary md:hover:scale-110"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-4 w-4 md:h-5 md:w-5" />
+              <Linkedin className="h-5 w-5 md:h-5 md:w-5" />
             </a>
             <a
               href="https://youtube.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:hover:bg-primary md:hover:scale-110"
+              className="flex h-11 w-11 min-h-[44px] min-w-[44px] items-center justify-center rounded-full bg-white/10 text-white transition-all active:scale-95 active:bg-primary md:h-10 md:w-10 md:min-h-0 md:min-w-0 md:hover:bg-primary md:hover:scale-110"
               aria-label="YouTube"
             >
-              <Youtube className="h-4 w-4 md:h-5 md:w-5" />
+              <Youtube className="h-5 w-5 md:h-5 md:w-5" />
             </a>
           </div>
         </div>

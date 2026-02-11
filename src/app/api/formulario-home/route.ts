@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
+import { sendConfirmationToClient, sendNotificationToAdmin } from '@/lib/email'
+import { clientConfirmacionNewsletter, adminNotificacionNewsletter } from '@/lib/email-templates'
 
 const SUPABASE_ERROR = { error: 'Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.' } as const
 
@@ -55,6 +57,18 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       )
     }
+
+    // Emails (no bloquean la respuesta si fallan)
+    const email = (body.email as string).trim()
+    sendConfirmationToClient({
+      to: email,
+      subject: 'Te hemos registrado correctamente - Burocracia Cero',
+      html: clientConfirmacionNewsletter(),
+    }).catch((e) => console.error('[formulario-home] Email cliente:', e))
+    sendNotificationToAdmin({
+      subject: `[Web] Nuevo registro newsletter/home: ${email}`,
+      html: adminNotificacionNewsletter(email, data.url || ''),
+    }).catch((e) => console.error('[formulario-home] Email admin:', e))
 
     return NextResponse.json(
       { 

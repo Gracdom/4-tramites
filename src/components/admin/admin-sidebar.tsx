@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   LayoutDashboard,
   Users,
@@ -63,7 +63,14 @@ const navigation = [
 
 export function AdminSidebar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleLogout = async () => {
+    await fetch("/api/admin/auth/logout", { method: "POST" });
+    router.push("/admin/acceder");
+    router.refresh();
+  };
 
   return (
     <>
@@ -140,11 +147,14 @@ export function AdminSidebar() {
                   Admin User
                 </p>
                 <p className="truncate text-xs text-white/60">
-                  admin@gestiones.es
+                  admin@tramites.com
                 </p>
               </div>
             </div>
-            <button className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white">
+            <button
+              onClick={handleLogout}
+              className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+            >
               <LogOut className="h-5 w-5" />
               Cerrar sesión
             </button>

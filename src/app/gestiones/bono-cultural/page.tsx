@@ -87,7 +87,7 @@ export default function BonoCulturalPage() {
   return (
     <div className="flex flex-col">
       {/* Hero Section - Estilo Cheque Bebé */}
-      <section className="relative min-h-[700px] bg-gradient-to-br from-purple-50 via-white to-blue-50 pt-24 pb-20 md:min-h-[800px] md:pb-32">
+      <section className="relative min-h-[700px] bg-gradient-to-br from-primary-50 via-white to-primary-100 pt-24 pb-20 md:min-h-[800px] md:pb-32">
         <div className="absolute inset-0 z-0">
           <Image
             src="/joven-banner.png"

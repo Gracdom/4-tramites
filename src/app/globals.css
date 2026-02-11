@@ -92,31 +92,38 @@
     transform: rotate(180deg);
   }
   
+  /* Evitar scroll horizontal en toda la app */
+  html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+  body {
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
   /* Mobile-first optimizations */
   @media (max-width: 768px) {
-    /* Smooth scrolling para móvil */
-    html {
-      scroll-behavior: smooth;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    /* Mejorar legibilidad en móvil */
-    body {
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      text-rendering: optimizeLegibility;
-    }
-    
-    /* Botones táctiles más grandes */
-    button, a[role="button"] {
-      min-height: 44px;
-      min-width: 44px;
-    }
-    
-    /* Mejor espaciado en móvil */
     .container {
       padding-left: 1rem;
       padding-right: 1rem;
+      max-width: 100%;
+    }
+    /* Áreas táctiles mínimas 44px (WCAG) */
+    button:not([class*="h-"]):not([class*="min-h"]),
+    a[role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .container {
+      padding-left: 0.75rem;
+      padding-right: 0.75rem;
     }
   }
   
