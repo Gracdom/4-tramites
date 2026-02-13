@@ -1,6 +1,17 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Shield, Lock, Facebook, Instagram, Linkedin, Youtube } from "lucide-react";
+import {
+  Shield,
+  Lock,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  Phone,
+  Mail,
+  MessageCircle,
+} from "lucide-react";
+import { CONTACT } from "@/lib/contact";
 
 const footerNav = {
   ayuda: [
@@ -50,6 +61,30 @@ export function Footer() {
                 <Lock className="h-4 w-4 text-primary md:h-5 md:w-5" />
                 256-bit SSL
               </span>
+            </div>
+
+            {/* Datos de contacto rápidos */}
+            <div className="mt-5 space-y-2 text-xs text-white/80 md:mt-6 md:text-sm">
+              <div className="flex items-center gap-2">
+                <MessageCircle className="h-4 w-4 text-primary md:h-5 md:w-5" />
+                <a
+                  href={CONTACT.whatsappUrl("Hola, tengo una consulta sobre mis trámites.")}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary underline-offset-2 hover:underline"
+                >
+                  WhatsApp: {CONTACT.phoneDisplay} (solo mensajes)
+                </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="h-4 w-4 text-primary md:h-5 md:w-5" />
+                <a
+                  href={`mailto:${CONTACT.email}`}
+                  className="hover:text-primary underline-offset-2 hover:underline"
+                >
+                  Email: {CONTACT.email}
+                </a>
+              </div>
             </div>
           </div>
 

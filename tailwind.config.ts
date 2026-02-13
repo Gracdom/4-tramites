@@ -52,11 +52,16 @@ const config: Config = {
         shimmer: "shimmer 3s ease-in-out infinite",
         "pulse-delay-500": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite 0.5s",
         "pulse-delay-1000": "pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite 1s",
+        marquee: "marquee 30s linear infinite",
       },
       keyframes: {
         shimmer: {
           "0%": { transform: "translateX(-100%) rotate(12deg)" },
           "100%": { transform: "translateX(100%) rotate(12deg)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
         },
       },
     },

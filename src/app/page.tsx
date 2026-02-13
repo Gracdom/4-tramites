@@ -30,6 +30,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { HeroRegisterForm } from "@/components/forms/hero-register-form";
+import { GestionesPopupTrigger } from "@/components/gestiones-popup";
 import { CONTACT } from "@/lib/contact";
 
 const UNSPLASH = "https://images.unsplash.com";
@@ -54,7 +55,7 @@ const heroFeatures = [
 
 const pasos = [
   "Rellena el formulario con tus datos básicos.",
-  "Validamos tu caso y te decimos si cumples requisitos.",
+  "Estudiamos tu caso y confirmamos si aplicas.",
   "Te asesoramos sobre las opciones disponibles.",
   "Tramitamos por ti ante la administración.",
   "Recibes tu resolución y nosotros te acompañamos.",
@@ -82,6 +83,21 @@ const avatares = [
   "photo-1507003211169-0a1dd7228f2d",
   "photo-1438761681033-6461ffad8d80",
   "photo-1500648767791-00dcc994a43e",
+];
+
+const logosMarcas = [
+  "imgi_39_empresas_valenciaplaza.png",
+  "imgi_40_empresas_informacion.png",
+  "imgi_41_empresas_cadena_ser.png",
+  "imgi_42_empresas_banco_santander.png",
+  "imgi_43_empresas_alicanteplaza.png",
+  "imgi_44_empresas_elespanol.png",
+  "imgi_45_empresas_google.png",
+  "imgi_46_empresas_lasprovincias.png",
+  "imgi_47_logo-todoalicante2.svg",
+  "imgi_48_empresas_sabadell.png",
+  "imgi_49_empresas_seedr.png",
+  "imgi_50_empresas_wayra.png",
 ];
 
 export default function HomePage() {
@@ -213,26 +229,16 @@ export default function HomePage() {
               </Button>
             </div>
 
-            {/* Card 3: Horario de Atención */}
+            {/* Card 3: Sin citas - 100% Online */}
             <div className="rounded-2xl bg-white p-5 shadow-card transition-all active:scale-[0.98] md:p-8">
               <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
                 <Clock className="h-6 w-6 text-primary md:h-8 md:w-8" />
               </div>
-              <h3 className="mb-2 text-base font-bold text-navy md:mb-3 md:text-lg">Horario de Atención</h3>
-              <ul className="space-y-1.5 text-xs md:space-y-2 md:text-sm">
-                <li className="flex justify-between text-slate-600">
-                  <span className="font-medium">Lunes - Viernes</span>
-                  <span>9:00 - 18:00</span>
-                </li>
-                <li className="flex justify-between text-slate-600">
-                  <span className="font-medium">Sábado</span>
-                  <span>10:00 - 14:00</span>
-                </li>
-                <li className="flex justify-between text-slate-600">
-                  <span className="font-medium">Domingo</span>
-                  <span>Cerrado</span>
-                </li>
-              </ul>
+              <h3 className="mb-2 text-base font-bold text-navy md:mb-3 md:text-lg">Sin citas</h3>
+              <p className="text-sm font-semibold text-primary md:text-base">100% Online</p>
+              <p className="mt-2 text-xs text-slate-600 md:text-sm">
+                Accede cuando quieras desde cualquier dispositivo
+              </p>
             </div>
           </div>
         </div>
@@ -301,6 +307,31 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Carrusel de Marcas */}
+      <section className="overflow-hidden border-y border-slate-100 bg-slate-50 py-8 sm:py-10">
+        <div className="mb-4 text-center sm:mb-6">
+          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500 sm:text-sm">Empresas e instituciones que nos respaldan</p>
+        </div>
+        <div className="relative">
+          <div className="flex animate-marquee gap-10 sm:gap-14 md:gap-20">
+            {[...logosMarcas, ...logosMarcas].map((logo, i) => (
+              <div
+                key={`${logo}-${i}`}
+                className="flex h-12 w-24 shrink-0 items-center justify-center grayscale opacity-70 transition-all hover:opacity-100 hover:grayscale-0 sm:h-14 sm:w-28 md:h-16 md:w-32"
+              >
+                <Image
+                  src={`/marcas/${logo}`}
+                  alt="Marca"
+                  width={128}
+                  height={64}
+                  className="h-full w-auto max-h-full object-contain"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -605,7 +636,7 @@ export default function HomePage() {
               className="min-h-[48px] w-full max-w-sm rounded-full bg-primary px-8 text-base font-semibold shadow-xl transition-all active:scale-95 sm:w-auto sm:px-10 md:hover:scale-105 md:hover:bg-[#0F7494]"
               asChild
             >
-              <Link href="/contacto">Empieza a crear tu perfil</Link>
+              <Link href="/contacto">Iniciar consulta gratuita</Link>
             </Button>
           </div>
         </div>
@@ -679,55 +710,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Social proof - Fondo Teal estilo Medcity */}
-      <section className="relative bg-gradient-to-br from-primary to-[#0F7494] py-12 text-white sm:py-16 md:py-20 lg:py-28">
-        {/* Decoración ondulada superior */}
-        <div className="wave-top" />
-
-        <div className="container relative z-10 px-4">
-          <div className="mb-8 text-center sm:mb-10 md:mb-12">
-            <h2 className="mb-3 text-lg font-semibold sm:mb-4 sm:text-xl md:text-2xl">
-              Más de 2.500 familias confían en nosotros
-            </h2>
-            <p className="mx-auto max-w-2xl text-sm text-white/90 sm:text-base md:text-lg">
-              Empresas e instituciones que respaldan nuestro servicio
-            </p>
-          </div>
-
-          {/* Stats */}
-          <div className="mb-10 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 md:mb-16 md:gap-8">
-            <div className="rounded-xl bg-white/10 p-5 text-center backdrop-blur-sm sm:rounded-2xl sm:p-6 md:p-8">
-              <Users className="mx-auto mb-3 h-10 w-10 sm:mb-4 sm:h-12 sm:w-12" />
-              <p className="text-3xl font-bold sm:text-4xl">+2.500</p>
-              <p className="mt-1 text-sm text-white/80 sm:mt-2 sm:text-base">Familias ayudadas</p>
-            </div>
-            <div className="rounded-xl bg-white/10 p-5 text-center backdrop-blur-sm sm:rounded-2xl sm:p-6 md:p-8">
-              <Award className="mx-auto mb-3 h-10 w-10 sm:mb-4 sm:h-12 sm:w-12" />
-              <p className="text-3xl font-bold sm:text-4xl">2.5M€</p>
-              <p className="mt-1 text-sm text-white/80 sm:mt-2 sm:text-base">En ayudas conseguidas</p>
-            </div>
-            <div className="rounded-xl bg-white/10 p-5 text-center backdrop-blur-sm sm:rounded-2xl sm:p-6 md:p-8">
-              <Clock className="mx-auto mb-3 h-10 w-10 sm:mb-4 sm:h-12 sm:w-12" />
-              <p className="text-3xl font-bold sm:text-4xl">1.729</p>
-              <p className="mt-1 text-sm text-white/80 sm:mt-2 sm:text-base">Días ahorrados</p>
-            </div>
-          </div>
-
-          {/* Logos */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-12">
-            {["Empresa A", "Empresa B", "Empresa C", "Empresa D", "Empresa E"].map((name) => (
-              <div
-                key={name}
-                className="flex h-12 min-w-[80px] items-center justify-center rounded-xl bg-white px-4 text-sm font-bold text-navy shadow-lg transition-transform active:scale-95 sm:h-14 sm:min-w-[100px] sm:rounded-2xl sm:px-6 sm:text-base md:h-16 md:px-10 md:hover:scale-105"
-              >
-                {name}
-              </div>
-            ))}
-          </div>
+      {/* Banner CTA - Solicitar trámite */}
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary to-[#0F7494] py-6 text-white sm:py-8 md:py-10">
+        {/* Imagen de fondo con overlay */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/fondo2.webp"
+            alt="Solicitar trámite"
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/70 to-[#0F7494]/50" />
         </div>
 
-        {/* Decoración ondulada inferior */}
-        <div className="wave-bottom" />
+        {/* Contenido */}
+        <div className="container relative z-10 px-4">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="mb-2 text-base font-bold leading-tight sm:text-lg md:text-xl lg:text-2xl">
+              Miles de personas como tú ya tienen su ayuda social tramitada
+            </h2>
+            <p className="mx-auto mb-3 max-w-2xl text-xs text-white/90 sm:text-sm">
+              Date de alta gratis con tu perfil y mira todas las ayudas disponibles para ti
+            </p>
+            
+            {/* Estadísticas compactas */}
+            <div className="mb-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6">
+              <div className="text-center">
+                <p className="text-lg font-bold sm:text-xl md:text-2xl">2.500.000€</p>
+                <p className="text-[8px] text-white/80 sm:text-[9px]">Conseguidos</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-bold sm:text-xl md:text-2xl">+600</p>
+                <p className="text-[8px] text-white/80 sm:text-[9px]">Clientes</p>
+              </div>
+              <div className="text-center">
+                <p className="text-lg font-bold sm:text-xl md:text-2xl">+1729</p>
+                <p className="text-[8px] text-white/80 sm:text-[9px]">Días ahorrados</p>
+              </div>
+            </div>
+
+            {/* CTA Button - Abre popup con las 4 gestiones */}
+            <GestionesPopupTrigger className="h-9 min-w-[160px] rounded-full bg-white text-xs font-semibold text-primary shadow-xl transition-all hover:scale-105 hover:bg-white hover:shadow-2xl sm:h-10 sm:text-sm">
+              Solicitar trámite
+              <ArrowRight className="ml-1.5 h-3.5 w-3.5" />
+            </GestionesPopupTrigger>
+
+            <p className="mt-2 text-[9px] text-white/70 sm:text-[10px]">
+              Sin compromiso • 100% gratis
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* FAQ - Estilo Medcity */}

@@ -156,7 +156,7 @@ export default function AyudaAlquilerPage() {
             className="h-10 shrink-0 rounded-full bg-white px-5 text-sm font-semibold text-navy shadow-lg transition-all active:scale-95 hover:bg-white/95 md:h-11 md:px-6"
           >
             <Link href="#hero-form">
-              Crear mi perfil
+            Solicitar trámite
               <ArrowRight className="ml-1.5 h-4 w-4" />
             </Link>
           </Button>
