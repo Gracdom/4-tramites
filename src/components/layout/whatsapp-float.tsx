@@ -8,7 +8,7 @@ export function WhatsAppFloat() {
       href={CONTACT.whatsappUrl("Hola, tengo una consulta.")}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-20 right-4 z-[80] flex h-14 w-14 min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl active:scale-95 md:bottom-8 md:right-8 md:h-16 md:w-16 md:min-h-0 md:min-w-0"
+      className="fixed bottom-28 right-4 z-[80] flex h-14 w-14 min-h-[48px] min-w-[48px] items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg transition-all hover:scale-110 hover:shadow-xl active:scale-95 md:bottom-12 md:right-8 md:h-16 md:w-16 md:min-h-0 md:min-w-0"
       aria-label="Abrir WhatsApp"
     >
       {/* Icono oficial de WhatsApp */}

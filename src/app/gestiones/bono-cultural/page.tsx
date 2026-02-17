@@ -101,7 +101,7 @@ export default function BonoCulturalPage() {
         <div className="container relative z-10 px-4">
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2 lg:gap-16">
             <div className="flex flex-col justify-center">
-              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-600">
+              <div className="mb-6 inline-flex w-fit items-center gap-2 rounded-full bg-[#1391B9]/10 px-4 py-2 text-sm font-medium text-[#1391B9]">
                 <Ticket className="h-4 w-4" />
                 Bono Cultural Joven
               </div>
@@ -109,7 +109,7 @@ export default function BonoCulturalPage() {
               <h1 className="mb-6 text-2xl font-semibold leading-tight text-navy md:text-3xl lg:text-4xl">
                 Bono Cultural Joven
                 <br />
-                <span className="bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Hasta 400€ para cultura</span>
+                <span className="text-[#1391B9]">Hasta 400€ para cultura</span>
               </h1>
 
               <p className="mb-4 text-xl font-semibold text-navy">
@@ -132,17 +132,17 @@ export default function BonoCulturalPage() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <Button
-                  size="lg"
-                  className="h-14 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 px-8 text-base font-semibold shadow-lg transition-all hover:from-purple-600 hover:to-pink-600 hover:shadow-xl"
-                  asChild
+                <Link
+                  href="#formulario"
+                  className="inline-flex h-14 items-center justify-center rounded-full px-8 text-base font-semibold text-white shadow-lg transition-all hover:shadow-xl"
+                  style={{ backgroundColor: "#1391B9", backgroundImage: "none" }}
                 >
-                  <Link href="#formulario">Comenzar gratis</Link>
-                </Button>
+                  Comenzar gratis
+                </Link>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="h-14 rounded-full border-2 border-purple-500 px-8 text-base font-semibold text-purple-600 transition-all hover:bg-purple-500 hover:text-white"
+                  className="h-14 rounded-full border-2 border-[#1391B9] px-8 text-base font-semibold text-[#1391B9] transition-all hover:bg-[#1391B9] hover:text-white"
                   asChild
                 >
                   <Link href="#proceso">Ver más información</Link>
@@ -151,19 +151,19 @@ export default function BonoCulturalPage() {
 
               <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
                 <div className="rounded-2xl bg-white p-4 text-center shadow-card">
-                  <ClipboardCheck className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <ClipboardCheck className="mx-auto mb-2 h-8 w-8 text-[#1391B9]" />
                   <p className="text-xs font-semibold text-navy">Tramitación</p>
                 </div>
                 <div className="rounded-2xl bg-white p-4 text-center shadow-card">
-                  <Users className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <Users className="mx-auto mb-2 h-8 w-8 text-[#1391B9]" />
                   <p className="text-xs font-semibold text-navy">Asesoría</p>
                 </div>
                 <div className="rounded-2xl bg-white p-4 text-center shadow-card">
-                  <ShieldCheck className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <ShieldCheck className="mx-auto mb-2 h-8 w-8 text-[#1391B9]" />
                   <p className="text-xs font-semibold text-navy">Verificación</p>
                 </div>
                 <div className="rounded-2xl bg-white p-4 text-center shadow-card">
-                  <Check className="mx-auto mb-2 h-8 w-8 text-purple-600" />
+                  <Check className="mx-auto mb-2 h-8 w-8 text-[#1391B9]" />
                   <p className="text-xs font-semibold text-navy">Aprobación</p>
                 </div>
               </div>
