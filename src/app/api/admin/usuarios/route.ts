@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { Prisma } from "@prisma/client";
 
 export const dynamic = "force-dynamic";
 
@@ -11,7 +12,7 @@ export async function GET(request: NextRequest) {
     const limit = Math.min(parseInt(searchParams.get("limit") ?? "50", 10), 100);
     const offset = parseInt(searchParams.get("offset") ?? "0", 10);
 
-    const where: { estado?: string; OR?: object[] } = {};
+    const where: Prisma.UsuarioWhereInput = {};
     if (estado && estado !== "todos") {
       where.estado = estado as "ACTIVO" | "PENDIENTE" | "INACTIVO";
     }
