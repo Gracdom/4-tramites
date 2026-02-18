@@ -74,17 +74,14 @@ const testimonios = [
   {
     texto: "Pensaba que sería muy complicado, pero se encargaron de todo. Me sentí acompañado en todo momento.",
     autor: "Marta Gutiérrez",
-    avatar: "photo-1494790108377-be9c29b29330",
   },
   {
     texto: "No sabía si podía pedir el Ingreso Mínimo Vital. Me lo comprobaron rápido y sin compromiso.",
     autor: "Ivonne Salas",
-    avatar: "photo-1438761681033-6461ffad8d80",
   },
   {
     texto: "Trato humano, claro y profesional. Gracias a ellos ya estoy cobrando la ayuda.",
     autor: "Antonio Rodríguez",
-    avatar: "photo-1507003211169-0a1dd7228f2d",
   },
 ];
 
@@ -312,36 +309,34 @@ export default function IngresoMinimoVitalPage() {
       {/* Sección de Proceso - Fondo aguamarina sólido */}
       <section id="proceso" className="bg-primary py-20 md:py-28">
         <div className="container px-4">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
-            {/* Columna izquierda - Título */}
-            <div className="space-y-4">
-              <h2 className="text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl lg:text-3xl">
-                ¿Cómo consigo mi ayuda del Ingreso Mínimo Vital en 2024?
-              </h2>
-              <p className="text-lg text-white/90">
-                Un proceso simple y transparente en 5 pasos.
-              </p>
-            </div>
+          {/* Título y subtítulo centrados arriba */}
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-xl font-semibold leading-tight tracking-tight text-white sm:text-2xl lg:text-3xl">
+              ¿Cómo consigo mi ayuda del Ingreso Mínimo Vital en 2024?
+            </h2>
+            <p className="text-lg text-white/90">
+              Un proceso simple y transparente en 5 pasos.
+            </p>
+          </div>
 
-            {/* Columna derecha - Pasos numerados */}
-            <div className="space-y-4">
-              {pasos.map((paso, i) => {
-                const Icon = paso.icon;
-                return (
-                  <Card key={i} className="border-2 border-white/20 bg-white shadow-lg">
-                    <CardContent className="flex gap-4 p-6">
-                      <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-2xl font-bold text-white">
-                        {paso.numero}
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-navy">{paso.titulo}</h3>
-                        <p className="mt-1 text-sm text-muted-foreground">{paso.descripcion}</p>
-                      </div>
-                    </CardContent>
-                  </Card>
-                );
-              })}
-            </div>
+          {/* Cuadros de pasos centrados */}
+          <div className="mx-auto max-w-3xl space-y-4">
+            {pasos.map((paso, i) => {
+              const Icon = paso.icon;
+              return (
+                <Card key={i} className="border-2 border-white/20 bg-white shadow-lg">
+                  <CardContent className="flex gap-4 p-6">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary text-2xl font-bold text-white">
+                      {paso.numero}
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-navy">{paso.titulo}</h3>
+                      <p className="mt-1 text-sm text-muted-foreground">{paso.descripcion}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </div>
 
           <div className="mt-12 text-center">
@@ -360,7 +355,7 @@ export default function IngresoMinimoVitalPage() {
             <p className="text-xl font-bold text-navy md:text-2xl">
               Estamos comprometidos con que consigas tu ayuda, como el Ingreso Mínimo Vital, para personas como tú.
             </p>
-            <Button size="lg" className="mt-6 h-12 bg-green-500 px-8 text-base font-semibold hover:bg-green-600" asChild>
+            <Button size="lg" className="mt-6 h-12 bg-primary px-8 text-base font-semibold hover:bg-[#0F7494]" asChild>
               <Link href="#hero-form">Quiero mi ayuda</Link>
             </Button>
           </div>
@@ -377,26 +372,35 @@ export default function IngresoMinimoVitalPage() {
             {testimonios.map((t, i) => (
               <Card key={i} className="border-2 border-primary/20 shadow-lg">
                 <CardContent className="pt-6">
-                  <div className="mb-4 flex items-center gap-4">
-                    <div className="relative h-16 w-16 overflow-hidden rounded-full">
-                      <Image
-                        src={`${UNSPLASH}/${t.avatar}?w=128&h=128&fit=crop&q=80`}
-                        alt={t.autor}
-                        fill
-                        className="object-cover"
-                        sizes="64px"
-                      />
-                    </div>
-                    <div>
-                      <p className="font-semibold text-navy">{t.autor}</p>
-                      <div className="flex gap-1">
-                        {[...Array(5)].map((_, idx) => (
-                          <Star key={idx} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                        ))}
-                      </div>
-                    </div>
+                  {/* Logo de Google */}
+                  <div className="mb-4 flex items-center gap-2">
+                    <svg className="h-5 w-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                      <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.70 23 12 23z" fill="#34A853"/>
+                      <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                      <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.70 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                    </svg>
+                    <span className="text-sm font-semibold text-slate-600">Reseña de Google</span>
                   </div>
-                  <p className="text-muted-foreground">&ldquo;{t.texto}&rdquo;</p>
+
+                  {/* Estrellas */}
+                  <div className="mb-3 flex gap-1">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star key={idx} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    ))}
+                  </div>
+
+                  <p className="mb-4 leading-relaxed text-muted-foreground">
+                    &ldquo;{t.texto}&rdquo;
+                  </p>
+
+                  {/* Iniciales en círculo */}
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 font-semibold text-primary">
+                      {t.autor.charAt(0)}
+                    </div>
+                    <p className="font-semibold text-navy">{t.autor}</p>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -425,7 +429,7 @@ export default function IngresoMinimoVitalPage() {
             })}
           </div>
           <div className="mt-12 flex justify-center">
-            <Button size="lg" className="h-12 bg-green-500 px-8 text-base font-semibold hover:bg-green-600" asChild>
+            <Button size="lg" className="h-12 bg-primary px-8 text-base font-semibold hover:bg-[#0F7494]" asChild>
               <Link href="#hero-form">Regístrate gratis y revisa tu ayuda</Link>
             </Button>
           </div>
