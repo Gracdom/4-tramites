@@ -104,7 +104,7 @@ export default function HomePage() {
   return (
     <div className="flex flex-col overflow-x-hidden">
       {/* Hero con imagen de fondo y gradiente - Optimizado móvil */}
-      <section className="relative min-h-[calc(100dvh-80px)] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-14 pb-10 sm:pt-16 sm:pb-12 md:min-h-screen md:pt-24 md:pb-20 lg:pt-28 lg:pb-32">
+      <section className="relative min-h-[calc(100dvh-80px)] bg-gradient-to-br from-blue-50 via-white to-blue-50 pt-20 pb-10 sm:pt-24 sm:pb-12 md:min-h-screen md:pt-28 md:pb-20 lg:pt-32 lg:pb-32">
         {/* Imagen de fondo con overlay */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -120,7 +120,7 @@ export default function HomePage() {
 
         <div className="container relative z-10 px-4 sm:px-4">
           <div className="mx-auto grid max-w-6xl gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-16">
-            <div className="flex flex-col justify-center space-y-4 sm:space-y-6 md:space-y-8">
+            <div className="flex flex-col justify-center space-y-3 sm:space-y-6 md:space-y-8">
               <div className="inline-flex w-fit items-center gap-2 rounded-full bg-white px-3 py-1.5 shadow-lg md:px-4 md:py-2">
                 <div className="h-2 w-2 animate-pulse rounded-full bg-primary" />
                 <span className="text-xs font-medium text-slate-700 md:text-sm">Más de 2.500 familias nos confían</span>
@@ -154,7 +154,7 @@ export default function HomePage() {
               </div>
 
               {/* Features grid - Compacto en móvil */}
-              <div className="grid grid-cols-2 gap-2 sm:gap-3 pt-2 sm:pt-4 md:grid-cols-4 md:gap-4 md:pt-6">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 pt-1 sm:pt-4 md:grid-cols-4 md:gap-4 md:pt-6">
                 {heroFeatures.map((feature) => {
                   const Icon = feature.icon;
                   return (
@@ -168,7 +168,7 @@ export default function HomePage() {
                 })}
               </div>
 
-              <div className="flex items-center gap-3 pt-4 md:gap-4 md:pt-6">
+              <div className="flex items-center gap-3 pt-2 md:gap-4 md:pt-6">
                 <div className="flex items-center gap-0.5 md:gap-1">
                   {[...Array(5)].map((_, i) => (
                     <Star key={i} className="h-4 w-4 fill-amber-400 text-amber-400 md:h-5 md:w-5" />
@@ -191,37 +191,37 @@ export default function HomePage() {
       {/* Contact Cards flotantes - Optimizado móvil */}
       <section className="relative -mt-12 pb-10 sm:-mt-16 sm:pb-12 md:-mt-32 md:pb-20">
         <div className="container px-4">
-          <div className="grid grid-cols-1 gap-4 sm:gap-5 md:grid-cols-3 md:gap-6">
+          <div className="grid grid-cols-1 gap-3 sm:gap-5 md:grid-cols-3 md:gap-6">
             {/* Card 1: WhatsApp */}
             <a
               href={CONTACT.whatsappUrl("Hola, tengo una consulta.")}
               target="_blank"
               rel="noopener noreferrer"
-              className="block rounded-2xl bg-white p-5 shadow-card transition-all active:scale-[0.98] md:p-8"
+              className="block rounded-2xl bg-white p-4 shadow-card transition-all active:scale-[0.98] sm:p-5 md:p-8"
             >
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-green-100 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
-                <MessageCircle className="h-6 w-6 text-green-600 md:h-8 md:w-8" />
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-green-100 sm:mb-3 sm:h-12 sm:w-12 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
+                <MessageCircle className="h-5 w-5 text-green-600 sm:h-6 sm:w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="mb-2 text-base font-bold text-navy md:mb-3 md:text-lg">Escríbenos por WhatsApp</h3>
-              <p className="mb-3 text-xs text-slate-600 md:mb-4 md:text-sm">
+              <h3 className="mb-1 text-sm font-bold text-navy sm:mb-2 sm:text-base md:mb-3 md:text-lg">Escríbenos por WhatsApp</h3>
+              <p className="mb-2 text-xs leading-snug text-slate-600 sm:mb-3 md:mb-4 md:text-sm">
                 Atendemos solo por WhatsApp. Escríbenos para cualquier consulta.
               </p>
-              <span className="flex items-center gap-2 text-base font-semibold text-primary md:text-lg">
+              <span className="flex items-center gap-2 text-sm font-semibold text-primary sm:text-base md:text-lg">
                 <MessageCircle className="h-4 w-4 md:h-5 md:w-5" />
                 <span>{CONTACT.phoneDisplay}</span>
               </span>
             </a>
 
             {/* Card 2: Horario de Asesores */}
-            <div className="rounded-2xl bg-white p-5 shadow-card transition-all active:scale-[0.98] md:p-8">
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
-                <Users className="h-6 w-6 text-primary md:h-8 md:w-8" />
+            <div className="rounded-2xl bg-white p-4 shadow-card transition-all active:scale-[0.98] sm:p-5 md:p-8">
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 sm:mb-3 sm:h-12 sm:w-12 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
+                <Users className="h-5 w-5 text-primary sm:h-6 sm:w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="mb-2 text-base font-bold text-navy md:mb-3 md:text-lg">Horario de Asesores</h3>
-              <p className="mb-3 text-xs text-slate-600 md:mb-4 md:text-sm">
+              <h3 className="mb-1 text-sm font-bold text-navy sm:mb-2 sm:text-base md:mb-3 md:text-lg">Horario de Asesores</h3>
+              <p className="mb-2 text-xs leading-snug text-slate-600 sm:mb-3 md:mb-4 md:text-sm">
                 Asesores cualificados disponibles seis días a la semana.
               </p>
-              <Button className="h-11 w-full rounded-full border-2 border-primary bg-transparent text-sm font-semibold text-primary transition-all active:scale-95 md:h-auto md:w-auto md:hover:bg-primary md:hover:text-white" asChild>
+              <Button className="h-10 w-full rounded-full border-2 border-primary bg-transparent text-xs font-semibold text-primary transition-all active:scale-95 sm:h-11 sm:text-sm md:h-auto md:w-auto md:hover:bg-primary md:hover:text-white" asChild>
                 <Link href="/contacto">
                   <span>Ver Horarios</span>
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -230,13 +230,13 @@ export default function HomePage() {
             </div>
 
             {/* Card 3: Sin citas - 100% Online */}
-            <div className="rounded-2xl bg-white p-5 shadow-card transition-all active:scale-[0.98] md:p-8">
-              <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
-                <Clock className="h-6 w-6 text-primary md:h-8 md:w-8" />
+            <div className="rounded-2xl bg-white p-4 shadow-card transition-all active:scale-[0.98] sm:p-5 md:p-8">
+              <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 sm:mb-3 sm:h-12 sm:w-12 md:mb-4 md:h-16 md:w-16 md:rounded-2xl">
+                <Clock className="h-5 w-5 text-primary sm:h-6 sm:w-6 md:h-8 md:w-8" />
               </div>
-              <h3 className="mb-2 text-base font-bold text-navy md:mb-3 md:text-lg">Sin citas</h3>
-              <p className="text-sm font-semibold text-primary md:text-base">100% Online</p>
-              <p className="mt-2 text-xs text-slate-600 md:text-sm">
+              <h3 className="mb-1 text-sm font-bold text-navy sm:mb-2 sm:text-base md:mb-3 md:text-lg">Sin citas</h3>
+              <p className="text-xs font-semibold text-primary sm:text-sm md:text-base">100% Online</p>
+              <p className="mt-1 text-xs leading-snug text-slate-600 sm:mt-2 md:text-sm">
                 Accede cuando quieras desde cualquier dispositivo
               </p>
             </div>
@@ -254,8 +254,8 @@ export default function HomePage() {
             </h2>
 
             {/* Grid de características */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-2">
-              <div className="group rounded-xl border-2 border-slate-100 bg-white p-4 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
+            <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-2">
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-3 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
                 <div className="relative mb-3 sm:mb-4 md:mb-5">
                   <Clock className="absolute -left-1 -top-1 h-14 w-14 text-slate-100 transition-all duration-300 sm:h-16 sm:w-16 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 sm:h-12 sm:w-12 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
@@ -268,7 +268,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="group rounded-xl border-2 border-slate-100 bg-white p-4 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-3 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
                 <div className="relative mb-3 sm:mb-4 md:mb-5">
                   <Award className="absolute -left-1 -top-1 h-14 w-14 text-slate-100 transition-all duration-300 sm:h-16 sm:w-16 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 sm:h-12 sm:w-12 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
@@ -281,7 +281,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="group rounded-xl border-2 border-slate-100 bg-white p-4 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-3 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
                 <div className="relative mb-3 sm:mb-4 md:mb-5">
                   <ShieldCheck className="absolute -left-1 -top-1 h-14 w-14 text-slate-100 transition-all duration-300 sm:h-16 sm:w-16 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 sm:h-12 sm:w-12 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
@@ -294,7 +294,7 @@ export default function HomePage() {
                 </p>
               </div>
 
-              <div className="group rounded-xl border-2 border-slate-100 bg-white p-4 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
+              <div className="group rounded-xl border-2 border-slate-100 bg-white p-3 shadow-md transition-all hover:border-primary hover:shadow-card sm:p-6 md:rounded-2xl md:p-8">
                 <div className="relative mb-3 sm:mb-4 md:mb-5">
                   <ClipboardCheck className="absolute -left-1 -top-1 h-14 w-14 text-slate-100 transition-all duration-300 sm:h-16 sm:w-16 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
                   <div className="relative flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 sm:h-12 sm:w-12 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
@@ -605,7 +605,7 @@ export default function HomePage() {
         
         <div className="container relative z-10 px-4">
           <div className="mb-10 text-center sm:mb-12 md:mb-16">
-            <h2 className="mb-3 text-lg font-semibold text-white sm:mb-4 sm:text-xl md:text-2xl">
+            <h2 className="mb-3 text-xl font-semibold text-white sm:mb-4 sm:text-2xl md:text-3xl">
               ¿Cómo es el proceso para gestionar tus trámites?
             </h2>
             <p className="mx-auto max-w-2xl text-base text-white/80 sm:text-lg">
@@ -613,11 +613,11 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-5 md:gap-8">
+          <div className="grid grid-cols-2 gap-3 sm:gap-6 md:grid-cols-5 md:gap-8">
             {pasos.map((paso, i) => (
               <div key={i} className="group relative">
-                <div className="relative rounded-xl bg-white/10 p-4 backdrop-blur-sm transition-all duration-300 sm:rounded-2xl sm:p-5 md:p-6 md:hover:bg-white/20 md:hover:shadow-card">
-                  <div className="mb-3 flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-lg font-bold shadow-lg sm:mb-4 sm:h-14 sm:w-14 sm:text-xl md:h-16 md:w-16 md:rounded-2xl md:text-2xl">
+                <div className="relative rounded-xl bg-white/10 p-3 backdrop-blur-sm transition-all duration-300 sm:rounded-2xl sm:p-5 md:p-6 md:hover:bg-white/20 md:hover:shadow-card">
+                  <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-base font-bold shadow-lg sm:mb-4 sm:h-14 sm:w-14 sm:text-xl md:h-16 md:w-16 md:rounded-2xl md:text-2xl">
                     {String(i + 1).padStart(2, '0')}
                   </div>
                   <p className="text-xs leading-relaxed text-white/90 sm:text-sm">{paso}</p>
@@ -681,25 +681,25 @@ export default function HomePage() {
               Todos los trámites que necesitas, organizados y fáciles de gestionar
             </p>
           </div>
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3 lg:gap-6">
+          <div className="mx-auto grid max-w-6xl grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-6">
             {servicios.map((s) => {
               const Icon = s.icon;
               return (
                 <Link key={s.href} href={s.href} className="block">
-                  <div className="group relative h-full overflow-hidden rounded-xl border-2 border-slate-100 bg-white p-4 shadow-md transition-all duration-300 active:scale-[0.98] sm:p-5 md:rounded-2xl md:p-8 md:hover:-translate-y-2 md:hover:border-primary md:hover:shadow-card-hover">
+                  <div className="group relative h-full overflow-hidden rounded-xl border-2 border-slate-100 bg-white p-3 shadow-md transition-all duration-300 active:scale-[0.98] sm:p-5 md:rounded-2xl md:p-8 md:hover:-translate-y-2 md:hover:border-primary md:hover:shadow-card-hover">
                     {/* Doble icono estilo Medcity */}
-                    <div className="relative mb-4 md:mb-5">
+                    <div className="relative mb-3 md:mb-5">
                       {/* Icono de fondo (grande y transparente) */}
-                      <Icon className="absolute -left-1 -top-1 h-16 w-16 text-slate-100 transition-all duration-300 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
+                      <Icon className="absolute -left-1 -top-1 h-12 w-12 text-slate-100 transition-all duration-300 sm:h-16 sm:w-16 md:-left-2 md:-top-2 md:h-20 md:w-20 md:group-hover:text-primary/10" />
                       {/* Icono principal */}
-                      <div className="relative flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
-                        <Icon className="h-6 w-6 md:h-8 md:w-8" />
+                      <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-[#0F7494] text-white shadow-lg transition-transform duration-300 sm:h-12 sm:w-12 md:h-16 md:w-16 md:rounded-2xl md:group-hover:scale-110">
+                        <Icon className="h-5 w-5 sm:h-6 sm:w-6 md:h-8 md:w-8" />
                       </div>
                     </div>
-                    <h3 className="mb-2 text-base font-bold text-navy md:mb-3 md:text-lg">{s.title}</h3>
-                    <p className="mb-3 text-xs leading-relaxed text-slate-600 md:mb-4 md:text-sm">{s.desc}</p>
+                    <h3 className="mb-1 text-sm font-bold text-navy sm:mb-2 sm:text-base md:mb-3 md:text-lg">{s.title}</h3>
+                    <p className="mb-2 text-xs leading-relaxed text-slate-600 sm:mb-3 md:mb-4 md:text-sm">{s.desc}</p>
                     <div className="flex items-center gap-2 text-xs font-semibold text-primary md:text-sm">
-                      <span>Ver más detalles</span>
+                      <span>Ver más</span>
                       <ArrowRight className="h-3 w-3 transition-transform md:h-4 md:w-4 md:group-hover:translate-x-1" />
                     </div>
                   </div>

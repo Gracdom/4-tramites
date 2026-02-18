@@ -81,14 +81,13 @@ export function Header() {
                   className="flex shrink-0 items-center transition-opacity active:opacity-70"
                   aria-label="Ir a inicio"
                 >
-                  <div className="relative h-6 w-16 shrink-0 rounded overflow-hidden sm:h-7 sm:w-20 md:h-8 md:w-24" style={{ backgroundColor: "#1391B9" }}>
+                  <div className="relative h-6 w-16 shrink-0 rounded overflow-hidden sm:h-7 sm:w-20 md:h-8 md:w-24">
                     <Image
-                      src="/logo-white.png"
+                      src="/logo.png"
                       alt="Burocracia CERO"
                       fill
-                      className="object-contain"
+                      className="object-contain brightness-0 invert"
                       priority
-                      style={{ mixBlendMode: "screen" }}
                     />
                   </div>
                 </Link>
@@ -194,14 +193,13 @@ export function Header() {
                 href="/"
                 className="flex shrink-0 items-center transition-opacity active:opacity-70"
               >
-                <div className="relative h-6 w-16 shrink-0 md:h-7 md:w-20 rounded overflow-hidden" style={{ backgroundColor: "#1391B9" }}>
+                <div className="relative h-6 w-16 shrink-0 md:h-7 md:w-20 rounded overflow-hidden">
                   <Image
-                    src="/logo-white.png"
+                    src="/logo.png"
                     alt="Burocracia CERO"
                     fill
-                    className="object-contain"
+                    className="object-contain brightness-0 invert"
                     priority
-                    style={{ mixBlendMode: "screen" }}
                   />
                 </div>
               </Link>
