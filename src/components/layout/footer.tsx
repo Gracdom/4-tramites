@@ -16,7 +16,7 @@ import { CONTACT } from "@/lib/contact";
 const footerNav = {
   ayuda: [
     { label: "Ayuda", href: "/contacto" },
-    { label: "Preguntas frecuentes", href: "/#faq" },
+    { label: "Preguntas frecuentes", href: "/faq" },
     { label: "Contacto", href: "/contacto" },
   ],
   legal: [
