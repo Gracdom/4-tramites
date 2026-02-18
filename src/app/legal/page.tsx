@@ -41,8 +41,8 @@ export default function AvisoLegalPage() {
 
             <h2>2. Objeto</h2>
             <p>
-              El presente aviso legal regula el uso del sitio web www.burocraciacero.com (en adelante, "el Sitio Web"),
-              del que es titular Burocracia CERO (en adelante, "el Titular").
+              El presente aviso legal regula el uso del sitio web www.burocraciacero.com (en adelante, &ldquo;el Sitio Web&rdquo;),
+              del que es titular Burocracia CERO (en adelante, &ldquo;el Titular&rdquo;).
             </p>
             <p>
               La navegación por el Sitio Web atribuye la condición de usuario del mismo e implica la aceptación plena
