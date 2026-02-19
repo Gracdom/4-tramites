@@ -24,6 +24,7 @@ import {
   UserPlus,
   Copy,
   Check,
+  Trash2,
 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -56,6 +57,7 @@ export default function RegistroDetallePage() {
   const [linkRegistroUsuario, setLinkRegistroUsuario] = useState<string | null>(null)
   const [linkCopiado, setLinkCopiado] = useState(false)
   const [yaRegistradoUsuario, setYaRegistradoUsuario] = useState<string | null>(null)
+  const [eliminando, setEliminando] = useState(false)
 
   const TABLAS_CON_USUARIO = [
     "tramite_cheque_bebe",
@@ -258,6 +260,27 @@ export default function RegistroDetallePage() {
     }
   }
 
+  const eliminarRegistro = async () => {
+    if (!params.id || !tablaReferencia) return
+    if (!confirm("¿Eliminar este registro? Esta acción no se puede deshacer.")) return
+    setEliminando(true)
+    try {
+      const res = await fetch(`/api/admin/registros?id=${params.id}&tabla=${tablaReferencia}`, {
+        method: "DELETE",
+      })
+      const data = await res.json()
+      if (res.ok) {
+        router.push("/admin/registros")
+      } else {
+        alert(data.error || "Error al eliminar")
+      }
+    } catch (err) {
+      alert("Error al eliminar")
+    } finally {
+      setEliminando(false)
+    }
+  }
+
   const registrarUsuario = async () => {
     if (!params.id || !tablaReferencia) return
     setRegistrarLoading(true)
@@ -382,18 +405,33 @@ export default function RegistroDetallePage() {
             <p className="mt-1 text-slate-600">{getTipoFormulario(tablaReferencia)}</p>
           </div>
         </div>
-        <Button
-          variant="outline"
-          onClick={toggleDestacado}
-          className={destacado ? "text-yellow-600" : ""}
-        >
-          {destacado ? (
-            <Star className="mr-2 h-4 w-4 fill-yellow-400" />
-          ) : (
-            <StarOff className="mr-2 h-4 w-4" />
-          )}
-          {destacado ? "Destacado" : "Destacar"}
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            variant="outline"
+            onClick={toggleDestacado}
+            className={destacado ? "text-yellow-600" : ""}
+          >
+            {destacado ? (
+              <Star className="mr-2 h-4 w-4 fill-yellow-400" />
+            ) : (
+              <StarOff className="mr-2 h-4 w-4" />
+            )}
+            {destacado ? "Destacado" : "Destacar"}
+          </Button>
+          <Button
+            variant="outline"
+            onClick={eliminarRegistro}
+            disabled={eliminando}
+            className="border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700"
+          >
+            {eliminando ? (
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            ) : (
+              <Trash2 className="mr-2 h-4 w-4" />
+            )}
+            Eliminar
+          </Button>
+        </div>
       </div>
 
       <div className="grid gap-6 lg:grid-cols-3">

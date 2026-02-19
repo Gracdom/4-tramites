@@ -165,3 +165,31 @@ enum TipoAyuda {
   EMPADRONAMIENTO
   OTROS
 }
+
+// Notificaciones del panel admin (reales)
+model Notificacion {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+
+  tipo        TipoNotificacion
+  titulo      String
+  descripcion String   @db.Text
+  leida       Boolean  @default(false)
+
+  // Referencias opcionales para enlazar a solicitud/usuario/registro
+  solicitudId  String?
+  usuarioId    String?
+  metadata     String?  @db.Text // JSON con datos extra
+
+  @@index([leida])
+  @@index([tipo])
+  @@index([createdAt])
+  @@map("notificaciones")
+}
+
+enum TipoNotificacion {
+  SOLICITUD
+  APROBACION
+  USUARIO
+  PENDIENTE
+}

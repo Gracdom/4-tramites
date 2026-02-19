@@ -18,6 +18,7 @@ import {
   Key,
   Wallet,
   Ticket,
+  Trash2,
 } from "lucide-react"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -42,6 +43,35 @@ export default function RegistrosPage() {
   const [error, setError] = useState("")
   const [searchTerm, setSearchTerm] = useState("")
   const [estadoFilter, setEstadoFilter] = useState("todos")
+  const [eliminandoId, setEliminandoId] = useState<string | null>(null)
+
+  const tablaMap: Record<TabType, string> = {
+    home: "formulario_home",
+    contacto: "formulario_contacto",
+    cheque_bebe: "tramite_cheque_bebe",
+    ayuda_alquiler: "tramite_ayuda_alquiler",
+    imv: "tramite_ingreso_minimo_vital",
+    bono_cultural: "tramite_bono_cultural",
+  }
+
+  const eliminarRegistro = async (id: string) => {
+    if (!confirm("¿Eliminar este registro? Esta acción no se puede deshacer.")) return
+    setEliminandoId(id)
+    try {
+      const tabla = tablaMap[activeTab]
+      const res = await fetch(`/api/admin/registros?id=${id}&tabla=${tabla}`, { method: "DELETE" })
+      const data = await res.json()
+      if (res.ok) {
+        setRegistros((prev) => prev.filter((r) => r.id !== id))
+      } else {
+        alert(data.error || "Error al eliminar")
+      }
+    } catch (err) {
+      alert("Error al eliminar")
+    } finally {
+      setEliminandoId(null)
+    }
+  }
 
   useEffect(() => {
     fetchRegistros()
@@ -80,15 +110,6 @@ export default function RegistrosPage() {
       if (!currentTab) return
 
       // Determinar qué tabla exportar
-      const tablaMap: Record<TabType, string> = {
-        home: "formulario_home",
-        contacto: "formulario_contacto",
-        cheque_bebe: "tramite_cheque_bebe",
-        ayuda_alquiler: "tramite_ayuda_alquiler",
-        imv: "tramite_ingreso_minimo_vital",
-        bono_cultural: "tramite_bono_cultural",
-      }
-
       const tabla = tablaMap[activeTab]
       const url = `/api/registros/exportar?tabla=${tabla}&formato=csv`
 
@@ -347,13 +368,27 @@ export default function RegistrosPage() {
                       {getPrioridadBadge(registro.prioridad)}
                     </td>
                     <td className="px-6 py-4 text-right">
-                      <Link
-                        href={`/admin/registros/${registro.id}`}
-                        className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
-                      >
-                        <Eye className="h-4 w-4" />
-                        Ver detalles
-                      </Link>
+                      <div className="flex items-center justify-end gap-2">
+                        <Link
+                          href={`/admin/registros/${registro.id}`}
+                          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-primary/80"
+                        >
+                          <Eye className="h-4 w-4" />
+                          Ver
+                        </Link>
+                        <button
+                          onClick={() => eliminarRegistro(registro.id)}
+                          disabled={!!eliminandoId}
+                          className="inline-flex items-center gap-2 rounded-lg p-1.5 text-sm font-medium text-red-600 hover:bg-red-50 disabled:opacity-50"
+                          title="Eliminar"
+                        >
+                          {eliminandoId === registro.id ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <Trash2 className="h-4 w-4" />
+                          )}
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 ))}

@@ -3,6 +3,7 @@ import { supabase } from "@/lib/supabase"
 import { generateSecureToken } from "@/lib/auth"
 import { sendConfirmationToClient } from "@/lib/email"
 import { clientEnlaceEstablecerContrasena } from "@/lib/email-templates"
+import { crearNotificacion } from "@/lib/notificaciones"
 
 const SUPABASE_ERROR = { error: "Servidor no configurado." } as const
 const TABLAS_GESTION = [
@@ -155,6 +156,14 @@ export async function POST(request: NextRequest) {
       subject: "Establece tu contraseña - Burocracia Cero",
       html: clientEnlaceEstablecerContrasena(link),
     }).catch((e) => console.error("[registrar-usuario] Email al cliente:", e))
+
+    const nombreCompleto = [registro.nombre, registro.apellidos].filter(Boolean).join(" ").trim() || email
+    crearNotificacion({
+      tipo: "USUARIO",
+      titulo: "Nuevo usuario registrado",
+      descripcion: `${nombreCompleto} se ha registrado en la plataforma`,
+      metadata: JSON.stringify({ usuarioId: usuario.id, email }),
+    }).catch((e) => console.error("[registrar-usuario] Notificación:", e))
 
     return NextResponse.json({
       success: true,

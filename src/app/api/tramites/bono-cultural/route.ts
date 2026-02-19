@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 import { sendConfirmationToClient, sendNotificationToAdmin } from '@/lib/email'
 import { clientConfirmacionTramite, adminNotificacionTramite } from '@/lib/email-templates'
+import { crearNotificacion } from '@/lib/notificaciones'
 
 const SUPABASE_ERROR = { error: 'Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.' } as const
 
@@ -71,6 +72,13 @@ export async function POST(request: NextRequest) {
       subject: `[Web] Nueva solicitud Bono Cultural: ${nombreCompleto}`,
       html: adminNotificacionTramite('Bono Cultural', nombreCompleto, email, body.telefono || '—'),
     }).catch((e) => console.error('[bono-cultural] Email admin:', e))
+
+    crearNotificacion({
+      tipo: 'SOLICITUD',
+      titulo: 'Nueva solicitud recibida',
+      descripcion: `${nombreCompleto} ha enviado una solicitud para Bono Cultural`,
+      metadata: JSON.stringify({ tramiteId: tramite.id, email, tabla: 'tramite_bono_cultural' }),
+    }).catch((e) => console.error('[bono-cultural] Notificación:', e))
 
     return NextResponse.json({ message: 'Solicitud enviada exitosamente', tramite }, { status: 201 })
   } catch (error) {

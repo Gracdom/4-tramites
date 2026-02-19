@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { supabase } from '@/lib/supabase'
 import { sendConfirmationToClient, sendNotificationToAdmin } from '@/lib/email'
 import { clientConfirmacionTramite, adminNotificacionTramite } from '@/lib/email-templates'
+import { crearNotificacion } from '@/lib/notificaciones'
 
 const SUPABASE_ERROR = { error: 'Servidor no configurado. Revisa NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY.' } as const
 
@@ -81,6 +82,13 @@ export async function POST(request: NextRequest) {
       subject: `[Web] Nueva solicitud Cheque Bebé: ${nombreCompleto}`,
       html: adminNotificacionTramite('Cheque Bebé', nombreCompleto, email, body.telefono || '—'),
     }).catch((e) => console.error('[cheque-bebe] Email admin:', e))
+
+    crearNotificacion({
+      tipo: 'SOLICITUD',
+      titulo: 'Nueva solicitud recibida',
+      descripcion: `${nombreCompleto} ha enviado una solicitud para Cheque Bebé`,
+      metadata: JSON.stringify({ tramiteId: tramite.id, email, tabla: 'tramite_cheque_bebe' }),
+    }).catch((e) => console.error('[cheque-bebe] Notificación:', e))
 
     return NextResponse.json(
       {
