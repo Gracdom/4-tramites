@@ -37,6 +37,7 @@ export async function GET(request: NextRequest) {
     const allRows: Array<{
       id: string;
       user: string;
+      email: string;
       type: string;
       amount: string;
       status: string;
@@ -90,7 +91,7 @@ export async function GET(request: NextRequest) {
       filtered = filtered.filter(
         (r) =>
           r.user.toLowerCase().includes(s) ||
-          (r as { email?: string }).email?.toLowerCase().includes(s) ||
+          r.email.toLowerCase().includes(s) ||
           r.type.toLowerCase().includes(s)
       );
     }
