@@ -61,7 +61,7 @@ export async function GET(request: NextRequest) {
         const nombre = [r.nombre, r.apellidos].filter(Boolean).join(" ") || String(r.email);
         const estado = mapEstado(String(r.estado || "PENDIENTE"));
         return {
-          id: r.id,
+          id: String(r.id ?? ""),
           user: nombre,
           email: String(r.email || ""),
           type: label,

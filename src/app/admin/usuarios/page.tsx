@@ -110,6 +110,7 @@ export default function UsuariosPage() {
 
   useEffect(() => {
     fetchUsuarios();
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- fetch when filters change only
   }, [offset, estadoFilter, searchTerm]);
 
   const from = total === 0 ? 0 : offset + 1;
